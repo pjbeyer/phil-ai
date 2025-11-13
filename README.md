@@ -1,19 +1,18 @@
 # agents-marketplace
 
-A Claude Code marketplace for hierarchical agent systems, documentation management, and continuous learning plugins.
+Claude Code plugins for hierarchical agent systems, documentation management, and continuous learning.
 
 ## Available Plugins
 
 ### agents-learning-system
 
-Capture, track, and implement learnings with hierarchical storage and closed-loop tracking across profiles.
+Capture and implement learnings with hierarchical storage and closed-loop tracking.
 
 **Features**:
 - Hierarchical storage (global/profile/project/agent)
 - Closed-loop tracking with documentation-first approach
 - Cross-profile pattern extraction
 - Robust search across all profiles
-- 97% closed-loop rate proven in production use
 
 **Commands**:
 - `/learn` - Capture a learning
@@ -23,7 +22,7 @@ Capture, track, and implement learnings with hierarchical storage and closed-loo
 
 ### agents-documentation-suite
 
-Hierarchical documentation system with audience specialization (human/machine/team/public) and multi-platform publishing.
+Hierarchical documentation with audience optimization and multi-platform publishing.
 
 **Features**:
 - 13 specialized skills (writing, management, optimization, orchestration)
@@ -45,11 +44,11 @@ Hierarchical documentation system with audience specialization (human/machine/te
 
 ### agents-context-system
 
-Manage hierarchical agent infrastructure, AGENTS.md optimization, MCP configuration, and smart context loading.
+Optimize AGENTS.md files, manage MCP configuration, and load context efficiently.
 
 **Features**:
 - 9 specialized skills (optimization, hierarchy, context, tasks)
-- Smart context loading (40% token savings)
+- Smart context loading based on hierarchy level
 - Profile-aware standards (pjbeyer/work/play/home)
 - Token-efficient AGENTS.md optimization
 - MCP configuration management
@@ -72,19 +71,12 @@ Manage hierarchical agent infrastructure, AGENTS.md optimization, MCP configurat
 ### Install Plugins
 
 ```bash
-# Install learning system
 /plugin install agents-learning-system@agents-marketplace
-
-# Install documentation suite (when available)
 /plugin install agents-documentation-suite@agents-marketplace
-
-# Install agent system (when available)
-/plugin install agents-agent-system@agents-marketplace
+/plugin install agents-context-system@agents-marketplace
 ```
 
-## Philosophy
-
-These plugins follow a hierarchical organization principle:
+## Principles
 
 ### Hierarchy Levels
 
@@ -93,13 +85,10 @@ These plugins follow a hierarchical organization principle:
 3. **Project** - Project-specific patterns and documentation
 4. **Agent** - Agent-specific capabilities and improvements
 
-### Key Principles
-
-1. **Information at the Right Level**: No duplication across hierarchy
-2. **Token Efficiency**: Optimized context loading based on level
-3. **Closed-Loop Learning**: Documentation-first approach with verification
-4. **Cross-Profile Patterns**: Extract and share patterns appropriately
-5. **Profile-Aware**: Respects different standards across contexts
+1. **Information at the right level** - No duplication across hierarchy
+2. **Token efficiency** - Load only relevant context
+3. **Closed-loop learning** - Update documentation first
+4. **Cross-profile patterns** - Share what's common, respect what differs
 
 ## Development
 
@@ -108,11 +97,11 @@ These plugins follow a hierarchical organization principle:
 All plugins in this marketplace use the `agents-` prefix:
 - `agents-learning-system`
 - `agents-documentation-suite`
-- `agents-agent-system`
+- `agents-context-system`
 
 ### Contributing
 
-These plugins are open source. Contributions welcome via GitHub pull requests.
+Open source. Contributions welcome via pull requests.
 
 ### Testing Locally
 
@@ -130,12 +119,6 @@ For plugin development:
 
 All plugins in this marketplace are released under MIT License.
 
-## Author
+## Repository
 
-Paul Beyer
-- Email: paul@pjbeyer.com
-- GitHub: https://github.com/pjbeyer
-
-## Version
-
-1.0.0
+https://github.com/pjbeyer/agents-marketplace
