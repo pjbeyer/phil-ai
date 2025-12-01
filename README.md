@@ -1,10 +1,10 @@
-# agents-marketplace
+# phil-ai
 
 Claude Code plugins for hierarchical agent systems, documentation management, and continuous learning.
 
 ## Available Plugins
 
-### agents-learning-system
+### phil-ai-learning
 
 Capture and implement learnings with hierarchical storage and closed-loop tracking.
 
@@ -18,9 +18,9 @@ Capture and implement learnings with hierarchical storage and closed-loop tracki
 - `/learn` - Capture a learning
 - `/implement-learnings` - Apply captured learnings
 
-**Repository**: https://github.com/pjbeyer/agents-learning-system
+**Repository**: https://github.com/pjbeyer/phil-ai-learning
 
-### agents-documentation-suite
+### phil-ai-docs
 
 Hierarchical documentation with audience optimization and multi-platform publishing.
 
@@ -40,9 +40,9 @@ Hierarchical documentation with audience optimization and multi-platform publish
 - `/doc coordinate --level=<level>` - Coordinate hierarchical docs
 - `/doc organize` - Organize multi-agent systems
 
-**Repository**: https://github.com/pjbeyer/agents-documentation-suite
+**Repository**: https://github.com/pjbeyer/phil-ai-docs
 
-### agents-context-system
+### phil-ai-context
 
 Optimize AGENTS.md files, manage MCP configuration, and load context efficiently.
 
@@ -58,22 +58,40 @@ Optimize AGENTS.md files, manage MCP configuration, and load context efficiently
 - `/optimize-mcp` - Optimize MCP configuration
 - `/add-task` - Add hierarchy-aware tasks
 
-**Repository**: https://github.com/pjbeyer/agents-context-system
+**Repository**: https://github.com/pjbeyer/phil-ai-context
+
+### phil-ai-workflow
+
+Work tracking, git integration, and workflow management.
+
+**Features**:
+- Issue/branch/task coordination
+- Profile-aware workflow commands
+- Metrics capture and velocity tracking
+
+**Commands**:
+- `/work-start` - Start new work item
+- `/work-finish` - Complete and cleanup work
+- `/work-status` - Show active work
+- `/work-resume` - Resume previous work
+
+**Repository**: https://github.com/pjbeyer/phil-ai-workflow
 
 ## Installation
 
 ### Add Marketplace
 
 ```bash
-/plugin marketplace add pjbeyer/agents-marketplace
+/plugin marketplace add pjbeyer/phil-ai
 ```
 
 ### Install Plugins
 
 ```bash
-/plugin install agents-learning-system@agents-marketplace
-/plugin install agents-documentation-suite@agents-marketplace
-/plugin install agents-context-system@agents-marketplace
+/plugin install phil-ai-learning@phil-ai
+/plugin install phil-ai-docs@phil-ai
+/plugin install phil-ai-context@phil-ai
+/plugin install phil-ai-workflow@phil-ai
 ```
 
 ## Principles
@@ -85,6 +103,8 @@ Optimize AGENTS.md files, manage MCP configuration, and load context efficiently
 3. **Project** - Project-specific patterns and documentation
 4. **Agent** - Agent-specific capabilities and improvements
 
+### Design Principles
+
 1. **Information at the right level** - No duplication across hierarchy
 2. **Token efficiency** - Load only relevant context
 3. **Closed-loop learning** - Update documentation first
@@ -94,10 +114,11 @@ Optimize AGENTS.md files, manage MCP configuration, and load context efficiently
 
 ### Plugin Naming Convention
 
-All plugins in this marketplace use the `agents-` prefix:
-- `agents-learning-system`
-- `agents-documentation-suite`
-- `agents-context-system`
+All plugins in this marketplace use the `phil-ai-` prefix:
+- `phil-ai-learning`
+- `phil-ai-docs`
+- `phil-ai-context`
+- `phil-ai-workflow`
 
 ### Contributing
 
@@ -112,7 +133,7 @@ For plugin development:
 /plugin marketplace add /Users/pjbeyer/Projects/pjbeyer/agents-marketplace
 
 # Install from local marketplace
-/plugin install agents-learning-system@agents-marketplace
+/plugin install phil-ai-learning@phil-ai
 ```
 
 ## License
@@ -121,4 +142,4 @@ All plugins in this marketplace are released under MIT License.
 
 ## Repository
 
-https://github.com/pjbeyer/agents-marketplace
+https://github.com/pjbeyer/phil-ai
