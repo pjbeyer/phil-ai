@@ -1,5 +1,5 @@
 {
-  "name": "agents-marketplace",
+  "name": "phil-ai",
   "description": "Claude Code plugins for hierarchical agent systems, documentation management, and continuous learning",
   "owner": {
     "name": "Phil Beyer",
@@ -8,12 +8,12 @@
   },
   "plugins": [
     {
-      "name": "agents-learning-system",
+      "name": "phil-ai-learning",
       "version": "1.0.0",
       "description": "Capture, track, and implement learnings with hierarchical storage and closed-loop tracking across profiles",
       "source": {
         "source": "url",
-        "url": "https://github.com/pjbeyer/agents-learning-system.git"
+        "url": "https://github.com/pjbeyer/phil-ai-learning.git"
       },
       "author": {
         "name": "Phil Beyer",
@@ -22,12 +22,12 @@
       "license": "MIT"
     },
     {
-      "name": "agents-documentation-suite",
+      "name": "phil-ai-docs",
       "version": "1.0.0",
       "description": "Hierarchical documentation system with audience specialization (human/machine/team/public) and multi-platform publishing",
       "source": {
         "source": "url",
-        "url": "https://github.com/pjbeyer/agents-documentation-suite.git"
+        "url": "https://github.com/pjbeyer/phil-ai-docs.git"
       },
       "author": {
         "name": "Phil Beyer",
@@ -36,12 +36,26 @@
       "license": "MIT"
     },
     {
-      "name": "agents-context-system",
+      "name": "phil-ai-context",
       "version": "1.0.0",
       "description": "Manage hierarchical agent infrastructure, AGENTS.md optimization, MCP configuration, and smart context loading across profiles",
       "source": {
         "source": "url",
-        "url": "https://github.com/pjbeyer/agents-context-system.git"
+        "url": "https://github.com/pjbeyer/phil-ai-context.git"
+      },
+      "author": {
+        "name": "Phil Beyer",
+        "email": "6152278+pjbeyer@users.noreply.github.com"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "phil-ai-workflow",
+      "version": "1.0.0",
+      "description": "Work tracking, git integration, and workflow management across profiles",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pjbeyer/phil-ai-workflow.git"
       },
       "author": {
         "name": "Phil Beyer",
