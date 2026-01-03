@@ -1,0 +1,15 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "Capture and implement learnings with hierarchical storage and closed-loop tracking",
+  "category": "learning",
+  "tags": ["learning", "knowledge", "patterns", "documentation"],
+  "allowedTools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"],
+  "permissions": ["fs:read", "fs:write"],
+  "entryPoint": "SKILL.md",
+  "author": {
+    "name": "Phil Beyer"
+  },
+  "repository": "https://github.com/pjbeyer/phil-ai",
+  "license": "MIT"
+}

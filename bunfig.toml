@@ -1,0 +1,11 @@
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+exact = true
+
+[test]
+coverage = true
+coverageDir = "coverage"
+
+[run]
+silent = false
