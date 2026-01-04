@@ -40,13 +40,13 @@ export async function runGenerate(args: ParsedArgs): Promise<void> {
 					"../../../../platforms/claude-code/generator/index.js"
 				);
 				await generateAll();
-				success(`Claude Code: Generated 4 plugins`);
+				success("Claude Code: Generated 4 plugins");
 			} else if (platform === "opencode") {
 				const { generateAll } = await import(
 					"../../../../platforms/opencode/generator/index.js"
 				);
 				await generateAll();
-				success(`OpenCode: Generated plugin with tools`);
+				success("OpenCode: Generated plugin with tools");
 			} else {
 				error(`Unknown platform: ${platform}`);
 			}

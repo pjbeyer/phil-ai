@@ -3,9 +3,17 @@
 **Input**: Design documents from `/specs/001-multiplatform-scaffolding/`  
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/cli.md
 
-**Tests**: Included per constitution requirements (Section: Testing Requirements, lines 449-454).
+**Tests**: Included per constitution requirements.
 
 **Organization**: Tasks grouped by user story (P1-P4) for independent implementation and testing.
+
+> **Note (2026-01-03)**: These tasks were executed under an earlier constitution version. The spec and plan have since been updated to align with Constitution v2.0.1 which clarifies:
+> - External plugin repos (phil-ai-learning, etc.) are the source of truth
+> - `core/skills/` contains reference definitions for development/testing
+> - The `scaffold` command (feature 002) adds OpenCode support to external repos
+> - Generators produce marketplace.json, not full plugins
+> 
+> The implemented code aligns with this architecture. Tasks referencing "generated plugins" should be understood as producing marketplace index and reference implementations.
 
 ## Format: `[ID] [P?] [Story?] Description`
 
