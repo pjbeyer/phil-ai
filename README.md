@@ -135,6 +135,7 @@ bunx phil-ai status               # Check system health
 bunx phil-ai update               # Update components
 bunx phil-ai sync                 # Sync state across platforms
 bunx phil-ai generate             # Generate platform plugins
+bunx phil-ai validate             # Validate marketplace or plugin
 ```
 
 ## MCP Server

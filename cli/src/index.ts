@@ -7,6 +7,7 @@ import { runStatus } from "./commands/status/index.js";
 import { runUpdate } from "./commands/update/index.js";
 import { runSync } from "./commands/sync/index.js";
 import { runGenerate } from "./commands/generate/index.js";
+import { runValidate } from "./commands/validate/index.js";
 
 const VERSION = "0.1.0";
 
@@ -23,6 +24,7 @@ ${bold("Commands:")}
   update      Update phil-ai components
   sync        Sync state across platforms
   generate    Generate platform plugins
+  validate    Validate marketplace or plugin structure
 
 ${bold("Options:")}
   --help, -h     Show this help message
@@ -79,6 +81,10 @@ async function main(): Promise<void> {
 
 		case "generate":
 			await runGenerate(args);
+			break;
+
+		case "validate":
+			await runValidate(args);
 			break;
 
 		default:

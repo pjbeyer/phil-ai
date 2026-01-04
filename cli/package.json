@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@phil-ai/shared": "workspace:*"
+    "@phil-ai/shared": "workspace:*",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/bun": "^1.1.14",
