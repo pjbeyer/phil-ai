@@ -1,8 +1,15 @@
 # phil-ai
 
-Claude Code plugins for hierarchical agent systems, documentation management, and continuous learning.
+Cross-platform AI plugin system for hierarchical agent workflows, documentation management, and continuous learning.
 
-## Available Plugins
+## Overview
+
+phil-ai provides plugins for multiple AI coding assistants:
+
+- **Claude Code**: Individual plugins via marketplace (separate repos for compatibility)
+- **OpenCode**: Unified plugin generated from this monorepo
+
+## Plugins
 
 ### phil-ai-learning
 
@@ -25,8 +32,6 @@ Capture and implement learnings with hierarchical storage and closed-loop tracki
 Hierarchical documentation with audience optimization and multi-platform publishing.
 
 **Features**:
-- 13 specialized skills (writing, management, optimization, orchestration)
-- Single `/doc` command with subcommands
 - Audience-specific optimization (human/machine/team/public)
 - Multi-platform publishing (Notion, GitHub, local)
 - Token-efficient machine documentation
@@ -36,9 +41,6 @@ Hierarchical documentation with audience optimization and multi-platform publish
 - `/doc maintain` - Maintain and update docs
 - `/doc optimize` - Optimize for token efficiency
 - `/doc publish --platform=<platform>` - Publish to platforms
-- `/doc curate` - Curate agent documentation
-- `/doc coordinate --level=<level>` - Coordinate hierarchical docs
-- `/doc organize` - Organize multi-agent systems
 
 **Repository**: https://github.com/pjbeyer/phil-ai-docs
 
@@ -47,9 +49,7 @@ Hierarchical documentation with audience optimization and multi-platform publish
 Optimize AGENTS.md files, manage MCP configuration, and load context efficiently.
 
 **Features**:
-- 9 specialized skills (optimization, hierarchy, context, tasks)
 - Smart context loading based on hierarchy level
-- Profile-aware standards (pjbeyer/work/play/home)
 - Token-efficient AGENTS.md optimization
 - MCP configuration management
 
@@ -79,67 +79,98 @@ Work tracking, git integration, and workflow management.
 
 ## Installation
 
-### Add Marketplace
+### Claude Code
 
 ```bash
+# Add marketplace
 /plugin marketplace add pjbeyer/phil-ai
-```
 
-### Install Plugins
-
-```bash
+# Install plugins
 /plugin install phil-ai-learning@phil-ai
 /plugin install phil-ai-docs@phil-ai
 /plugin install phil-ai-context@phil-ai
 /plugin install phil-ai-workflow@phil-ai
 ```
 
-## Principles
+### OpenCode
 
-### Hierarchy Levels
+```bash
+# Install phil-ai system
+bunx phil-ai install
+
+# Or install specific capabilities
+bunx phil-ai install --skills=learning,docs
+```
+
+## Architecture
+
+This monorepo generates the unified OpenCode plugin and coordinates skill definitions:
+
+```
+phil-ai/
+├── cli/                    # CLI for installation & management
+├── mcp/                    # Model Context Protocol server
+├── shared/                 # Schemas, storage, versioning utilities
+├── platforms/
+│   ├── claude-code/        # Claude Code plugin generator
+│   └── opencode/           # OpenCode plugin generator
+├── core/skills/            # Canonical skill definitions
+└── tests/                  # Centralized test suite
+```
+
+### Platform Strategy
+
+| Platform | Source | Installation |
+|----------|--------|--------------|
+| Claude Code | Individual repos | `/plugin install` from marketplace |
+| OpenCode | This monorepo | `bunx phil-ai install` |
+
+The individual repos (phil-ai-learning, etc.) remain the source of truth for Claude Code compatibility. This repo generates the unified OpenCode plugin and provides the CLI/MCP infrastructure.
+
+## CLI Commands
+
+```bash
+bunx phil-ai install              # First-time installation
+bunx phil-ai status               # Check system health
+bunx phil-ai update               # Update components
+bunx phil-ai sync                 # Sync state across platforms
+bunx phil-ai generate             # Generate platform plugins
+bunx phil-ai validate             # Validate marketplace or plugin
+```
+
+## MCP Server
+
+For OpenCode integration via Model Context Protocol:
+
+```bash
+bunx phil-ai-mcp
+```
+
+**Available Tools**: `capture_learning`, `list_learnings`, `write_doc`, `optimize_agents`, `work_start`, `work_finish`
+
+## Hierarchy Levels
 
 1. **Global** (`~/Projects`) - Cross-profile patterns and standards
 2. **Profile** (`~/Projects/{profile}`) - Profile-specific tools and workflows
 3. **Project** - Project-specific patterns and documentation
 4. **Agent** - Agent-specific capabilities and improvements
 
-### Design Principles
+## Design Principles
 
 1. **Information at the right level** - No duplication across hierarchy
 2. **Token efficiency** - Load only relevant context
 3. **Closed-loop learning** - Update documentation first
-4. **Cross-profile patterns** - Share what's common, respect what differs
+4. **Platform parity** - Consistent behavior across AI assistants
 
 ## Development
 
-### Plugin Naming Convention
-
-All plugins in this marketplace use the `phil-ai-` prefix:
-- `phil-ai-learning`
-- `phil-ai-docs`
-- `phil-ai-context`
-- `phil-ai-workflow`
-
-### Contributing
-
-Open source. Contributions welcome via pull requests.
-
-### Testing Locally
-
-For plugin development:
-
 ```bash
-# Add local marketplace
-/plugin marketplace add /Users/pjbeyer/Projects/pjbeyer/agents-marketplace
-
-# Install from local marketplace
-/plugin install phil-ai-learning@phil-ai
+bun install          # Install dependencies
+bun test             # Run tests
+bun run lint         # Biome linting
+bun run generate     # Generate platform plugins
 ```
 
 ## License
 
-All plugins in this marketplace are released under MIT License.
-
-## Repository
-
-https://github.com/pjbeyer/phil-ai
+MIT
