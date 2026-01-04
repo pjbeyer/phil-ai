@@ -31,11 +31,11 @@ The server uses stdio transport and logs to stderr.
 
 | Tool | Description | Required Params |
 |------|-------------|-----------------|
-| `capture_learning` | Capture a new learning | `title`, `problem`, `solution` |
+| `capture_learning` | Capture a new learning | - |
 | `list_learnings` | List captured learnings | - |
-| `generate_docs` | Generate documentation | `type` |
-| `optimize_docs` | Optimize for tokens | - |
-| `work_start` | Start a work item | `title` |
+| `write_doc` | Write documentation | `path` |
+| `optimize_agents` | Optimize AGENTS.md files | - |
+| `work_start` | Start a work item | - |
 | `work_finish` | Finish current work | - |
 
 ## Adding New Tools

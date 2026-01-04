@@ -17,7 +17,8 @@ cli/src/
 │   │   ├── checks/   # Individual check implementations
 │   │   └── suggestions.ts # Auto-fix suggestions
 │   ├── sync/         # Sync local changes upstream
-│   └── update/       # Update with backup/migration
+│   ├── update/       # Update with backup/migration
+│   └── validate/     # Validate marketplace or plugin
 ├── lib/
 │   ├── args.ts       # Argument parsing utilities
 │   ├── errors.ts     # Error handling
@@ -35,6 +36,7 @@ cli/src/
 | `update` | Update with automatic backup | `update/index.ts`, `update/backup.ts` |
 | `sync` | Sync customizations upstream | `sync/index.ts` |
 | `generate` | Generate platform-specific plugins | `generate/index.ts` |
+| `validate` | Validate marketplace or plugin structure | `validate/index.ts` |
 
 ## Adding a New Command
 

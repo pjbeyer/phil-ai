@@ -21,7 +21,7 @@ phil-ai/
 
 | Package | Path | Purpose |
 |---------|------|---------|
-| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate |
+| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate |
 | `@phil-ai/shared` | `shared/` | Zod schemas, file-locked storage, semver utilities |
 | `@phil-ai/mcp` | `mcp/` | MCP server with stdio transport |
 | `@phil-ai/platform-claude-code` | `platforms/claude-code/` | Plugin generator for Claude Code |
@@ -100,9 +100,7 @@ Tests use:
 - Zod `.parse()` / `.safeParse()` for schema validation
 
 ## Recent Changes
-- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
-- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
-- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
+- 001-multiplatform-scaffolding: Complete implementation with CLI (6 commands), MCP server (8 tools), shared schemas, and platform generators
 
 
 <!-- MANUAL ADDITIONS START -->

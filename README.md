@@ -146,7 +146,7 @@ For OpenCode integration via Model Context Protocol:
 bunx phil-ai-mcp
 ```
 
-**Available Tools**: `capture_learning`, `list_learnings`, `generate_docs`, `optimize_docs`, `work_start`, `work_finish`
+**Available Tools**: `capture_learning`, `list_learnings`, `write_doc`, `optimize_agents`, `work_start`, `work_finish`
 
 ## Hierarchy Levels
 
