@@ -69,7 +69,7 @@ phil-ai/
 │   ├── src/
 │   │   ├── server.ts        # MCP server entry point
 │   │   ├── tools/           # MCP tool implementations
-│   │   └── handlers/        # Request handlers
+│   │   └── index.ts         # Tool registration
 │   └── package.json
 ├── cli/
 │   ├── src/
