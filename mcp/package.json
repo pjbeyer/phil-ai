@@ -1,0 +1,24 @@
+{
+  "name": "@phil-ai/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Phil-AI MCP server for cross-platform access",
+  "type": "module",
+  "bin": {
+    "phil-ai-mcp": "./src/server.ts"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "bun build ./src/server.ts --outdir ./dist --target bun",
+    "dev": "bun run ./src/server.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@phil-ai/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.14",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "Work tracking, git integration, and workflow management",
+  "category": "workflow",
+  "tags": ["workflow", "git", "tracking", "metrics"],
+  "allowedTools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"],
+  "permissions": ["fs:read", "fs:write", "git:read", "git:write"],
+  "entryPoint": "SKILL.md",
+  "author": {
+    "name": "Phil Beyer"
+  },
+  "repository": "https://github.com/pjbeyer/phil-ai",
+  "license": "MIT"
+}

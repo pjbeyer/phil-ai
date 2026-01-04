@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Hierarchical documentation with audience optimization and multi-platform publishing",
+  "category": "docs",
+  "tags": ["documentation", "markdown", "publishing", "optimization"],
+  "allowedTools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"],
+  "permissions": ["fs:read", "fs:write"],
+  "entryPoint": "SKILL.md",
+  "author": {
+    "name": "Phil Beyer"
+  },
+  "repository": "https://github.com/pjbeyer/phil-ai",
+  "license": "MIT"
+}

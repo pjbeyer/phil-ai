@@ -1,0 +1,34 @@
+{
+  "name": "phil-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-platform phil-ai scaffolding for Claude Code and OpenCode",
+  "type": "module",
+  "workspaces": [
+    "cli",
+    "mcp",
+    "shared",
+    "platforms/claude-code",
+    "platforms/opencode"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "lint": "bunx @biomejs/biome check .",
+    "lint:fix": "bunx @biomejs/biome check --write .",
+    "build": "bun run --filter '*' build",
+    "clean": "rm -rf node_modules cli/node_modules mcp/node_modules shared/node_modules platforms/*/node_modules"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/bun": "^1.1.14",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pjbeyer/phil-ai.git"
+  },
+  "license": "MIT"
+}
