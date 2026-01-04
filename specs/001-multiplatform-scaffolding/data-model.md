@@ -3,40 +3,63 @@
 **Date**: 2026-01-02  
 **Feature**: 001-multiplatform-scaffolding
 
+> **Architecture Note (Constitution v2.0.1)**: External plugin repos are the source of truth. This monorepo provides infrastructure only. "Reference Skills" are for development/testing; "External Plugin Repos" contain the actual implementations.
+
 ## Entities Overview
 
 ```
-┌─────────────────┐     generates    ┌──────────────────┐
-│   Core Skill    │────────────────▶│  Platform Plugin │
-└─────────────────┘                  └──────────────────┘
-        │                                     │
-        │ defines                             │ reads/writes
-        ▼                                     ▼
-┌─────────────────┐                  ┌──────────────────┐
-│  Configuration  │                  │   Private State  │
-└─────────────────┘                  └──────────────────┘
-        │                                     │
-        └──────────────┬──────────────────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ Component Version│
-              └─────────────────┘
+                        SOURCE OF TRUTH
+┌────────────────────────────────────────────────────────┐
+│                External Plugin Repos                    │
+│  (phil-ai-learning, phil-ai-docs, phil-ai-context,     │
+│   phil-ai-workflow)                                     │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+            ┌──────────────┼──────────────┐
+            │ indexed by   │ scaffolds    │ uses
+            ▼              ▼              ▼
+┌─────────────────┐ ┌──────────────┐ ┌────────────────┐
+│Marketplace Index│ │Reference Skill│ │  Private State │
+│ (.claude-plugin │ │ (core/skills) │ │ (~/.local/     │
+│  /marketplace.  │ │ dev/test only │ │  share/phil-ai)│
+│  json)          │ └──────────────┘ └────────────────┘
+└─────────────────┘                          │
+        │                                    │
+        └────────────────┬───────────────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │  Configuration  │
+                │(~/.config/      │
+                │ phil-ai)        │
+                └─────────────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │Component Version│
+                └─────────────────┘
 ```
 
 ---
 
-## Core Skill
+## Reference Skill
 
-Platform-agnostic capability definition stored in `core/skills/`.
+Platform-agnostic capability definitions stored in `core/skills/` for **development and testing only**. External plugin repos are the source of truth.
+
+### Purpose
+
+- **Development**: Test skill definitions locally before publishing to external repos
+- **Testing**: Unit tests validate schema compliance
+- **Documentation**: Reference for skill structure and capabilities
+- **NOT production**: Actual plugins live in external repos
 
 ### Schema
 
 ```typescript
-// core/schemas/skill.ts
+// shared/schemas/skill.ts
 import { z } from 'zod';
 
-export const CoreSkillSchema = z.object({
+export const ReferenceSkillSchema = z.object({
   // Identity
   name: z.string().regex(/^[a-z][a-z0-9-]*$/).max(64),
   version: z.string().regex(/^\d+\.\d+\.\d+$/),
@@ -64,7 +87,7 @@ export const CoreSkillSchema = z.object({
   license: z.string().default('MIT')
 });
 
-export type CoreSkill = z.infer<typeof CoreSkillSchema>;
+export type ReferenceSkill = z.infer<typeof ReferenceSkillSchema>;
 ```
 
 ### File Structure
@@ -91,72 +114,123 @@ core/skills/{skill-name}/
 
 ---
 
-## Platform Plugin
+## External Plugin Repository
 
-Platform-specific implementation generated from Core Skills.
+Source of truth for each plugin, maintained as separate GitHub repos. Each repo supports both Claude Code and OpenCode (dual-platform native per Constitution v2.0.1).
 
-### Schema
+### External Repos (Source of Truth)
+
+| Repo | URL | Description |
+|------|-----|-------------|
+| phil-ai-learning | github.com/pjbeyer/phil-ai-learning | Capture and implement learnings |
+| phil-ai-docs | github.com/pjbeyer/phil-ai-docs | Hierarchical documentation |
+| phil-ai-context | github.com/pjbeyer/phil-ai-context | AGENTS.md optimization |
+| phil-ai-workflow | github.com/pjbeyer/phil-ai-workflow | Work tracking and git integration |
+
+### Schema (for marketplace index)
 
 ```typescript
 // shared/schemas/plugin.ts
 import { z } from 'zod';
 
-export const PlatformPluginSchema = z.object({
-  // Identity (from core skill)
+export const ExternalPluginSchema = z.object({
+  // Identity
   name: z.string(),
   version: z.string(),
   description: z.string(),
   
-  // Platform
-  platform: z.enum(['claude-code', 'opencode']),
+  // Repository
+  repository: z.string().url(),
   
-  // Generation metadata
-  generatedAt: z.string().datetime(),
-  generatedFrom: z.string(), // core skill path
-  generatorVersion: z.string(),
+  // Platform support
+  platforms: z.object({
+    claudeCode: z.boolean().default(true),
+    opencode: z.boolean().default(false) // Added by scaffold command
+  }),
   
-  // Platform-specific paths
-  outputPath: z.string(),
-  
-  // Validation
-  validated: z.boolean().default(false),
-  validationErrors: z.array(z.string()).optional()
+  // Metadata
+  author: z.object({
+    name: z.string(),
+    email: z.string().email().optional()
+  }).optional(),
+  license: z.string().default('MIT'),
+  keywords: z.array(z.string()).default([])
 });
 
-export type PlatformPlugin = z.infer<typeof PlatformPluginSchema>;
+export type ExternalPlugin = z.infer<typeof ExternalPluginSchema>;
 ```
 
-### Claude Code Output Structure
+### External Repo Structure (Claude Code + OpenCode)
 
 ```
-platforms/claude-code/output/{plugin-name}/
+phil-ai-learning/                  # External repo (source of truth)
 ├── .claude-plugin/
-│   └── plugin.json
+│   └── plugin.json                # Claude Code manifest
 ├── commands/
-│   └── *.md
+│   └── learn.md                   # Claude Code slash commands
 ├── skills/
-│   └── {skill-name}/
-│       └── SKILL.md
+│   └── capture-learning/
+│       └── SKILL.md               # Claude Code model-invoked skills
 ├── scripts/
-│   └── *.sh
+│   └── find-learnings.sh
 ├── config/
-│   └── *.json
+│   └── storage-structure.json
+├── opencode/                      # Added by scaffold command (feature 002)
+│   ├── plugin.ts                  # OpenCode entry point
+│   └── tools/                     # OpenCode tools (derived from skills/)
+│       └── capture-learning.ts
 └── README.md
 ```
 
-### OpenCode Output Structure
+---
+
+## Marketplace Index
+
+Index file generated by this monorepo, pointing to external plugin repos.
+
+### Schema
+
+```typescript
+// shared/schemas/marketplace.ts
+import { z } from 'zod';
+
+export const MarketplaceIndexSchema = z.object({
+  name: z.string(),
+  version: z.string(),
+  description: z.string(),
+  plugins: z.array(ExternalPluginSchema),
+  generatedAt: z.string().datetime()
+});
+
+export type MarketplaceIndex = z.infer<typeof MarketplaceIndexSchema>;
+```
+
+### File Location
 
 ```
-platforms/opencode/output/{plugin-name}/
-├── src/
-│   ├── index.ts       # Plugin entry point
-│   ├── tools/         # Tool implementations
-│   │   └── *.ts
-│   └── handlers/      # Event handlers
-│       └── *.ts
-├── package.json
-└── tsconfig.json
+.claude-plugin/
+└── marketplace.json     # Generated by `bunx phil-ai generate`
 ```
+
+### Example Content
+
+```json
+{
+  "name": "phil-ai",
+  "version": "1.0.0",
+  "description": "Cross-platform AI plugin system",
+  "plugins": [
+    {
+      "name": "phil-ai-learning",
+      "version": "1.1.1",
+      "description": "Capture and implement learnings",
+      "repository": "https://github.com/pjbeyer/phil-ai-learning",
+      "platforms": { "claudeCode": true, "opencode": true },
+      "keywords": ["learning", "continuous-improvement"]
+    }
+  ],
+  "generatedAt": "2026-01-03T12:00:00Z"
+}
 
 ---
 
@@ -415,12 +489,41 @@ function checkCompatibility(manifest: VersionManifest): ValidationResult {
 
 | From | To | Relationship | Cardinality |
 |------|-----|--------------|-------------|
-| Core Skill | Platform Plugin | generates | 1:N |
-| Platform Plugin | Private State | reads/writes | N:N |
-| Configuration | Core Skill | configures | 1:N |
+| Marketplace Index | External Plugin Repo | references | 1:N |
+| External Plugin Repo | Private State | reads/writes | N:N |
+| Reference Skill | External Plugin Repo | mirrors (dev/test) | 1:1 |
+| Scaffold Command | External Plugin Repo | adds OpenCode support | 1:1 |
+| Configuration | External Plugin Repo | configures | 1:N |
 | Component Version | All | validates | 1:N |
 | Learning | Pattern | extracted to | N:N |
 | Pattern | Learning | derived from | N:N |
+
+### Data Flow
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    EXTERNAL (Source of Truth)                    │
+│                                                                  │
+│  phil-ai-learning/  phil-ai-docs/  phil-ai-context/  phil-ai-   │
+│                                                      workflow/   │
+└──────────────────────────────┬──────────────────────────────────┘
+                               │
+           ┌───────────────────┼───────────────────┐
+           │                   │                   │
+           ▼                   ▼                   ▼
+    ┌─────────────┐    ┌──────────────┐    ┌─────────────┐
+    │  generate   │    │   scaffold   │    │    MCP      │
+    │  command    │    │   command    │    │   server    │
+    │             │    │  (feat 002)  │    │             │
+    └──────┬──────┘    └──────┬───────┘    └──────┬──────┘
+           │                  │                   │
+           ▼                  ▼                   ▼
+    ┌─────────────┐    ┌──────────────┐    ┌─────────────┐
+    │ marketplace │    │ opencode/    │    │ Private     │
+    │ .json       │    │ directory    │    │ State       │
+    │             │    │ in ext repo  │    │             │
+    └─────────────┘    └──────────────┘    └─────────────┘
+```
 
 ---
 

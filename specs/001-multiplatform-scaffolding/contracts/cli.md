@@ -3,6 +3,8 @@
 **Version**: 1.0.0  
 **Invocation**: `bunx phil-ai <command> [options]`
 
+> **Architecture Note (Constitution v2.0.1)**: External plugin repos are the source of truth. This CLI provides infrastructure management. The `generate` command produces a marketplace index (not full plugins). The `scaffold` command (feature 002) adds OpenCode support to external repos.
+
 ## Commands
 
 ### `install`
@@ -191,7 +193,7 @@ bunx phil-ai sync [options]
 
 ### `generate`
 
-Regenerate platform plugins from core skills.
+Generate marketplace index pointing to external plugin repos.
 
 ```bash
 bunx phil-ai generate [options]
@@ -200,16 +202,18 @@ bunx phil-ai generate [options]
 **Options**:
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--platform` | string | all | Target platform: `claude-code`, `opencode`, `all` |
-| `--skill` | string | all | Specific skill to regenerate |
-| `--validate` | boolean | true | Validate output against platform requirements |
+| `--output` | string | `.claude-plugin/` | Output directory for marketplace.json |
+| `--validate` | boolean | true | Validate marketplace.json schema |
 
 **Behavior**:
-1. Load core skill definitions
-2. Run platform-specific generator
-3. Validate generated output
-4. Write to platform output directories
-5. Report results
+1. Read external plugin repo metadata (from config or remote)
+2. Validate each plugin's repository and version
+3. Generate marketplace.json index
+4. Validate output schema
+5. Write to output directory
+
+**Output**:
+- `.claude-plugin/marketplace.json` - Index pointing to external plugin repos
 
 **Exit Codes**:
 | Code | Meaning |
@@ -217,6 +221,77 @@ bunx phil-ai generate [options]
 | 0 | Success |
 | 1 | Generation failed |
 | 2 | Validation failed |
+
+**Example Output**:
+```
+phil-ai generate
+
+Generating marketplace index...
+
+Plugins indexed:
+  phil-ai-learning   v1.1.1  ✓  github.com/pjbeyer/phil-ai-learning
+  phil-ai-docs       v1.0.0  ✓  github.com/pjbeyer/phil-ai-docs
+  phil-ai-context    v1.0.0  ✓  github.com/pjbeyer/phil-ai-context
+  phil-ai-workflow   v1.0.0  ✓  github.com/pjbeyer/phil-ai-workflow
+
+Output: .claude-plugin/marketplace.json
+```
+
+---
+
+### `scaffold` (Feature 002)
+
+Add OpenCode support to external plugin repositories. See `specs/002-scaffold-command/` for full specification.
+
+```bash
+bunx phil-ai scaffold <repo-path> [options]
+```
+
+**Options**:
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--dry-run` | boolean | false | Show what would be generated |
+| `--force` | boolean | false | Overwrite existing opencode/ directory |
+
+**Behavior**:
+1. Analyze existing Claude Code plugin structure (skills/, commands/)
+2. Generate OpenCode plugin entry point and tools
+3. Create `opencode/` directory in external repo
+4. Validate generated TypeScript
+
+**Exit Codes**:
+| Code | Meaning |
+|------|---------|
+| 0 | Success |
+| 1 | Scaffolding failed |
+| 2 | Validation failed |
+
+---
+
+### `validate`
+
+Validate marketplace.json or plugin structure.
+
+```bash
+bunx phil-ai validate [target] [options]
+```
+
+**Options**:
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--type` | string | auto | Validation type: `marketplace`, `plugin`, `auto` |
+
+**Behavior**:
+1. Detect target type (marketplace.json or plugin directory)
+2. Run appropriate schema validation
+3. Check external repo accessibility (for marketplace)
+4. Report validation results
+
+**Exit Codes**:
+| Code | Meaning |
+|------|---------|
+| 0 | Valid |
+| 1 | Invalid |
 
 ---
 
@@ -263,4 +338,39 @@ Another process is using port 3000. This prevents the MCP server from starting.
 Suggested fix:
   1. Stop the conflicting service, OR
   2. Change MCP port: bunx phil-ai config set mcp.port 3001
+```
+
+---
+
+## Command Summary
+
+| Command | Purpose | Output |
+|---------|---------|--------|
+| `install` | Install phil-ai system | Directories, config, platform registration |
+| `status` | Check system health | Component and platform status |
+| `update` | Update to latest versions | Updated components |
+| `sync` | Synchronize state | Merged state across platforms |
+| `generate` | Generate marketplace index | `.claude-plugin/marketplace.json` |
+| `scaffold` | Add OpenCode to external repo | `opencode/` directory in target repo |
+| `validate` | Validate marketplace or plugin | Validation report |
+
+---
+
+## Usage Examples
+
+```bash
+# First-time installation
+bunx phil-ai install
+
+# Check system health
+bunx phil-ai status
+
+# Generate marketplace index
+bunx phil-ai generate
+
+# Add OpenCode support to external plugin repo
+bunx phil-ai scaffold ~/Projects/pjbeyer/phil-ai-learning
+
+# Validate marketplace
+bunx phil-ai validate .claude-plugin/marketplace.json
 ```

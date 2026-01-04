@@ -100,8 +100,13 @@ Tests use:
 - Zod `.parse()` / `.safeParse()` for schema validation
 
 ## Recent Changes
+- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
+- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
+- 001-multiplatform-scaffolding: Added TypeScript 5.x (Bun 1.x runtime) + Bun (runtime + package manager), zod (schema validation)
 
-- 001-multiplatform-scaffolding: Complete monorepo with CLI, MCP server, platform generators
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
+
+## Active Technologies
+- Human-readable files (JSON/YAML) at `~/.local/share/phil-ai/`, config at `~/.config/phil-ai/` (001-multiplatform-scaffolding)
