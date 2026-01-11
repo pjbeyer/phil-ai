@@ -1,7 +1,7 @@
-import { readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
 import type { z } from "zod";
-import { withFileLock, type LockOptions } from "./lock.js";
+import { type LockOptions, withFileLock } from "./lock.js";
 
 export interface JsonReadOptions extends LockOptions {
 	useLock?: boolean;

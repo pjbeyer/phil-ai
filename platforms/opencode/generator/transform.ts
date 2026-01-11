@@ -41,10 +41,30 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "Capture a new learning",
 					category: "learning",
 					parameters: [
-						{ name: "title", type: "string", description: "Learning title", required: true },
-						{ name: "problem", type: "string", description: "Problem description", required: true },
-						{ name: "solution", type: "string", description: "Solution description", required: true },
-						{ name: "level", type: "string", description: "Hierarchy level", required: false },
+						{
+							name: "title",
+							type: "string",
+							description: "Learning title",
+							required: true,
+						},
+						{
+							name: "problem",
+							type: "string",
+							description: "Problem description",
+							required: true,
+						},
+						{
+							name: "solution",
+							type: "string",
+							description: "Solution description",
+							required: true,
+						},
+						{
+							name: "level",
+							type: "string",
+							description: "Hierarchy level",
+							required: false,
+						},
 					],
 				},
 				{
@@ -52,8 +72,18 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "List captured learnings",
 					category: "learning",
 					parameters: [
-						{ name: "status", type: "string", description: "Filter by status", required: false },
-						{ name: "level", type: "string", description: "Filter by level", required: false },
+						{
+							name: "status",
+							type: "string",
+							description: "Filter by status",
+							required: false,
+						},
+						{
+							name: "level",
+							type: "string",
+							description: "Filter by level",
+							required: false,
+						},
 					],
 				},
 			];
@@ -64,9 +94,24 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "Write documentation",
 					category: "docs",
 					parameters: [
-						{ name: "path", type: "string", description: "Output path", required: true },
-						{ name: "audience", type: "string", description: "Target audience", required: false },
-						{ name: "type", type: "string", description: "Document type", required: false },
+						{
+							name: "path",
+							type: "string",
+							description: "Output path",
+							required: true,
+						},
+						{
+							name: "audience",
+							type: "string",
+							description: "Target audience",
+							required: false,
+						},
+						{
+							name: "type",
+							type: "string",
+							description: "Document type",
+							required: false,
+						},
 					],
 				},
 			];
@@ -77,8 +122,18 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "Optimize AGENTS.md files",
 					category: "context",
 					parameters: [
-						{ name: "level", type: "string", description: "Hierarchy level", required: false },
-						{ name: "dry_run", type: "boolean", description: "Preview only", required: false },
+						{
+							name: "level",
+							type: "string",
+							description: "Hierarchy level",
+							required: false,
+						},
+						{
+							name: "dry_run",
+							type: "boolean",
+							description: "Preview only",
+							required: false,
+						},
 					],
 				},
 			];
@@ -89,8 +144,18 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "Start new work item",
 					category: "workflow",
 					parameters: [
-						{ name: "title", type: "string", description: "Work item title", required: true },
-						{ name: "type", type: "string", description: "Work type", required: false },
+						{
+							name: "title",
+							type: "string",
+							description: "Work item title",
+							required: true,
+						},
+						{
+							name: "type",
+							type: "string",
+							description: "Work type",
+							required: false,
+						},
 					],
 				},
 				{
@@ -98,7 +163,12 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					description: "Finish current work",
 					category: "workflow",
 					parameters: [
-						{ name: "commit", type: "boolean", description: "Create commit", required: false },
+						{
+							name: "commit",
+							type: "boolean",
+							description: "Create commit",
+							required: false,
+						},
 					],
 				},
 			];

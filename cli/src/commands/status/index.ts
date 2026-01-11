@@ -1,15 +1,15 @@
 import type { ParsedArgs } from "../../lib/args.js";
 import { getBoolFlag } from "../../lib/args.js";
-import { bold, green, yellow, red, dim } from "../../lib/output.js";
 import {
-	aggregateStatus,
-	getStatusIcon,
 	type HealthCheckResult,
 	type HealthStatus,
+	aggregateStatus,
+	getStatusIcon,
 } from "../../lib/health.js";
+import { bold, dim, green, red, yellow } from "../../lib/output.js";
+import { checkConfig } from "./checks/config.js";
 import { checkStorage } from "./checks/storage.js";
 import { checkVersion } from "./checks/version.js";
-import { checkConfig } from "./checks/config.js";
 import { getSuggestions } from "./suggestions.js";
 
 export interface StatusOptions {

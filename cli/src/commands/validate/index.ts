@@ -25,7 +25,9 @@ const MarketplaceSchema = z.object({
 		email: z.string().email("Invalid owner email"),
 		url: z.string().url("Invalid owner URL"),
 	}),
-	plugins: z.array(MarketplacePluginSchema).min(1, "At least one plugin is required"),
+	plugins: z
+		.array(MarketplacePluginSchema)
+		.min(1, "At least one plugin is required"),
 });
 
 export type Marketplace = z.infer<typeof MarketplaceSchema>;
@@ -45,7 +47,9 @@ function detectValidationType(targetPath: string): ValidationType {
 	return "auto";
 }
 
-async function validateMarketplace(filePath: string): Promise<ValidationResult> {
+async function validateMarketplace(
+	filePath: string,
+): Promise<ValidationResult> {
 	const result: ValidationResult = {
 		valid: true,
 		type: "marketplace",
@@ -94,10 +98,14 @@ async function validateMarketplace(filePath: string): Promise<ValidationResult> 
 		try {
 			const response = await fetch(repoUrl, { method: "HEAD" });
 			if (!response.ok) {
-				result.warnings.push(`Repository may not be accessible: ${plugin.name} (${repoUrl})`);
+				result.warnings.push(
+					`Repository may not be accessible: ${plugin.name} (${repoUrl})`,
+				);
 			}
 		} catch {
-			result.warnings.push(`Could not verify repository: ${plugin.name} (${repoUrl})`);
+			result.warnings.push(
+				`Could not verify repository: ${plugin.name} (${repoUrl})`,
+			);
 		}
 	}
 
@@ -120,7 +128,8 @@ export async function runValidate(args: ParsedArgs): Promise<void> {
 
 	const target = args.positional[0] ?? ".claude-plugin/marketplace.json";
 	const typeFlag = (args.flags.type as ValidationType) ?? "auto";
-	const detectedType = typeFlag === "auto" ? detectValidationType(target) : typeFlag;
+	const detectedType =
+		typeFlag === "auto" ? detectValidationType(target) : typeFlag;
 
 	info(`Validating ${detectedType}: ${target}`);
 	console.log();

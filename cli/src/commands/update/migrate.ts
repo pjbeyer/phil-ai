@@ -1,4 +1,7 @@
-import { readVersionManifest, writeVersionManifest } from "@phil-ai/shared/version";
+import {
+	readVersionManifest,
+	writeVersionManifest,
+} from "@phil-ai/shared/version";
 import { getMigrationPath } from "@phil-ai/shared/version";
 
 export interface MigrationResult {
@@ -8,7 +11,9 @@ export interface MigrationResult {
 	migrationsRun: string[];
 }
 
-export async function runMigrations(targetVersion: string): Promise<MigrationResult> {
+export async function runMigrations(
+	targetVersion: string,
+): Promise<MigrationResult> {
 	const manifest = await readVersionManifest();
 
 	if (!manifest) {

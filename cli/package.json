@@ -1,24 +1,24 @@
 {
-  "name": "@phil-ai/cli",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Phil-AI CLI for installation and management",
-  "type": "module",
-  "bin": {
-    "phil-ai": "./src/index.ts"
-  },
-  "main": "./src/index.ts",
-  "scripts": {
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
-    "dev": "bun run ./src/index.ts",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@phil-ai/shared": "workspace:*",
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.1.14",
-    "typescript": "^5.7.2"
-  }
+	"name": "@phil-ai/cli",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Phil-AI CLI for installation and management",
+	"type": "module",
+	"bin": {
+		"phil-ai": "./src/index.ts"
+	},
+	"main": "./src/index.ts",
+	"scripts": {
+		"build": "bun build ./src/index.ts --outdir ./dist --target bun",
+		"dev": "bun run ./src/index.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@phil-ai/shared": "workspace:*",
+		"zod": "^3.24.1"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.1.14",
+		"typescript": "^5.7.2"
+	}
 }

@@ -1,6 +1,6 @@
-import { mkdir, cp } from "node:fs/promises";
+import { cp, mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { getDataPaths, dirExists } from "@phil-ai/shared/storage";
+import { dirExists, getDataPaths } from "@phil-ai/shared/storage";
 
 export async function backup(): Promise<string | null> {
 	const dataPaths = getDataPaths();

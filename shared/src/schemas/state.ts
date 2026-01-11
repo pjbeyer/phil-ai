@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { VersionedDataSchema } from "./base.js";
 
-export const HierarchyLevel = ["global", "profile", "project", "agent"] as const;
+export const HierarchyLevel = [
+	"global",
+	"profile",
+	"project",
+	"agent",
+] as const;
 export type HierarchyLevelType = (typeof HierarchyLevel)[number];
 
 export const LearningStatus = [

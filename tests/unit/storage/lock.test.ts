@@ -1,8 +1,8 @@
-import { describe, expect, test, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { mkdir, rm, writeFile } from "node:fs/promises";
-import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { withFileLock, isLocked } from "@phil-ai/shared/storage";
+import { join } from "node:path";
+import { isLocked, withFileLock } from "@phil-ai/shared/storage";
 
 const TEST_DIR = join(tmpdir(), "phil-ai-lock-test");
 

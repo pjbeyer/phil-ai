@@ -1,40 +1,40 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "lib": ["ES2022"],
-    "types": ["bun"],
-    "strict": true,
-    "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "paths": {
-      "@phil-ai/shared": ["./shared/src/index.ts"],
-      "@phil-ai/shared/*": ["./shared/src/*"],
-      "@phil-ai/cli": ["./cli/src/index.ts"],
-      "@phil-ai/cli/*": ["./cli/src/*"],
-      "@phil-ai/mcp": ["./mcp/src/index.ts"],
-      "@phil-ai/mcp/*": ["./mcp/src/*"]
-    }
-  },
-  "references": [
-    { "path": "./shared" },
-    { "path": "./cli" },
-    { "path": "./mcp" },
-    { "path": "./platforms/claude-code" },
-    { "path": "./platforms/opencode" }
-  ],
-  "exclude": ["node_modules", "dist", "coverage"]
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"lib": ["ES2022"],
+		"types": ["bun"],
+		"strict": true,
+		"skipLibCheck": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"paths": {
+			"@phil-ai/shared": ["./shared/src/index.ts"],
+			"@phil-ai/shared/*": ["./shared/src/*"],
+			"@phil-ai/cli": ["./cli/src/index.ts"],
+			"@phil-ai/cli/*": ["./cli/src/*"],
+			"@phil-ai/mcp": ["./mcp/src/index.ts"],
+			"@phil-ai/mcp/*": ["./mcp/src/*"]
+		}
+	},
+	"references": [
+		{ "path": "./shared" },
+		{ "path": "./cli" },
+		{ "path": "./mcp" },
+		{ "path": "./platforms/claude-code" },
+		{ "path": "./platforms/opencode" }
+	],
+	"exclude": ["node_modules", "dist", "coverage"]
 }

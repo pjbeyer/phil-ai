@@ -1,15 +1,15 @@
 {
-  "name": "context",
-  "version": "1.0.0",
-  "description": "Optimize AGENTS.md files, manage MCP configuration, and load context efficiently",
-  "category": "context",
-  "tags": ["context", "agents", "mcp", "optimization"],
-  "allowedTools": ["Read", "Write", "Edit", "Glob", "Grep"],
-  "permissions": ["fs:read", "fs:write"],
-  "entryPoint": "SKILL.md",
-  "author": {
-    "name": "Phil Beyer"
-  },
-  "repository": "https://github.com/pjbeyer/phil-ai",
-  "license": "MIT"
+	"name": "context",
+	"version": "1.0.0",
+	"description": "Optimize AGENTS.md files, manage MCP configuration, and load context efficiently",
+	"category": "context",
+	"tags": ["context", "agents", "mcp", "optimization"],
+	"allowedTools": ["Read", "Write", "Edit", "Glob", "Grep"],
+	"permissions": ["fs:read", "fs:write"],
+	"entryPoint": "SKILL.md",
+	"author": {
+		"name": "Phil Beyer"
+	},
+	"repository": "https://github.com/pjbeyer/phil-ai",
+	"license": "MIT"
 }

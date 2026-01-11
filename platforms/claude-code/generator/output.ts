@@ -1,7 +1,7 @@
-import { mkdir, writeFile, readFile } from "node:fs/promises";
-import { join, dirname } from "node:path";
-import type { ClaudeCodePlugin } from "./transform.js";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import { render } from "./render.js";
+import type { ClaudeCodePlugin } from "./transform.js";
 
 const OUTPUT_DIR = "platforms/claude-code/output";
 
@@ -32,7 +32,10 @@ export async function writePlugin(plugin: ClaudeCodePlugin): Promise<string> {
 
 	for (const cmd of plugin.commands) {
 		const commandContent = `# /${cmd.name}\n\n${cmd.description}\n\nSee skill documentation for details.\n`;
-		await writeFile(join(pluginDir, "commands", `${cmd.name}.md`), commandContent);
+		await writeFile(
+			join(pluginDir, "commands", `${cmd.name}.md`),
+			commandContent,
+		);
 	}
 
 	const skillName = plugin.skills[0]?.name ?? "default";

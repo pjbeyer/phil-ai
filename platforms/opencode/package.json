@@ -1,20 +1,20 @@
 {
-  "name": "@phil-ai/platform-opencode",
-  "version": "0.1.0",
-  "private": true,
-  "description": "OpenCode plugin generator for phil-ai",
-  "type": "module",
-  "main": "./generator/index.ts",
-  "scripts": {
-    "build": "bun build ./generator/index.ts --outdir ./dist --target bun",
-    "generate": "bun run ./generator/index.ts",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@phil-ai/shared": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.1.14",
-    "typescript": "^5.7.2"
-  }
+	"name": "@phil-ai/platform-opencode",
+	"version": "0.1.0",
+	"private": true,
+	"description": "OpenCode plugin generator for phil-ai",
+	"type": "module",
+	"main": "./generator/index.ts",
+	"scripts": {
+		"build": "bun build ./generator/index.ts --outdir ./dist --target bun",
+		"generate": "bun run ./generator/index.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@phil-ai/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.1.14",
+		"typescript": "^5.7.2"
+	}
 }

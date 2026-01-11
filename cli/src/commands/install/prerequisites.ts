@@ -40,7 +40,7 @@ export async function checkDiskSpace(): Promise<PrerequisiteResult> {
 	try {
 		const homeDir = Bun.env.HOME ?? "/tmp";
 		const { access, constants } = await import("node:fs/promises");
-		
+
 		await access(homeDir, constants.W_OK);
 
 		return {

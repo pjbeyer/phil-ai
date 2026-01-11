@@ -1,11 +1,11 @@
-import { getDataPaths } from "../storage/directories.js";
-import { readJson, writeJson } from "../storage/json.js";
 import {
+	type ComponentNameType,
+	type VersionManifest,
 	VersionManifestSchema,
 	createVersionManifest,
-	type VersionManifest,
-	type ComponentNameType,
 } from "../schemas/version.js";
+import { getDataPaths } from "../storage/directories.js";
+import { readJson, writeJson } from "../storage/json.js";
 
 export async function readVersionManifest(): Promise<VersionManifest | null> {
 	const paths = getDataPaths();

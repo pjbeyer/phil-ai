@@ -6,7 +6,7 @@ export interface OpenCodeRegistrationResult {
 }
 
 export async function registerOpenCode(
-	dryRun: boolean = false,
+	dryRun = false,
 ): Promise<OpenCodeRegistrationResult> {
 	if (dryRun) {
 		step("Would register OpenCode plugin");
