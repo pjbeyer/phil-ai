@@ -2,6 +2,7 @@
 import { runGenerate } from "./commands/generate/index.js";
 import { runGuide } from "./commands/guide/index.js";
 import { runInstall } from "./commands/install/index.js";
+import { runScaffold } from "./commands/scaffold/index.js";
 import { runStatus } from "./commands/status/index.js";
 import { runSync } from "./commands/sync/index.js";
 import { runUpdate } from "./commands/update/index.js";
@@ -26,6 +27,7 @@ ${bold("Commands:")}
   sync        Sync state across platforms
   generate    Generate platform plugins
   validate    Validate marketplace or plugin structure
+  scaffold    Add OpenCode scaffolding to a Claude Code plugin
   guide       Manage system guide preferences
 
 ${bold("Options:")}
@@ -87,6 +89,10 @@ async function main(): Promise<void> {
 
 		case "validate":
 			await runValidate(args);
+			break;
+
+		case "scaffold":
+			await runScaffold(args);
 			break;
 
 		case "guide":

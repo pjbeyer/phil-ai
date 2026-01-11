@@ -21,7 +21,7 @@ phil-ai/
 
 | Package | Path | Purpose |
 |---------|------|---------|
-| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate, guide |
+| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate, scaffold, guide |
 | `@phil-ai/shared` | `shared/` | Zod schemas, file-locked storage, semver utilities |
 | `@phil-ai/mcp` | `mcp/` | MCP server with stdio transport |
 | `@phil-ai/platform-claude-code` | `platforms/claude-code/` | Plugin generator for Claude Code |
@@ -101,6 +101,7 @@ Tests use:
 
 ## Recent Changes
 - 001-multiplatform-scaffolding: Complete implementation with CLI (6 commands), MCP server (8 tools), shared schemas, and platform generators
+- 002-scaffold-command: Add scaffold CLI command with --path, --dry-run, --force flags to generate OpenCode plugin scaffolding for Claude Code plugins
 - 003-system-guide: Hierarchical user preference system with GUIDE.md files, CLI commands (guide init/show/validate), and MCP tools (get_guide, list_preferences, check_preference)
 
 
