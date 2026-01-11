@@ -21,7 +21,7 @@ phil-ai/
 
 | Package | Path | Purpose |
 |---------|------|---------|
-| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate, scaffold |
+| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate, scaffold, guide |
 | `@phil-ai/shared` | `shared/` | Zod schemas, file-locked storage, semver utilities |
 | `@phil-ai/mcp` | `mcp/` | MCP server with stdio transport |
 | `@phil-ai/platform-claude-code` | `platforms/claude-code/` | Plugin generator for Claude Code |
@@ -79,12 +79,12 @@ Skills in `core/skills/` follow this structure:
 └── SKILL.md      # Detailed instructions
 ```
 
-Available skills: `learning`, `docs`, `context`, `workflow`
+Available skills: `learning`, `docs`, `context`, `workflow`, `guide`
 
 ## Generator Output
 
-- **Claude Code**: `.claude-plugin/` with 4 plugins + `marketplace.json`
-- **OpenCode**: Unified plugin with 6 MCP tools
+- **Claude Code**: `.claude-plugin/` with 5 plugins + `marketplace.json`
+- **OpenCode**: Unified plugin with 9 MCP tools (includes guide tools)
 
 ## Testing
 
@@ -102,6 +102,7 @@ Tests use:
 ## Recent Changes
 - 001-multiplatform-scaffolding: Complete implementation with CLI (6 commands), MCP server (8 tools), shared schemas, and platform generators
 - 002-scaffold-command: Add scaffold CLI command with --path, --dry-run, --force flags to generate OpenCode plugin scaffolding for Claude Code plugins
+- 003-system-guide: Hierarchical user preference system with GUIDE.md files, CLI commands (guide init/show/validate), and MCP tools (get_guide, list_preferences, check_preference)
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -109,3 +110,5 @@ Tests use:
 
 ## Active Technologies
 - Human-readable files (JSON/YAML) at `~/.local/share/phil-ai/`, config at `~/.config/phil-ai/` (001-multiplatform-scaffolding)
+- gray-matter for YAML frontmatter parsing (003-system-guide)
+- GUIDE.md files for user preferences at hierarchy levels (003-system-guide)

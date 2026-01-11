@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 import { runGenerate } from "./commands/generate/index.js";
+import { runGuide } from "./commands/guide/index.js";
 import { runInstall } from "./commands/install/index.js";
 import { runScaffold } from "./commands/scaffold/index.js";
 import { runStatus } from "./commands/status/index.js";
@@ -27,6 +28,7 @@ ${bold("Commands:")}
   generate    Generate platform plugins
   validate    Validate marketplace or plugin structure
   scaffold    Add OpenCode scaffolding to a Claude Code plugin
+  guide       Manage system guide preferences
 
 ${bold("Options:")}
   --help, -h     Show this help message
@@ -91,6 +93,10 @@ async function main(): Promise<void> {
 
 		case "scaffold":
 			await runScaffold(args);
+			break;
+
+		case "guide":
+			await runGuide(args);
 			break;
 
 		default:

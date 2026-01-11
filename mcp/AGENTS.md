@@ -10,7 +10,8 @@ mcp/src/
 │   ├── learning.ts   # capture_learning, list_learnings
 │   ├── docs.ts       # generate_docs, optimize_docs
 │   ├── context.ts    # optimize_context, load_context
-│   └── workflow.ts   # work_start, work_finish
+│   ├── workflow.ts   # work_start, work_finish
+│   └── guide.ts      # get_guide, list_preferences, check_preference
 ├── server.ts         # MCP server entry point
 └── index.ts          # Library exports
 ```
@@ -37,6 +38,9 @@ The server uses stdio transport and logs to stderr.
 | `optimize_agents` | Optimize AGENTS.md files | - |
 | `work_start` | Start a work item | - |
 | `work_finish` | Finish current work | - |
+| `get_guide` | Load merged system guide | - |
+| `list_preferences` | List all preferences | - |
+| `check_preference` | Check specific preference | `preferenceId` |
 
 ## Adding New Tools
 
@@ -75,8 +79,8 @@ export const myTool = {
 
 ```typescript
 // Import tools for programmatic use
-import { learningTools, docsTools, contextTools, workflowTools } from '@phil-ai/mcp';
+import { learningTools, docsTools, contextTools, workflowTools, guideTools } from '@phil-ai/mcp';
 
 // All tools combined
-const allTools = [...learningTools, ...docsTools, ...contextTools, ...workflowTools];
+const allTools = [...learningTools, ...docsTools, ...contextTools, ...workflowTools, ...guideTools];
 ```

@@ -129,6 +129,19 @@ impossible to perform safely, and data corruption risks increase with each chang
 }
 ```
 
+**Exception - User-Editable Files:**
+
+Files designed for direct user editing (e.g., `GUIDE.md`, `AGENTS.md`) have relaxed requirements:
+- MAY use `version` instead of `_version` (human-friendly)
+- `_created`/`_modified` timestamps are OPTIONAL (impractical for manual editing)
+- MUST still include a version field for schema compatibility
+- Format follows Markdown with YAML frontmatter convention
+
+This exception applies because:
+1. Users should not need to manually update timestamps on every edit
+2. Human-readable field names (`version` vs `_version`) improve UX
+3. These files are the source of truth—not derived state
+
 ## Architecture
 
 ### Repository Structure

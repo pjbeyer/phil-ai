@@ -7,6 +7,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { contextTools } from "./tools/context.js";
 import { docsTools } from "./tools/docs.js";
+import { guideTools } from "./tools/guide.js";
 import { learningTools } from "./tools/learning.js";
 import { workflowTools } from "./tools/workflow.js";
 
@@ -15,6 +16,7 @@ const allTools = [
 	...docsTools,
 	...contextTools,
 	...workflowTools,
+	...guideTools,
 ];
 
 const server = new Server(
