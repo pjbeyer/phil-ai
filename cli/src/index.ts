@@ -8,6 +8,7 @@ import { runUpdate } from "./commands/update/index.js";
 import { runSync } from "./commands/sync/index.js";
 import { runGenerate } from "./commands/generate/index.js";
 import { runValidate } from "./commands/validate/index.js";
+import { runGuide } from "./commands/guide/index.js";
 
 const VERSION = "0.1.0";
 
@@ -25,6 +26,7 @@ ${bold("Commands:")}
   sync        Sync state across platforms
   generate    Generate platform plugins
   validate    Validate marketplace or plugin structure
+  guide       Manage system guide preferences
 
 ${bold("Options:")}
   --help, -h     Show this help message
@@ -85,6 +87,10 @@ async function main(): Promise<void> {
 
 		case "validate":
 			await runValidate(args);
+			break;
+
+		case "guide":
+			await runGuide(args);
 			break;
 
 		default:
