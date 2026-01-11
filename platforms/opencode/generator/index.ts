@@ -1,9 +1,9 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { CoreSkillSchema } from "@phil-ai/shared/schemas";
-import { transformSkillToPlugin, type OpenCodeTool } from "./transform.js";
-import { validatePlugin } from "./validate.js";
 import { writePlugin } from "./output.js";
+import { type OpenCodeTool, transformSkillToPlugin } from "./transform.js";
+import { validatePlugin } from "./validate.js";
 
 const SKILLS_DIR = "core/skills";
 
@@ -23,7 +23,10 @@ export async function generateAll(): Promise<OpenCodeTool[]> {
 			const validation = validatePlugin(plugin);
 
 			if (!validation.valid) {
-				console.error(`Validation failed for ${skill.name}:`, validation.errors);
+				console.error(
+					`Validation failed for ${skill.name}:`,
+					validation.errors,
+				);
 				continue;
 			}
 

@@ -1,6 +1,6 @@
 import type { ParsedArgs } from "../../lib/args.js";
 import { getBoolFlag } from "../../lib/args.js";
-import { bold, info, warn, success } from "../../lib/output.js";
+import { bold, info, success, warn } from "../../lib/output.js";
 import { backup } from "./backup.js";
 
 export interface UpdateOptions {

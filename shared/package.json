@@ -1,28 +1,28 @@
 {
-  "name": "@phil-ai/shared",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Shared schemas, storage, and utilities for phil-ai",
-  "type": "module",
-  "main": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./schemas": "./src/schemas/index.ts",
-    "./storage": "./src/storage/index.ts",
-    "./version": "./src/version/index.ts"
-  },
-  "scripts": {
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "proper-lockfile": "^4.1.2",
-    "yaml": "^2.7.0",
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.1.14",
-    "@types/proper-lockfile": "^4.1.4",
-    "typescript": "^5.7.2"
-  }
+	"name": "@phil-ai/shared",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Shared schemas, storage, and utilities for phil-ai",
+	"type": "module",
+	"main": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./schemas": "./src/schemas/index.ts",
+		"./storage": "./src/storage/index.ts",
+		"./version": "./src/version/index.ts"
+	},
+	"scripts": {
+		"build": "bun build ./src/index.ts --outdir ./dist --target bun",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"proper-lockfile": "^4.1.2",
+		"yaml": "^2.7.0",
+		"zod": "^3.24.1"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.1.14",
+		"@types/proper-lockfile": "^4.1.4",
+		"typescript": "^5.7.2"
+	}
 }

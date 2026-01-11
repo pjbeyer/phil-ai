@@ -10,9 +10,9 @@ export function parseSemver(version: string): SemVer | null {
 		return null;
 	}
 	return {
-		major: parseInt(match[1]!, 10),
-		minor: parseInt(match[2]!, 10),
-		patch: parseInt(match[3]!, 10),
+		major: Number.parseInt(match[1]!, 10),
+		minor: Number.parseInt(match[2]!, 10),
+		patch: Number.parseInt(match[3]!, 10),
 	};
 }
 
@@ -47,7 +47,11 @@ export function isCompatible(
 
 	switch (strategy) {
 		case "exact":
-			return curr.major === req.major && curr.minor === req.minor && curr.patch === req.patch;
+			return (
+				curr.major === req.major &&
+				curr.minor === req.minor &&
+				curr.patch === req.patch
+			);
 		case "minor":
 			return curr.major === req.major && curr.minor >= req.minor;
 		case "major":
@@ -79,6 +83,10 @@ export function incrementVersion(
 		case "minor":
 			return formatSemver({ major: v.major, minor: v.minor + 1, patch: 0 });
 		case "patch":
-			return formatSemver({ major: v.major, minor: v.minor, patch: v.patch + 1 });
+			return formatSemver({
+				major: v.major,
+				minor: v.minor,
+				patch: v.patch + 1,
+			});
 	}
 }

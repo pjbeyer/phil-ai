@@ -29,7 +29,10 @@ export async function writePlugin(
 
 	for (const [category, categoryTools] of Object.entries(toolsByCategory)) {
 		const toolContent = generateToolFile(category, categoryTools);
-		await writeFile(join(pluginDir, "src", "tools", `${category}.ts`), toolContent);
+		await writeFile(
+			join(pluginDir, "src", "tools", `${category}.ts`),
+			toolContent,
+		);
 	}
 
 	const indexContent = generateIndexFile(Object.keys(toolsByCategory));

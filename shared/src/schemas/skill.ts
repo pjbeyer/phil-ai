@@ -29,5 +29,10 @@ export const CoreSkillSchema = z.object({
 
 export type CoreSkill = z.infer<typeof CoreSkillSchema>;
 
-export const SkillCategory = ["learning", "docs", "context", "workflow"] as const;
+export const SkillCategory = [
+	"learning",
+	"docs",
+	"context",
+	"workflow",
+] as const;
 export type SkillCategoryType = (typeof SkillCategory)[number];

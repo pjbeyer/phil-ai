@@ -1,12 +1,12 @@
 import type { ParsedArgs } from "../../lib/args.js";
 import { getBoolFlag, getStringFlag } from "../../lib/args.js";
-import { bold, success, info, green } from "../../lib/output.js";
-import { checkPrerequisites, assertPrerequisites } from "./prerequisites.js";
-import { setupDirectories } from "./directories.js";
+import { bold, green, info, success } from "../../lib/output.js";
 import { setupConfig } from "./config.js";
-import { setupVersion } from "./version.js";
+import { setupDirectories } from "./directories.js";
 import { registerClaudeCode } from "./platforms/claude-code.js";
 import { registerOpenCode } from "./platforms/opencode.js";
+import { assertPrerequisites, checkPrerequisites } from "./prerequisites.js";
+import { setupVersion } from "./version.js";
 
 export interface InstallOptions {
 	platforms: string[];

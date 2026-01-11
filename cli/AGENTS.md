@@ -16,6 +16,15 @@ cli/src/
 │   ├── status/       # Health checks and suggestions
 │   │   ├── checks/   # Individual check implementations
 │   │   └── suggestions.ts # Auto-fix suggestions
+│   ├── scaffold/     # Add OpenCode scaffolding to Claude Code plugins
+│   │   ├── schemas.ts    # Zod validation schemas
+│   │   ├── extract.ts    # Parse plugin.json, commands, skills
+│   │   ├── generate.ts   # Generate plugin files
+│   │   ├── output.ts     # File writing with prompts
+│   │   ├── templates.ts  # Template constants
+│   │   ├── render.ts     # Template substitution
+│   │   ├── utils.ts      # toPascalCase utility
+│   │   └── validate.ts   # Plugin directory validation
 │   ├── sync/         # Sync local changes upstream
 │   ├── update/       # Update with backup/migration
 │   └── validate/     # Validate marketplace or plugin
@@ -37,6 +46,7 @@ cli/src/
 | `sync` | Sync customizations upstream | `sync/index.ts` |
 | `generate` | Generate platform-specific plugins | `generate/index.ts` |
 | `validate` | Validate marketplace or plugin structure | `validate/index.ts` |
+| `scaffold` | Add OpenCode scaffolding to Claude Code plugin | `scaffold/index.ts`, `scaffold/*.ts` |
 
 ## Adding a New Command
 

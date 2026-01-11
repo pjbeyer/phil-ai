@@ -1,13 +1,11 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "./dist",
-    "composite": true
-  },
-  "include": ["generator/**/*", "templates/**/*"],
-  "exclude": ["node_modules", "dist", "output"],
-  "references": [
-    { "path": "../../shared" }
-  ]
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"rootDir": ".",
+		"outDir": "./dist",
+		"composite": true
+	},
+	"include": ["generator/**/*", "templates/**/*"],
+	"exclude": ["node_modules", "dist", "output"],
+	"references": [{ "path": "../../shared" }]
 }

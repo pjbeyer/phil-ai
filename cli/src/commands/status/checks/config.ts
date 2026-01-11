@@ -1,5 +1,5 @@
-import { readYaml, getConfigPaths } from "@phil-ai/shared/storage";
 import { ConfigSchema } from "@phil-ai/shared/schemas";
+import { getConfigPaths, readYaml } from "@phil-ai/shared/storage";
 import type { HealthCheckResult } from "../../../lib/health.js";
 
 export async function checkConfig(): Promise<HealthCheckResult> {

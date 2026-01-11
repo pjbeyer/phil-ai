@@ -1,6 +1,6 @@
-import lockfile from "proper-lockfile";
 import { mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
+import lockfile from "proper-lockfile";
 
 export interface LockOptions {
 	retries?: number;

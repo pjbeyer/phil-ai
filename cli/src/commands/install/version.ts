@@ -1,11 +1,14 @@
-import { initVersionManifest, readVersionManifest } from "@phil-ai/shared/version";
+import {
+	initVersionManifest,
+	readVersionManifest,
+} from "@phil-ai/shared/version";
 import { step, success } from "../../lib/output.js";
 
 const CURRENT_VERSION = "0.1.0";
 
 export async function setupVersion(
-	dryRun: boolean = false,
-	force: boolean = false,
+	dryRun = false,
+	force = false,
 ): Promise<boolean> {
 	const manifest = await readVersionManifest();
 

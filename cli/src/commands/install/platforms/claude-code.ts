@@ -6,7 +6,7 @@ export interface ClaudeCodeRegistrationResult {
 }
 
 export async function registerClaudeCode(
-	dryRun: boolean = false,
+	dryRun = false,
 ): Promise<ClaudeCodeRegistrationResult> {
 	if (dryRun) {
 		step("Would register Claude Code marketplace");

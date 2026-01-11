@@ -1,10 +1,10 @@
-import { writeYaml, getConfigPaths } from "@phil-ai/shared/storage";
 import { ConfigSchema, createDefaultConfig } from "@phil-ai/shared/schemas";
+import { getConfigPaths, writeYaml } from "@phil-ai/shared/storage";
 import { step, success } from "../../lib/output.js";
 
 export async function setupConfig(
-	dryRun: boolean = false,
-	force: boolean = false,
+	dryRun = false,
+	force = false,
 ): Promise<boolean> {
 	const configPaths = getConfigPaths();
 	const configExists = await Bun.file(configPaths.config).exists();

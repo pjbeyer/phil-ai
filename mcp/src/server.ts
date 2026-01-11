@@ -5,12 +5,17 @@ import {
 	CallToolRequestSchema,
 	ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { learningTools } from "./tools/learning.js";
-import { docsTools } from "./tools/docs.js";
 import { contextTools } from "./tools/context.js";
+import { docsTools } from "./tools/docs.js";
+import { learningTools } from "./tools/learning.js";
 import { workflowTools } from "./tools/workflow.js";
 
-const allTools = [...learningTools, ...docsTools, ...contextTools, ...workflowTools];
+const allTools = [
+	...learningTools,
+	...docsTools,
+	...contextTools,
+	...workflowTools,
+];
 
 const server = new Server(
 	{

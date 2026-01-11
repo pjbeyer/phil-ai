@@ -1,6 +1,8 @@
 import type { HealthCheckResult } from "../../lib/health.js";
 
-export function getSuggestions(unhealthyResults: HealthCheckResult[]): string[] {
+export function getSuggestions(
+	unhealthyResults: HealthCheckResult[],
+): string[] {
 	const suggestions: string[] = [];
 
 	for (const result of unhealthyResults) {
@@ -11,7 +13,9 @@ export function getSuggestions(unhealthyResults: HealthCheckResult[]): string[] 
 
 			case "Version":
 				if (result.message.includes("not found")) {
-					suggestions.push("Run 'bunx phil-ai install' to initialize version manifest");
+					suggestions.push(
+						"Run 'bunx phil-ai install' to initialize version manifest",
+					);
 				} else {
 					suggestions.push("Run 'bunx phil-ai update' to update components");
 				}
@@ -19,9 +23,13 @@ export function getSuggestions(unhealthyResults: HealthCheckResult[]): string[] 
 
 			case "Config":
 				if (result.message.includes("not found")) {
-					suggestions.push("Run 'bunx phil-ai install --force' to recreate configuration");
+					suggestions.push(
+						"Run 'bunx phil-ai install --force' to recreate configuration",
+					);
 				} else {
-					suggestions.push("Check ~/.config/phil-ai/config.yaml for syntax errors");
+					suggestions.push(
+						"Check ~/.config/phil-ai/config.yaml for syntax errors",
+					);
 				}
 				break;
 		}

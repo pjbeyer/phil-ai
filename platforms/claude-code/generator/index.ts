@@ -1,10 +1,10 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { CoreSkillSchema } from "@phil-ai/shared/schemas";
-import { transformSkillToPlugin, type ClaudeCodePlugin } from "./transform.js";
-import { validatePlugin } from "./validate.js";
-import { writePlugin } from "./output.js";
 import { writeMarketplace } from "./marketplace.js";
+import { writePlugin } from "./output.js";
+import { type ClaudeCodePlugin, transformSkillToPlugin } from "./transform.js";
+import { validatePlugin } from "./validate.js";
 
 const SKILLS_DIR = "core/skills";
 
@@ -24,7 +24,10 @@ export async function generateAll(): Promise<ClaudeCodePlugin[]> {
 			const validation = validatePlugin(plugin);
 
 			if (!validation.valid) {
-				console.error(`Validation failed for ${skill.name}:`, validation.errors);
+				console.error(
+					`Validation failed for ${skill.name}:`,
+					validation.errors,
+				);
 				continue;
 			}
 

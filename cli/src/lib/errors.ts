@@ -1,4 +1,4 @@
-import { error, dim, yellow } from "./output.js";
+import { dim, error, yellow } from "./output.js";
 
 export class CliError extends Error {
 	constructor(
