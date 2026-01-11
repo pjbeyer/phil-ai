@@ -136,7 +136,27 @@ bunx phil-ai update               # Update components
 bunx phil-ai sync                 # Sync state across platforms
 bunx phil-ai generate             # Generate platform plugins
 bunx phil-ai validate             # Validate marketplace or plugin
+bunx phil-ai scaffold             # Add OpenCode scaffolding to Claude Code plugin
 ```
+
+### scaffold Command
+
+Generate OpenCode plugin scaffolding for an existing Claude Code plugin:
+
+```bash
+bunx phil-ai scaffold                         # Run in plugin directory
+bunx phil-ai scaffold --path=../my-plugin     # Specify target directory
+bunx phil-ai scaffold --dry-run               # Preview without writing
+bunx phil-ai scaffold --force                 # Overwrite without prompting
+```
+
+**Generated files:**
+- `src/index.ts` - OpenCode plugin entry point
+- `.opencode/plugin/<name>.ts` - Local development copy
+- `package.json` - npm package manifest
+- `tsconfig.json` - TypeScript configuration
+- `.claude-plugin/marketplace.json` - Dev marketplace for local testing
+- `.gitignore` - Updated with dist/, node_modules/
 
 ## MCP Server
 
