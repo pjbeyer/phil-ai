@@ -9,8 +9,9 @@ import { learningTools } from "./tools/learning.js";
 import { docsTools } from "./tools/docs.js";
 import { contextTools } from "./tools/context.js";
 import { workflowTools } from "./tools/workflow.js";
+import { guideTools } from "./tools/guide.js";
 
-const allTools = [...learningTools, ...docsTools, ...contextTools, ...workflowTools];
+const allTools = [...learningTools, ...docsTools, ...contextTools, ...workflowTools, ...guideTools];
 
 const server = new Server(
 	{
