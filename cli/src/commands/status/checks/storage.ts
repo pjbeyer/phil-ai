@@ -1,7 +1,7 @@
 import {
-	getDataPaths,
-	getConfigPaths,
 	dirExists,
+	getConfigPaths,
+	getDataPaths,
 	isWritable,
 } from "@phil-ai/shared/storage";
 import type { HealthCheckResult } from "../../../lib/health.js";

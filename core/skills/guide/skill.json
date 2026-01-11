@@ -1,15 +1,15 @@
 {
-  "name": "guide",
-  "version": "1.0.0",
-  "description": "System Guide for user preferences and workflow patterns",
-  "category": "guide",
-  "tags": ["preferences", "workflow", "configuration", "agent"],
-  "allowedTools": ["Read", "Write", "Glob"],
-  "permissions": ["fs:read", "fs:write"],
-  "entryPoint": "SKILL.md",
-  "author": {
-    "name": "Phil Beyer"
-  },
-  "repository": "https://github.com/pjbeyer/phil-ai",
-  "license": "MIT"
+	"name": "guide",
+	"version": "1.0.0",
+	"description": "System Guide for user preferences and workflow patterns",
+	"category": "guide",
+	"tags": ["preferences", "workflow", "configuration", "agent"],
+	"allowedTools": ["Read", "Write", "Glob"],
+	"permissions": ["fs:read", "fs:write"],
+	"entryPoint": "SKILL.md",
+	"author": {
+		"name": "Phil Beyer"
+	},
+	"repository": "https://github.com/pjbeyer/phil-ai",
+	"license": "MIT"
 }

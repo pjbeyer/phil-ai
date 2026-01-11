@@ -1,6 +1,6 @@
+import { access, readFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { access, readFile } from "node:fs/promises";
 import type {
 	GuidePath,
 	MergedGuide,
@@ -8,13 +8,13 @@ import type {
 	SystemGuide,
 } from "../schemas/guide.js";
 import { createMergedGuide } from "../schemas/guide.js";
+import { parseGuide } from "./parser.js";
 import type {
 	DiscoverGuidesResult,
+	GuideHierarchyLevelType,
 	GuideLoadOptions,
 	ParseGuideResult,
-	GuideHierarchyLevelType,
 } from "./types.js";
-import { parseGuide } from "./parser.js";
 
 const GUIDE_FILENAME = "GUIDE.md";
 
@@ -75,7 +75,9 @@ export async function discoverGuides(
 	return { guides, checked };
 }
 
-export async function loadGuide(guidePath: GuidePath): Promise<ParseGuideResult> {
+export async function loadGuide(
+	guidePath: GuidePath,
+): Promise<ParseGuideResult> {
 	try {
 		const content = await readFile(guidePath.path, "utf-8");
 		return parseGuide(content, guidePath.path, guidePath.level);

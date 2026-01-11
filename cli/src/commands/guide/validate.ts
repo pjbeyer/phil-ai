@@ -1,12 +1,22 @@
-import type { ParsedArgs } from "../../lib/args.js";
-import { getBoolFlag } from "../../lib/args.js";
-import { success, error, info, warn, bold, dim, yellow, red, cyan } from "../../lib/output.js";
 import {
-	discoverGuides,
-	loadGuide,
 	type Preference,
 	PreferenceIdRegex,
+	discoverGuides,
+	loadGuide,
 } from "@phil-ai/shared";
+import type { ParsedArgs } from "../../lib/args.js";
+import { getBoolFlag } from "../../lib/args.js";
+import {
+	bold,
+	cyan,
+	dim,
+	error,
+	info,
+	red,
+	success,
+	warn,
+	yellow,
+} from "../../lib/output.js";
 
 export interface ValidateOptions {
 	json: boolean;
@@ -39,7 +49,9 @@ interface ValidationResult {
 	};
 }
 
-function findConflicts(preferences: Map<string, { pref: Preference; file: string }[]>): ValidationIssue[] {
+function findConflicts(
+	preferences: Map<string, { pref: Preference; file: string }[]>,
+): ValidationIssue[] {
 	const conflicts: ValidationIssue[] = [];
 
 	for (const [id, sources] of preferences) {
@@ -106,7 +118,13 @@ export async function runValidateGuide(args: ParsedArgs): Promise<void> {
 			info("Run 'phil-ai guide init' to create one");
 			console.log();
 		} else {
-			console.log(JSON.stringify({ valid: true, message: "No guides found", checked }, null, 2));
+			console.log(
+				JSON.stringify(
+					{ valid: true, message: "No guides found", checked },
+					null,
+					2,
+				),
+			);
 		}
 		return;
 	}
@@ -166,7 +184,9 @@ export async function runValidateGuide(args: ParsedArgs): Promise<void> {
 	}
 
 	const conflicts = findConflicts(preferenceMap);
-	result.stats.conflicts = conflicts.filter((c) => c.level === "warning").length;
+	result.stats.conflicts = conflicts.filter(
+		(c) => c.level === "warning",
+	).length;
 
 	for (const conflict of conflicts) {
 		if (conflict.level === "warning") {
@@ -191,7 +211,9 @@ export async function runValidateGuide(args: ParsedArgs): Promise<void> {
 	console.log(`  Hard rules: ${result.stats.hardRules}`);
 	console.log(`  Soft defaults: ${result.stats.softDefaults}`);
 	if (result.stats.conflicts > 0) {
-		console.log(`  Potential conflicts: ${yellow(String(result.stats.conflicts))}`);
+		console.log(
+			`  Potential conflicts: ${yellow(String(result.stats.conflicts))}`,
+		);
 	}
 	console.log();
 

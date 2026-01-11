@@ -44,7 +44,10 @@ export function parseArgs(args: string[]): ParsedArgs {
 	return result;
 }
 
-export function getFlag(args: ParsedArgs, name: string): string | boolean | undefined {
+export function getFlag(
+	args: ParsedArgs,
+	name: string,
+): string | boolean | undefined {
 	return args.flags[name];
 }
 
@@ -53,7 +56,10 @@ export function getBoolFlag(args: ParsedArgs, name: string): boolean {
 	return value === true || value === "true";
 }
 
-export function getStringFlag(args: ParsedArgs, name: string): string | undefined {
+export function getStringFlag(
+	args: ParsedArgs,
+	name: string,
+): string | undefined {
 	const value = args.flags[name];
 	return typeof value === "string" ? value : undefined;
 }

@@ -1,13 +1,14 @@
 import {
-	loadMergedGuide,
-	formatGuideForAgent,
-	type VerbosityLevelType,
 	type GuideLoadOptions,
+	type VerbosityLevelType,
+	formatGuideForAgent,
+	loadMergedGuide,
 } from "@phil-ai/shared";
 
 export const getGuide = {
 	name: "get_guide",
-	description: "Load and merge system guide preferences from all hierarchy levels (global, profile, project)",
+	description:
+		"Load and merge system guide preferences from all hierarchy levels (global, profile, project)",
 	inputSchema: {
 		type: "object" as const,
 		properties: {
@@ -58,9 +59,10 @@ export const getGuide = {
 			};
 		}
 
-		const output = format === "json"
-			? JSON.stringify(guide, null, 2)
-			: formatGuideForAgent(guide);
+		const output =
+			format === "json"
+				? JSON.stringify(guide, null, 2)
+				: formatGuideForAgent(guide);
 
 		return {
 			content: [
@@ -156,7 +158,8 @@ export const checkPreference = {
 		properties: {
 			preferenceId: {
 				type: "string",
-				description: "Preference ID to check (e.g., 'code-style.explicit-types')",
+				description:
+					"Preference ID to check (e.g., 'code-style.explicit-types')",
 			},
 			projectPath: {
 				type: "string",
@@ -200,13 +203,14 @@ export const checkPreference = {
 
 		if (!pref) {
 			const similar = guide.preferences
-				.filter((p) => p.id.includes(preferenceId) || preferenceId.includes(p.id))
+				.filter(
+					(p) => p.id.includes(preferenceId) || preferenceId.includes(p.id),
+				)
 				.slice(0, 3)
 				.map((p) => p.id);
 
-			const suggestion = similar.length > 0
-				? `\n\nDid you mean: ${similar.join(", ")}?`
-				: "";
+			const suggestion =
+				similar.length > 0 ? `\n\nDid you mean: ${similar.join(", ")}?` : "";
 
 			return {
 				content: [
@@ -224,7 +228,9 @@ export const checkPreference = {
 			`Active: ${pref.active}`,
 			pref.sourceLevel ? `Source: ${pref.sourceLevel} level` : null,
 			`\nContent:\n${pref.content}`,
-		].filter(Boolean).join("\n");
+		]
+			.filter(Boolean)
+			.join("\n");
 
 		return {
 			content: [

@@ -63,7 +63,10 @@ export interface TableColumn {
 	width?: number;
 }
 
-export function table(columns: TableColumn[], rows: Record<string, string>[]): void {
+export function table(
+	columns: TableColumn[],
+	rows: Record<string, string>[],
+): void {
 	const widths = columns.map((col) => {
 		const maxContent = Math.max(
 			col.header.length,

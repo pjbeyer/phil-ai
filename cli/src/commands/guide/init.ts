@@ -1,10 +1,10 @@
+import { access, mkdir, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { access, writeFile, mkdir } from "node:fs/promises";
+import type { GuideHierarchyLevelType } from "@phil-ai/shared";
 import type { ParsedArgs } from "../../lib/args.js";
 import { getStringFlag } from "../../lib/args.js";
-import { success, error, info, warn, bold } from "../../lib/output.js";
-import type { GuideHierarchyLevelType } from "@phil-ai/shared";
+import { bold, error, info, success, warn } from "../../lib/output.js";
 
 const GUIDE_TEMPLATE = `---
 name: system-guide
@@ -81,7 +81,11 @@ function parseInitOptions(args: ParsedArgs): InitOptions {
 	const levelArg = getStringFlag(args, "level");
 	let level: GuideHierarchyLevelType = "project";
 
-	if (levelArg === "global" || levelArg === "profile" || levelArg === "project") {
+	if (
+		levelArg === "global" ||
+		levelArg === "profile" ||
+		levelArg === "project"
+	) {
 		level = levelArg;
 	}
 

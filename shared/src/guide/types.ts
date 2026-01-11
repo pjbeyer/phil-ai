@@ -1,6 +1,6 @@
 import type {
-	GuidePath,
 	GuideHierarchyLevelType,
+	GuidePath,
 	SystemGuide,
 	VerbosityLevelType,
 } from "../schemas/guide.js";
@@ -29,4 +29,9 @@ export interface GuidePathInfo {
 	exists: boolean;
 }
 
-export type { GuidePath, SystemGuide, GuideHierarchyLevelType, VerbosityLevelType };
+export type {
+	GuidePath,
+	SystemGuide,
+	GuideHierarchyLevelType,
+	VerbosityLevelType,
+};

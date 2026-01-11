@@ -1,7 +1,7 @@
-import { beforeEach, afterEach } from "bun:test";
-import { rm, mkdir } from "node:fs/promises";
-import { join } from "node:path";
+import { afterEach, beforeEach } from "bun:test";
+import { mkdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 export const TEST_DIR = join(tmpdir(), "phil-ai-test");
 

@@ -1,12 +1,14 @@
 import matter from "gray-matter";
-import type { SystemGuide, GuideSection, Preference } from "../schemas/guide.js";
-import type { ParseGuideResult, GuideHierarchyLevelType } from "./types.js";
-import {
-	GuideFrontmatterSchema,
-	PreferenceIdRegex,
+import type {
+	GuideSection,
+	Preference,
+	SystemGuide,
 } from "../schemas/guide.js";
+import { GuideFrontmatterSchema, PreferenceIdRegex } from "../schemas/guide.js";
+import type { GuideHierarchyLevelType, ParseGuideResult } from "./types.js";
 
-const PREFERENCE_MARKER_REGEX = /<!--\s*preference:\s*([^\s|]+)\s*\|\s*(hard|soft)\s*-->/gi;
+const PREFERENCE_MARKER_REGEX =
+	/<!--\s*preference:\s*([^\s|]+)\s*\|\s*(hard|soft)\s*-->/gi;
 const SECTION_HEADING_REGEX = /^##\s+(.+)$/gm;
 
 export function parseGuide(
@@ -57,7 +59,10 @@ export function parseGuide(
 	}
 }
 
-export function extractSections(body: string, warnings: string[]): GuideSection[] {
+export function extractSections(
+	body: string,
+	warnings: string[],
+): GuideSection[] {
 	const sections: GuideSection[] = [];
 	const headingMatches = [...body.matchAll(SECTION_HEADING_REGEX)];
 
@@ -95,7 +100,10 @@ export function extractSections(body: string, warnings: string[]): GuideSection[
 	return sections;
 }
 
-function extractPreferencesFromText(text: string, warnings: string[]): Preference[] {
+function extractPreferencesFromText(
+	text: string,
+	warnings: string[],
+): Preference[] {
 	const preferences: Preference[] = [];
 	const lines = text.split("\n");
 

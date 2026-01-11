@@ -1,6 +1,6 @@
 import type { ParsedArgs } from "../../lib/args.js";
 import { getBoolFlag, getStringFlag } from "../../lib/args.js";
-import { bold, success, info, error } from "../../lib/output.js";
+import { bold, error, info, success } from "../../lib/output.js";
 
 export interface GenerateOptions {
 	platform: string;

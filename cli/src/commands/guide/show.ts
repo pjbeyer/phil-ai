@@ -1,11 +1,20 @@
+import {
+	type MergedGuide,
+	discoverGuides,
+	loadMergedGuide,
+} from "@phil-ai/shared";
 import type { ParsedArgs } from "../../lib/args.js";
 import { getBoolFlag } from "../../lib/args.js";
-import { error, info, warn, bold, dim, green, yellow, cyan } from "../../lib/output.js";
 import {
-	loadMergedGuide,
-	discoverGuides,
-	type MergedGuide,
-} from "@phil-ai/shared";
+	bold,
+	cyan,
+	dim,
+	error,
+	green,
+	info,
+	warn,
+	yellow,
+} from "../../lib/output.js";
 
 export interface ShowOptions {
 	json: boolean;
@@ -50,7 +59,9 @@ function formatTextOutput(guide: MergedGuide, verbose: boolean): void {
 	if (hardPrefs.length > 0) {
 		console.log(bold("Hard Rules (Must Follow):"));
 		for (const pref of hardPrefs) {
-			const levelBadge = pref.sourceLevel ? formatLevelBadge(pref.sourceLevel) : "";
+			const levelBadge = pref.sourceLevel
+				? formatLevelBadge(pref.sourceLevel)
+				: "";
 			console.log(`  ${bold(pref.id)} ${levelBadge}`);
 			if (verbose) {
 				console.log(`    ${dim(pref.content)}`);
@@ -62,7 +73,9 @@ function formatTextOutput(guide: MergedGuide, verbose: boolean): void {
 	if (softPrefs.length > 0) {
 		console.log(bold("Soft Preferences (Defaults):"));
 		for (const pref of softPrefs) {
-			const levelBadge = pref.sourceLevel ? formatLevelBadge(pref.sourceLevel) : "";
+			const levelBadge = pref.sourceLevel
+				? formatLevelBadge(pref.sourceLevel)
+				: "";
 			console.log(`  ${pref.id} ${levelBadge}`);
 			if (verbose) {
 				console.log(`    ${dim(pref.content)}`);
@@ -76,7 +89,11 @@ function formatTextOutput(guide: MergedGuide, verbose: boolean): void {
 		console.log();
 	}
 
-	console.log(dim(`Total: ${guide.preferences.length} preferences (${hardPrefs.length} hard, ${softPrefs.length} soft)`));
+	console.log(
+		dim(
+			`Total: ${guide.preferences.length} preferences (${hardPrefs.length} hard, ${softPrefs.length} soft)`,
+		),
+	);
 	console.log();
 }
 
@@ -103,7 +120,9 @@ export async function runShow(args: ParsedArgs): Promise<void> {
 			info("Run 'phil-ai guide init' to create one");
 			console.log();
 		} else {
-			console.log(JSON.stringify({ error: "No guides found", checked }, null, 2));
+			console.log(
+				JSON.stringify({ error: "No guides found", checked }, null, 2),
+			);
 		}
 		return;
 	}

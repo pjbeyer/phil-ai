@@ -1,4 +1,7 @@
-import { readVersionManifest, checkCompatibility } from "@phil-ai/shared/version";
+import {
+	checkCompatibility,
+	readVersionManifest,
+} from "@phil-ai/shared/version";
 import type { HealthCheckResult } from "../../../lib/health.js";
 
 export async function checkVersion(): Promise<HealthCheckResult> {

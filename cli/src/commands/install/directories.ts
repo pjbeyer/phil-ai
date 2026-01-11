@@ -1,8 +1,8 @@
 import {
-	ensureAllDirs,
-	getDataPaths,
-	getConfigPaths,
 	dirExists,
+	ensureAllDirs,
+	getConfigPaths,
+	getDataPaths,
 } from "@phil-ai/shared/storage";
 import { step, success } from "../../lib/output.js";
 
@@ -13,7 +13,7 @@ export interface DirectorySetupResult {
 }
 
 export async function setupDirectories(
-	dryRun: boolean = false,
+	dryRun = false,
 ): Promise<DirectorySetupResult> {
 	const dataPaths = getDataPaths();
 	const configPaths = getConfigPaths();

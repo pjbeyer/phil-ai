@@ -1,16 +1,16 @@
 import { describe, expect, test } from "bun:test";
+import type { VersionManifest } from "@phil-ai/shared/schemas";
 import {
-	parseSemver,
 	compareSemver,
-	isCompatible,
 	incrementVersion,
+	isCompatible,
+	parseSemver,
 } from "@phil-ai/shared/version";
 import {
 	checkCompatibility,
-	needsMigration,
 	getMigrationPath,
+	needsMigration,
 } from "@phil-ai/shared/version";
-import type { VersionManifest } from "@phil-ai/shared/schemas";
 
 describe("parseSemver", () => {
 	test("parses valid semver", () => {

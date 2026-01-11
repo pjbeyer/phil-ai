@@ -1,14 +1,14 @@
 #!/usr/bin/env bun
+import { runGenerate } from "./commands/generate/index.js";
+import { runGuide } from "./commands/guide/index.js";
+import { runInstall } from "./commands/install/index.js";
+import { runStatus } from "./commands/status/index.js";
+import { runSync } from "./commands/sync/index.js";
+import { runUpdate } from "./commands/update/index.js";
+import { runValidate } from "./commands/validate/index.js";
 import { parseArgs } from "./lib/args.js";
 import { handleError } from "./lib/errors.js";
 import { bold, dim } from "./lib/output.js";
-import { runInstall } from "./commands/install/index.js";
-import { runStatus } from "./commands/status/index.js";
-import { runUpdate } from "./commands/update/index.js";
-import { runSync } from "./commands/sync/index.js";
-import { runGenerate } from "./commands/generate/index.js";
-import { runValidate } from "./commands/validate/index.js";
-import { runGuide } from "./commands/guide/index.js";
 
 const VERSION = "0.1.0";
 

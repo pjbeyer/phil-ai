@@ -43,12 +43,13 @@ function getCommandsForSkill(skill: CoreSkill): ClaudeCodeCommand[] {
 		case "learning":
 			return [
 				{ name: "learn", description: "Capture a new learning" },
-				{ name: "implement-learnings", description: "Apply captured learnings" },
+				{
+					name: "implement-learnings",
+					description: "Apply captured learnings",
+				},
 			];
 		case "docs":
-			return [
-				{ name: "doc", description: "Documentation management" },
-			];
+			return [{ name: "doc", description: "Documentation management" }];
 		case "context":
 			return [
 				{ name: "optimize-agents", description: "Optimize AGENTS.md files" },
