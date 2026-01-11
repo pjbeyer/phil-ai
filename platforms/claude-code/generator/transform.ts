@@ -62,6 +62,8 @@ function getCommandsForSkill(skill: CoreSkill): ClaudeCodeCommand[] {
 				{ name: "work-status", description: "Show active work" },
 				{ name: "work-resume", description: "Resume previous work" },
 			];
+		case "guide":
+			return [];
 		default:
 			return [];
 	}

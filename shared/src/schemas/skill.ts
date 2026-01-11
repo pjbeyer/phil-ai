@@ -7,7 +7,7 @@ export const CoreSkillSchema = z.object({
 	version: z.string().regex(/^\d+\.\d+\.\d+$/),
 	description: z.string().max(500),
 
-	category: z.enum(["learning", "docs", "context", "workflow"]),
+	category: z.enum(["learning", "docs", "context", "workflow", "guide"]),
 	tags: z.array(z.string()).default([]),
 
 	allowedTools: z.array(z.string()).optional(),
@@ -29,5 +29,5 @@ export const CoreSkillSchema = z.object({
 
 export type CoreSkill = z.infer<typeof CoreSkillSchema>;
 
-export const SkillCategory = ["learning", "docs", "context", "workflow"] as const;
+export const SkillCategory = ["learning", "docs", "context", "workflow", "guide"] as const;
 export type SkillCategoryType = (typeof SkillCategory)[number];

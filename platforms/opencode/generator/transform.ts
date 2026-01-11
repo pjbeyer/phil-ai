@@ -102,6 +102,35 @@ function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
 					],
 				},
 			];
+		case "guide":
+			return [
+				{
+					name: "get_guide",
+					description: "Get merged system guide for current project",
+					category: "guide",
+					parameters: [
+						{ name: "projectPath", type: "string", description: "Project path", required: true },
+					],
+				},
+				{
+					name: "list_preferences",
+					description: "List all preferences from system guide",
+					category: "guide",
+					parameters: [
+						{ name: "projectPath", type: "string", description: "Project path", required: true },
+						{ name: "type", type: "string", description: "Filter by type (hard/soft)", required: false },
+					],
+				},
+				{
+					name: "check_preference",
+					description: "Check if a preference is defined",
+					category: "guide",
+					parameters: [
+						{ name: "projectPath", type: "string", description: "Project path", required: true },
+						{ name: "preferenceId", type: "string", description: "Preference ID", required: true },
+					],
+				},
+			];
 		default:
 			return [];
 	}
