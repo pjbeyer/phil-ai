@@ -125,7 +125,7 @@ export const PACKAGE_JSON_TEMPLATE = `{
     "commands"
   ],
   "scripts": {
-    "build": "bun build ./src/index.ts --outdir dist --target bun",
+    "build": "bun build ./src/index.ts --outdir dist --target bun --format esm",
     "prepublishOnly": "bun run build"
   },
   "dependencies": {
@@ -158,10 +158,26 @@ export const TSCONFIG_TEMPLATE = `{
 
 export const MARKETPLACE_TEMPLATE = `{
   "name": "{{marketplaceName}}",
+  "description": "{{description}}",
+  "owner": {
+    "name": "{{authorName}}",
+    "email": "{{authorEmail}}",
+    "url": "{{repositoryUrl}}"
+  },
   "plugins": [
     {
       "name": "{{pluginName}}",
-      "source": "./"
+      "version": "{{version}}",
+      "description": "{{description}}",
+      "source": {
+        "source": "url",
+        "url": "{{repositoryUrl}}"
+      },
+      "author": {
+        "name": "{{authorName}}",
+        "email": "{{authorEmail}}"
+      },
+      "license": "MIT"
     }
   ]
 }

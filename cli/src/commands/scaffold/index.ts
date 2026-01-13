@@ -134,7 +134,7 @@ export async function runScaffold(args: ParsedArgs): Promise<void> {
 	console.log("Next steps:");
 	console.log(`  1. cd ${options.path === process.cwd() ? "." : options.path}`);
 	console.log("  2. bun install");
-	console.log("  3. bun build");
+	console.log("  3. bun run build");
 	console.log(
 		"  4. Test locally with: bunx opencode (plugin auto-loaded from .opencode/plugin/)",
 	);
