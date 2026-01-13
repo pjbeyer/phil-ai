@@ -106,3 +106,54 @@ cli/src/commands/scaffold/
 **Benefit**: Each module has single responsibility, making testing and debugging easier.
 
 **Application**: Follow this pattern for future CLI commands that generate files.
+
+---
+
+## [2026-01-13] Process: GitHub Issue Management
+
+### All Issues Must Have Complete Metadata
+
+**Discovery**: When creating GitHub issues for bugs, user requested ALL metadata be included every time.
+
+**Required Metadata for pjbeyer GitHub Projects**:
+1. **Basic Information**:
+   - Title with prefix (e.g., `fix(scaffold):`, `feat:`, `docs:`)
+   - Detailed body (problem, current behavior, expected behavior, steps to reproduce, solution)
+   - Labels (e.g., `bug`, `enhancement`, `documentation`)
+   - Assignee (use `@me` for self-assignment)
+
+2. **Project Fields** (via GraphQL API):
+   - **Status**: Backlog, Ready, In progress, In review, Done
+   - **Priority**: P0 (critical), P1 (high), P2 (medium)
+   - **Size**: XS (1 line), S (1 file), M (2-3 files), L (5+ files), XL (major feature)
+   - **Iteration**: Current sprint/iteration
+
+3. **Project Assignment**:
+   - Add to relevant project (e.g., "phil-ai")
+   - Use `gh issue edit <number> --add-project "project-name"`
+
+**Pattern**: NEVER create issues without setting all metadata. Use GraphQL mutations to set Priority, Size, Status, and Iteration immediately after creation.
+
+**Application**: Created 4 issues (#240-#243) with complete metadata:
+- #240: P1, S, In review, Iteration 5
+- #241: P0, XS, In review, Iteration 5
+- #242: P2, XS, In review, Iteration 5
+- #243: P0, S, In review, Iteration 5
+
+**GraphQL Field IDs for phil-ai project**:
+```
+Project ID: PVT_kwHOAF3gVs4BH3nW
+Status Field: PVTSSF_lAHOAF3gVs4BH3nWzg4fzV4
+Priority Field: PVTSSF_lAHOAF3gVs4BH3nWzg4fznw
+Size Field: PVTSSF_lAHOAF3gVs4BH3nWzg4fzn0
+Iteration Field: PVTIF_lAHOAF3gVs4BH3nWzg4fzn8
+```
+
+**Workflow**:
+1. Create issue with `gh issue create`
+2. Add to project with `gh issue edit --add-project`
+3. Get project item ID via GraphQL query
+4. Set all metadata via GraphQL mutations (Priority, Size, Status, Iteration)
+5. Verify all fields are set
+
+**Reference**: Created `/tmp/github-issue-checklist.md` with complete workflow and field IDs.
