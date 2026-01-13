@@ -55,8 +55,10 @@ function parseFrontmatter(content: string): { frontmatter: CommandFrontmatter; b
 
 async function loadCommands(): Promise<ParsedCommand[]> {
   const commands: ParsedCommand[] = [];
-  // Commands are in the parent directory relative to dist/
-  const commandDir = path.join(import.meta.dir, '..', 'commands');
+  const isLocalPlugin = import.meta.dir.includes('.opencode/plugin');
+  const commandDir = isLocalPlugin
+    ? path.join(import.meta.dir, '..', '..', 'commands')
+    : path.join(import.meta.dir, '..', 'commands');
   const glob = new Bun.Glob('**/*.md');
 
   for await (const file of glob.scan({ cwd: commandDir, absolute: true })) {
