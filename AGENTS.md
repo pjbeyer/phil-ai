@@ -102,6 +102,8 @@ Tests use:
 ## Recent Changes
 - 001-multiplatform-scaffolding: Complete implementation with CLI (6 commands), MCP server (8 tools), shared schemas, and platform generators
 - 002-scaffold-command: Add scaffold CLI command with --path, --dry-run, --force flags to generate OpenCode plugin scaffolding for Claude Code plugins
+  - **Post-implementation fixes (PR #239)**: Fixed marketplace.json schema (added 7 required fields), build script (added --format esm), and success message (bun run build)
+  - **Lesson**: Template-generated files that are validated by other commands must include ALL required fields explicitly. End-to-end testing with real plugins catches integration issues.
 - 003-system-guide: Hierarchical user preference system with GUIDE.md files, CLI commands (guide init/show/validate), and MCP tools (get_guide, list_preferences, check_preference)
 
 
@@ -112,3 +114,42 @@ Tests use:
 - Human-readable files (JSON/YAML) at `~/.local/share/phil-ai/`, config at `~/.config/phil-ai/` (001-multiplatform-scaffolding)
 - gray-matter for YAML frontmatter parsing (003-system-guide)
 - GUIDE.md files for user preferences at hierarchy levels (003-system-guide)
+
+## Scaffold Command Patterns (002-scaffold-command)
+
+### Template Generation Best Practices
+
+When generating files from templates that will be validated by other commands:
+
+1. **Explicit Schema Compliance**: Enumerate ALL required fields in templates, don't assume "follow pattern X"
+   - Example: marketplace.json requires 7 fields (description, owner, version, source object, author, license)
+   - Validate generated files against the same schema used by validate command
+
+2. **Script Testing**: Generated scripts (build, test, etc.) must be executable, not just syntactically valid
+   - Example: `bun build` requires `--format esm` flag to work correctly
+   - Include script execution in acceptance criteria
+
+3. **Message Accuracy**: Success messages referencing generated files should match actual content
+   - Example: Show `bun run build` (npm script) not `bun build` (direct command)
+   - Extract script names from template constants rather than hardcoding
+
+4. **End-to-End Validation**: Test with real-world data before marking feature complete
+   - Example: Run scaffold on phil-ai-learning, verify validate passes, run build
+   - Catches integration issues that unit tests miss
+
+### Scaffold Command Structure
+
+```
+cli/src/commands/scaffold/
+├── index.ts       # Entry point (runScaffold)
+├── schemas.ts     # Zod validation (PluginManifest, CommandFrontmatter, SkillFrontmatter)
+├── validate.ts    # Plugin directory validation
+├── extract.ts     # Parse plugin.json, scan commands/skills
+├── generate.ts    # Generate file content (plugin code, package.json, tsconfig, marketplace)
+├── templates.ts   # Template constants (from constitution.md)
+├── render.ts      # Template variable substitution
+├── utils.ts       # Helpers (toPascalCase)
+└── output.ts      # File writing with overwrite prompts
+```
+
+**Key Pattern**: Separate concerns (validate → extract → generate → output) for testability and clarity.

@@ -66,9 +66,19 @@ export function generateTsConfig(): string {
 }
 
 export function generateMarketplace(manifest: PluginManifest): string {
+	const authorName = manifest.author?.name ?? "Unknown";
+	const authorEmail = manifest.author?.email ?? "unknown@example.com";
+	const repositoryUrl = manifest.repository ?? "https://github.com/example/repo";
+	const description = manifest.description || "No description provided";
+
 	return render(MARKETPLACE_TEMPLATE, {
 		marketplaceName: `${manifest.name}-dev`,
 		pluginName: manifest.name,
+		version: manifest.version,
+		description,
+		authorName,
+		authorEmail,
+		repositoryUrl,
 	});
 }
 

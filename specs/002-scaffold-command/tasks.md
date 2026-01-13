@@ -216,3 +216,47 @@ T035: Update README.md
 - Use existing lib/args.ts and lib/output.ts utilities
 - Commit after each completed user story phase
 - Test each user story independently before proceeding
+
+## Post-Implementation Review (2026-01-13)
+
+### Completion Summary
+- **Initial Implementation**: PR #237 (37 tasks completed, merged)
+- **Bug Fixes**: PR #239 (3 issues discovered during real-world testing)
+
+### Issues Discovered Post-Merge
+
+**Issue #240 - marketplace.json Missing Required Fields**
+- **Task**: T014 (generateMarketplace function)
+- **Problem**: Template only included `name` and `source: "./"`, missing 7 required fields
+- **Root Cause**: Task description said "render .claude-plugin/marketplace.json with -dev suffix" but didn't enumerate required fields
+- **Fix**: Added description, owner, version, source object, author, license to template
+- **Lesson**: Task descriptions for file generation should list ALL required fields, not assume "follow pattern"
+
+**Issue #241 - Build Command Fails**
+- **Task**: T013 (generatePackageJson function)
+- **Problem**: Build script missing `--format esm` flag
+- **Root Cause**: Task said "generate package.json with build scripts" but didn't specify exact flags
+- **Fix**: Added `--format esm` to build command
+- **Lesson**: Generated scripts should be tested end-to-end, not just syntax-validated
+
+**Issue #242 - Next Steps Show Wrong Command**
+- **Task**: T029 (display completion message)
+- **Problem**: Message showed `bun build` instead of `bun run build`
+- **Root Cause**: Copy-paste error, not validated against generated package.json
+- **Fix**: Updated message to match package.json script
+- **Lesson**: Success messages referencing generated files should be validated against actual content
+
+### Testing Gap
+
+**Missing from original tasks**: End-to-end test with a real plugin (e.g., phil-ai-learning). All three bugs would have been caught if T037 (quickstart validation) had included:
+1. Run scaffold on phil-ai-learning
+2. Run `bunx phil-ai validate` on generated marketplace.json
+3. Run `bun install && bun run build` in scaffolded plugin
+4. Verify all commands in success message work
+
+### Recommendations for Future Task Lists
+
+1. **Explicit Field Enumeration**: When generating files with schemas, list required fields in task description
+2. **Script Execution Testing**: Include "verify script runs successfully" as acceptance criteria for generated scripts
+3. **Cross-Command Integration**: When tasks generate files consumed by other commands, add integration test task
+4. **Real-World Validation**: Include at least one end-to-end test with actual project data before marking feature complete

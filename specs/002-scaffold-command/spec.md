@@ -135,3 +135,51 @@ A plugin author wants to see what files will be created before committing to the
 - Claude Code plugin manifest follows the standard schema with `name`, `version`, `description` fields.
 - Commands use the standard markdown + YAML frontmatter format supported by both platforms.
 - Skills use the standard `skills/*/SKILL.md` format and OpenCode supports native skill loading.
+
+## Post-Implementation Lessons (2026-01-13)
+
+### Issue #240: marketplace.json Missing Required Fields
+
+**Problem**: Generated `.claude-plugin/marketplace.json` was missing 7 required fields, causing `bunx phil-ai validate` to fail.
+
+**Root Cause**: Template was simplified to only include `name` and `source: "./"`, but the validate command (from feature 001) expects the full marketplace schema with:
+- `description` (marketplace level)
+- `owner` object (name, email, url)
+- `version` (plugin level)
+- `source` as object with `source: "url"` and `url` fields
+- `author` object (name, email)
+- `license` field
+
+**Lesson**: When generating files that will be validated by other commands, the spec should explicitly enumerate ALL required fields, not just reference "pattern from X". The acceptance criteria should have included "generated marketplace.json passes validate command."
+
+**Fix**: Updated `MARKETPLACE_TEMPLATE` and `generateMarketplace()` to include all required fields from plugin manifest.
+
+### Issue #241: Build Command Fails - Missing Format Flag
+
+**Problem**: Generated `package.json` had build script `bun build ./src/index.ts --outdir dist --target bun` which failed with "Missing entrypoints" error.
+
+**Root Cause**: Build script was never actually executed during development. The missing `--format esm` flag only surfaced when running `bun run build` in a real plugin (phil-ai-learning).
+
+**Lesson**: Acceptance criteria should include "user can successfully run `bun run build`" as an explicit test. Template-generated scripts must be tested end-to-end, not just validated for syntax.
+
+**Fix**: Added `--format esm` flag to build command in `PACKAGE_JSON_TEMPLATE`.
+
+### Issue #242: Next Steps Show Wrong Build Command
+
+**Problem**: Success message showed `bun build` (direct bun command) instead of `bun run build` (npm script).
+
+**Root Cause**: Copy-paste error when writing the success message. The command shown didn't match the generated package.json script.
+
+**Lesson**: Success messages that reference generated files should be validated against the actual generated content. Consider extracting script names from package.json template constants rather than hardcoding in messages.
+
+**Fix**: Updated success message in `cli/src/commands/scaffold/index.ts` to show `bun run build`.
+
+### Testing Gap Identified
+
+The original acceptance criteria (User Story 1, scenario 3) stated:
+
+> **Given** a valid Claude Code plugin, **When** scaffold completes, **Then** user can run `bun build` to compile the OpenCode plugin
+
+This was **incorrect** - it should have been `bun run build`. More importantly, this scenario was never actually tested during implementation. The fix PR included end-to-end testing with phil-ai-learning that caught all three issues.
+
+**Recommendation**: Future features should include at least one end-to-end test with a real plugin before marking complete.

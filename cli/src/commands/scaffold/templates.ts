@@ -55,8 +55,10 @@ function parseFrontmatter(content: string): { frontmatter: CommandFrontmatter; b
 
 async function loadCommands(): Promise<ParsedCommand[]> {
   const commands: ParsedCommand[] = [];
-  // Commands are in the parent directory relative to dist/
-  const commandDir = path.join(import.meta.dir, '..', 'commands');
+  const isLocalPlugin = import.meta.dir.includes('.opencode/plugin');
+  const commandDir = isLocalPlugin
+    ? path.join(import.meta.dir, '..', '..', 'commands')
+    : path.join(import.meta.dir, '..', 'commands');
   const glob = new Bun.Glob('**/*.md');
 
   for await (const file of glob.scan({ cwd: commandDir, absolute: true })) {
@@ -125,7 +127,7 @@ export const PACKAGE_JSON_TEMPLATE = `{
     "commands"
   ],
   "scripts": {
-    "build": "bun build ./src/index.ts --outdir dist --target bun",
+    "build": "bun build ./src/index.ts --outdir dist --target bun --format esm",
     "prepublishOnly": "bun run build"
   },
   "dependencies": {
@@ -158,10 +160,26 @@ export const TSCONFIG_TEMPLATE = `{
 
 export const MARKETPLACE_TEMPLATE = `{
   "name": "{{marketplaceName}}",
+  "description": "{{description}}",
+  "owner": {
+    "name": "{{authorName}}",
+    "email": "{{authorEmail}}",
+    "url": "{{repositoryUrl}}"
+  },
   "plugins": [
     {
       "name": "{{pluginName}}",
-      "source": "./"
+      "version": "{{version}}",
+      "description": "{{description}}",
+      "source": {
+        "source": "url",
+        "url": "{{repositoryUrl}}"
+      },
+      "author": {
+        "name": "{{authorName}}",
+        "email": "{{authorEmail}}"
+      },
+      "license": "MIT"
     }
   ]
 }

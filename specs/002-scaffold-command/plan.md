@@ -130,3 +130,29 @@ After plan review:
 3. Generate `contracts/` - CLI interface specification
 4. Generate `quickstart.md` - Developer onboarding guide
 5. Proceed to `/speckit.tasks` for task breakdown
+
+## Post-Implementation Notes (2026-01-13)
+
+### Implementation Completed
+- **PR #237**: Initial implementation (37 tasks, merged)
+- **PR #239**: Bug fixes discovered during real-world testing (3 issues)
+
+### Deviations from Plan
+
+**marketplace.json Schema**: The plan stated "Generate `.claude-plugin/marketplace.json` with `-dev` suffix for local testing" but didn't specify the complete schema. The initial implementation used a minimal template that failed validation. The fix (PR #239) added all required fields:
+- Marketplace level: `description`, `owner` (name, email, url)
+- Plugin level: `version`, `description`, `source` (as object), `author`, `license`
+
+**Build Script**: The plan didn't specify the exact bun build flags. Initial implementation omitted `--format esm`, causing build failures. Fixed in PR #239.
+
+**Testing Gap**: The plan's "Performance Goals: < 5 seconds for typical plugin (SC-004)" was met, but end-to-end testing with a real plugin wasn't performed until after merge. This would have caught all three bugs before initial release.
+
+### Lessons for Future Features
+
+1. **Explicit Schema Requirements**: When generating files validated by other commands, enumerate ALL required fields in the plan, not just reference patterns.
+
+2. **End-to-End Testing**: Include at least one real-world test case (e.g., phil-ai-learning) in the acceptance criteria before marking feature complete.
+
+3. **Generated Script Validation**: Any generated scripts (build, test, etc.) should be executed as part of acceptance testing, not just syntax-validated.
+
+4. **Cross-Command Dependencies**: When one command generates files consumed by another (scaffold → validate), explicitly test the integration in the plan phase.
