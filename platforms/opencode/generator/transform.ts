@@ -1,232 +1,66 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import type { CoreSkill } from "@phil-ai/shared/schemas";
+import { renderMcpJson, renderSkillMd } from "./render.js";
 
-export interface OpenCodeTool {
-	name: string;
-	description: string;
-	parameters: OpenCodeParameter[];
-	category: string;
+export interface McpServerConfig {
+	command: string;
+	args: string[];
 }
 
-export interface OpenCodeParameter {
-	name: string;
-	type: string;
-	description: string;
-	required: boolean;
+export interface McpConfig {
+	mcpServers: Record<string, McpServerConfig>;
 }
 
-export interface OpenCodePlugin {
-	name: string;
-	version: string;
-	description: string;
-	tools: OpenCodeTool[];
+export interface SkillArtifact {
+	skillDir: string;
+	skillMd: string;
+	mcpJson: McpConfig;
 }
 
-export function transformSkillToPlugin(skill: CoreSkill): OpenCodePlugin {
-	const tools = getToolsForSkill(skill);
+export interface TransformOptions {
+	skillNameSuffix?: string;
+	skillDirName?: string;
+	mcpCommand?: string;
+	mcpArgs?: string[];
+}
+
+export async function transformSkillToArtifact(
+	skill: CoreSkill,
+	sourceSkillDir: string,
+	options: TransformOptions = {},
+): Promise<SkillArtifact> {
+	const sourceSkillMd = await readFile(join(sourceSkillDir, "SKILL.md"), "utf-8");
+	const transformedSkill = withSkillNameSuffix(skill, options.skillNameSuffix);
+	const skillDir = options.skillDirName ?? transformedSkill.name;
+	const skillMd = renderSkillMd(transformedSkill, sourceSkillMd);
+	const renderOptions: { mcpCommand?: string; mcpArgs?: string[] } = {};
+
+	if (options.mcpCommand !== undefined) {
+		renderOptions.mcpCommand = options.mcpCommand;
+	}
+	if (options.mcpArgs !== undefined) {
+		renderOptions.mcpArgs = options.mcpArgs;
+	}
+
+	const mcpJson = JSON.parse(
+		renderMcpJson(transformedSkill, renderOptions),
+	) as McpConfig;
 
 	return {
-		name: "phil-ai",
-		version: skill.version,
-		description: skill.description,
-		tools,
+		skillDir,
+		skillMd,
+		mcpJson,
 	};
 }
 
-function getToolsForSkill(skill: CoreSkill): OpenCodeTool[] {
-	switch (skill.category) {
-		case "learning":
-			return [
-				{
-					name: "capture_learning",
-					description: "Capture a new learning",
-					category: "learning",
-					parameters: [
-						{
-							name: "title",
-							type: "string",
-							description: "Learning title",
-							required: true,
-						},
-						{
-							name: "problem",
-							type: "string",
-							description: "Problem description",
-							required: true,
-						},
-						{
-							name: "solution",
-							type: "string",
-							description: "Solution description",
-							required: true,
-						},
-						{
-							name: "level",
-							type: "string",
-							description: "Hierarchy level",
-							required: false,
-						},
-					],
-				},
-				{
-					name: "list_learnings",
-					description: "List captured learnings",
-					category: "learning",
-					parameters: [
-						{
-							name: "status",
-							type: "string",
-							description: "Filter by status",
-							required: false,
-						},
-						{
-							name: "level",
-							type: "string",
-							description: "Filter by level",
-							required: false,
-						},
-					],
-				},
-			];
-		case "docs":
-			return [
-				{
-					name: "write_doc",
-					description: "Write documentation",
-					category: "docs",
-					parameters: [
-						{
-							name: "path",
-							type: "string",
-							description: "Output path",
-							required: true,
-						},
-						{
-							name: "audience",
-							type: "string",
-							description: "Target audience",
-							required: false,
-						},
-						{
-							name: "type",
-							type: "string",
-							description: "Document type",
-							required: false,
-						},
-					],
-				},
-			];
-		case "context":
-			return [
-				{
-					name: "optimize_agents",
-					description: "Optimize AGENTS.md files",
-					category: "context",
-					parameters: [
-						{
-							name: "level",
-							type: "string",
-							description: "Hierarchy level",
-							required: false,
-						},
-						{
-							name: "dry_run",
-							type: "boolean",
-							description: "Preview only",
-							required: false,
-						},
-					],
-				},
-			];
-		case "workflow":
-			return [
-				{
-					name: "work_start",
-					description: "Start new work item",
-					category: "workflow",
-					parameters: [
-						{
-							name: "title",
-							type: "string",
-							description: "Work item title",
-							required: true,
-						},
-						{
-							name: "type",
-							type: "string",
-							description: "Work type",
-							required: false,
-						},
-					],
-				},
-				{
-					name: "work_finish",
-					description: "Finish current work",
-					category: "workflow",
-					parameters: [
-						{
-							name: "commit",
-							type: "boolean",
-							description: "Create commit",
-							required: false,
-						},
-					],
-				},
-			];
-		case "guide":
-			return [
-				{
-					name: "get_guide",
-					description: "Get merged system guide for current project",
-					category: "guide",
-					parameters: [
-						{
-							name: "projectPath",
-							type: "string",
-							description: "Project path",
-							required: true,
-						},
-					],
-				},
-				{
-					name: "list_preferences",
-					description: "List all preferences from system guide",
-					category: "guide",
-					parameters: [
-						{
-							name: "projectPath",
-							type: "string",
-							description: "Project path",
-							required: true,
-						},
-						{
-							name: "type",
-							type: "string",
-							description: "Filter by type (hard/soft)",
-							required: false,
-						},
-					],
-				},
-				{
-					name: "check_preference",
-					description: "Check if a preference is defined",
-					category: "guide",
-					parameters: [
-						{
-							name: "projectPath",
-							type: "string",
-							description: "Project path",
-							required: true,
-						},
-						{
-							name: "preferenceId",
-							type: "string",
-							description: "Preference ID",
-							required: true,
-						},
-					],
-				},
-			];
-		default:
-			return [];
+function withSkillNameSuffix(skill: CoreSkill, suffix?: string): CoreSkill {
+	if (!suffix) {
+		return skill;
 	}
+
+	return {
+		...skill,
+		name: `${skill.name}${suffix}`,
+	};
 }

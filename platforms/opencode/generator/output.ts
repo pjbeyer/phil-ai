@@ -1,93 +1,103 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import type { OpenCodePlugin, OpenCodeTool } from "./transform.js";
+import type { SkillArtifact } from "./transform.js";
 
-const OUTPUT_DIR = "platforms/opencode/output";
+const DEFAULT_OUTPUT_DIR = "platforms/opencode/output";
 
 export async function writePlugin(
-	tools: OpenCodeTool[],
+	skills: SkillArtifact[],
 	version: string,
+	outputDir = DEFAULT_OUTPUT_DIR,
 ): Promise<string> {
-	const pluginDir = OUTPUT_DIR;
+	const pluginDir = outputDir;
 
-	await mkdir(join(pluginDir, "src", "tools"), { recursive: true });
+	await mkdir(join(pluginDir, "src"), { recursive: true });
+	await mkdir(join(pluginDir, "skills"), { recursive: true });
 
 	const packageJson = {
 		name: "@phil-ai/opencode-plugin",
 		version,
+		private: true,
 		type: "module",
 		main: "./src/index.ts",
-		dependencies: {},
+		dependencies: {
+			"@opencode-ai/plugin": "^1.2.20",
+		},
 	};
 
 	await writeFile(
 		join(pluginDir, "package.json"),
-		JSON.stringify(packageJson, null, 2),
+		`${JSON.stringify(packageJson, null, 2)}\n`,
 	);
 
-	const toolsByCategory = groupToolsByCategory(tools);
-
-	for (const [category, categoryTools] of Object.entries(toolsByCategory)) {
-		const toolContent = generateToolFile(category, categoryTools);
+	for (const skill of skills) {
+		const skillDir = join(pluginDir, "skills", skill.skillDir);
+		await mkdir(skillDir, { recursive: true });
 		await writeFile(
-			join(pluginDir, "src", "tools", `${category}.ts`),
-			toolContent,
+			join(skillDir, "SKILL.md"),
+			skill.skillMd,
+		);
+		await writeFile(
+			join(skillDir, "mcp.json"),
+			`${JSON.stringify(skill.mcpJson, null, 2)}\n`,
 		);
 	}
 
-	const indexContent = generateIndexFile(Object.keys(toolsByCategory));
+	const indexContent = generatePluginEntryPoint();
 	await writeFile(join(pluginDir, "src", "index.ts"), indexContent);
 
 	return pluginDir;
 }
 
-function groupToolsByCategory(
-	tools: OpenCodeTool[],
-): Record<string, OpenCodeTool[]> {
-	const grouped: Record<string, OpenCodeTool[]> = {};
+function generatePluginEntryPoint(): string {
+	return `import type { Plugin } from "@opencode-ai/plugin";
+import { cp, mkdir, readdir } from "node:fs/promises";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-	for (const tool of tools) {
-		if (!grouped[tool.category]) {
-			grouped[tool.category] = [];
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const SKILLS_DIR = join(__dirname, "..", "skills");
+const PLUGIN_NAME = "phil-ai";
+
+async function installSkills(targetDir: string): Promise<string[]> {
+	await mkdir(targetDir, { recursive: true });
+	const entries = await readdir(SKILLS_DIR, { withFileTypes: true });
+	const installedSkills: string[] = [];
+
+	for (const entry of entries) {
+		if (!entry.isDirectory()) {
+			continue;
 		}
-		grouped[tool.category]!.push(tool);
+
+		const source = join(SKILLS_DIR, entry.name);
+		const destination = join(targetDir, entry.name);
+		await cp(source, destination, { recursive: true, force: true });
+		installedSkills.push(entry.name);
 	}
 
-	return grouped;
+	return installedSkills;
 }
 
-function generateToolFile(category: string, tools: OpenCodeTool[]): string {
-	const toolDefs = tools
-		.map(
-			(t) => `export const ${t.name} = {
-	name: "${t.name}",
-	description: "${t.description}",
-	parameters: ${JSON.stringify(t.parameters, null, 2)},
-	execute: async (params: Record<string, unknown>) => {
-		return { success: true, message: "${t.name} executed" };
-	},
-};`,
-		)
-		.join("\n\n");
+const plugin: Plugin = async (input) => {
+	const targetDir = join(input.directory, "..", "skills");
+	const installedSkills = await installSkills(targetDir);
 
-	return `${toolDefs}\n\nexport const ${category}Tools = [${tools.map((t) => t.name).join(", ")}];\n`;
-}
-
-function generateIndexFile(categories: string[]): string {
-	const imports = categories
-		.map((c) => `import { ${c}Tools } from "./tools/${c}.js";`)
-		.join("\n");
-
-	const exports = categories.map((c) => `...${c}Tools`).join(", ");
-
-	return `${imports}
-
-export const tools = [${exports}];
-
-export default {
-	name: "phil-ai",
-	version: "0.1.0",
-	tools,
+	return {
+		async config(config) {
+			config.skill = config.skill ?? {};
+			for (const skillName of installedSkills) {
+				config.skill[skillName] = {
+					path: join(targetDir, skillName, "SKILL.md"),
+				};
+			}
+		},
+		metadata: {
+			name: PLUGIN_NAME,
+			installedSkills,
+		},
+	};
 };
+
+export default plugin;
 `;
 }
