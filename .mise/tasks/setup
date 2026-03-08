@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Install all workspace dependencies
+bun install
+echo "Setup complete"

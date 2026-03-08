@@ -1,0 +1,5 @@
+# Generated dev plugin files — do not commit
+phil-ai-dev.ts
+phil-ai-dev.js
+package.json
+node_modules/

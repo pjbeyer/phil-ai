@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Build MCP server
+bun build ./mcp/src/server.ts --outdir ./mcp/dist --target bun
+# Generate production OpenCode plugin
+bun run platforms/opencode/generator/index.ts
+echo "Build complete: platforms/opencode/output/"

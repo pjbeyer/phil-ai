@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+PHIL_AI_ROOT="${PHIL_AI_ROOT:-$(pwd)}"
+
+# Build MCP server first
+bun build ./mcp/src/server.ts --outdir ./mcp/dist --target bun
+
+# Generate dev variant
+bun run platforms/opencode/generator/index.ts --dev
+
+echo "Dev build complete"
+echo "Dev plugin: .opencode/plugins/phil-ai-dev.ts"
+echo "Dev skills: .opencode/skills/*-dev/"
+echo ""
+echo "Restart OpenCode to load the dev version."
+echo "Both /phil-ai:* (published) and /phil-ai-dev:* (dev) will be available."

@@ -1,0 +1,5 @@
+[tools]
+bun = "latest"
+
+[env]
+PHIL_AI_ROOT = "{{config_root}}"

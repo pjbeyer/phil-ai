@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Build dev variant and remind to restart
+mise run build-dev
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Dev build ready. Start a new OpenCode session"
+echo "  in this directory to load phil-ai-dev."
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

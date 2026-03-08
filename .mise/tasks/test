@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+echo "Running all tests..."
+
+# Unit tests
+echo "=== Unit Tests ==="
+bun test
+
+# Static validation (if script exists)
+if [ -f "tests/validate-plugin.sh" ]; then
+  echo "=== Static Validation ==="
+  bash tests/validate-plugin.sh
+fi
+
+# Headless tests (opt-in via env var)
+if [ "${RUN_HEADLESS_TESTS:-}" = "true" ]; then
+  echo "=== Headless Tests ==="
+  bun test tests/integration/opencode/
+fi
+
+echo "All tests complete"
