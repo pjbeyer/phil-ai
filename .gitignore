@@ -40,3 +40,7 @@ platforms/*/output/
 *.tmp
 *.temp
 .cache/
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
