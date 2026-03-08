@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "=== Headless Integration Tests ==="
+echo ""
+echo "These tests make REAL API calls and cost money."
+echo "Model: anthropic/claude-sonnet-4-6"
+echo ""
+
+echo "Building dev plugin..."
+mise run build-dev
+
+echo ""
+echo "Running headless tests..."
+RUN_HEADLESS_TESTS=true bun test tests/integration/opencode/ --timeout 120000
+
+echo ""
+echo "Headless tests complete."
