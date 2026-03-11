@@ -21,7 +21,7 @@ phil-ai/
 
 | Package | Path | Purpose |
 |---------|------|---------|
-| `@phil-ai/cli` | `cli/` | CLI commands: install, status, update, sync, generate, validate, scaffold, guide |
+| `@phil-ai/cli` | `cli/` | CLI commands: install, status, generate, validate, scaffold, guide |
 | `@phil-ai/shared` | `shared/` | Zod schemas, file-locked storage, semver utilities |
 | `@phil-ai/mcp` | `mcp/` | MCP server with stdio transport |
 | `@phil-ai/platform-claude-code` | `platforms/claude-code/` | Plugin generator for Claude Code |

@@ -76,6 +76,23 @@ Work tracking, git integration, and workflow management.
 - `/work-resume` - Resume previous work
 
 **Repository**: https://github.com/pjbeyer/phil-ai-workflow
+### phil-ai-guide
+
+System Guide for user preferences and workflow patterns.
+
+**Features**:
+- Hierarchical GUIDE.md files (global/profile/project)
+- Preference management and validation
+- Cross-platform consistency across AI assistants
+- Automated guide initialization and maintenance
+
+**Commands**:
+- `/guide init` - Initialize a new guide file
+- `/guide show` - Show current preferences and rules
+- `/guide validate` - Validate guide files against schema
+
+**Repository**: https://github.com/pjbeyer/phil-ai-guide
+
 
 ## Installation
 
@@ -90,16 +107,21 @@ Work tracking, git integration, and workflow management.
 /plugin install phil-ai-docs@phil-ai
 /plugin install phil-ai-context@phil-ai
 /plugin install phil-ai-workflow@phil-ai
+/plugin install phil-ai-guide@phil-ai
 ```
 
 ### OpenCode
 
 ```bash
-# Install phil-ai system
-bunx phil-ai install
+# Add the phil-ai registry
+ocx registry add pjbeyer/phil-ai
 
-# Or install specific capabilities
-bunx phil-ai install --skills=learning,docs
+# Install individual skills
+ocx add phil-ai/learning
+ocx add phil-ai/docs
+ocx add phil-ai/context
+ocx add phil-ai/workflow
+ocx add phil-ai/guide
 ```
 
 ## Architecture
@@ -108,6 +130,7 @@ This monorepo generates the unified OpenCode plugin and coordinates skill defini
 
 ```
 phil-ai/
+├── registry.jsonc          # OCX registry for OpenCode distribution
 ├── cli/                    # CLI for installation & management
 ├── mcp/                    # Model Context Protocol server
 ├── shared/                 # Schemas, storage, versioning utilities
@@ -123,7 +146,7 @@ phil-ai/
 | Platform | Source | Installation |
 |----------|--------|--------------|
 | Claude Code | Individual repos | `/plugin install` from marketplace |
-| OpenCode | This monorepo | `bunx phil-ai install` |
+| OpenCode | This monorepo | `ocx add` from registry |
 
 The individual repos (phil-ai-learning, etc.) remain the source of truth for Claude Code compatibility. This repo generates the unified OpenCode plugin and provides the CLI/MCP infrastructure.
 
@@ -132,8 +155,6 @@ The individual repos (phil-ai-learning, etc.) remain the source of truth for Cla
 ```bash
 bunx phil-ai install              # First-time installation
 bunx phil-ai status               # Check system health
-bunx phil-ai update               # Update components
-bunx phil-ai sync                 # Sync state across platforms
 bunx phil-ai generate             # Generate platform plugins
 bunx phil-ai validate             # Validate marketplace or plugin
 bunx phil-ai scaffold             # Add OpenCode scaffolding to Claude Code plugin
