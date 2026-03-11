@@ -181,6 +181,75 @@ for skill in "${SKILLS[@]}"; do
   fi
 done
 
+# ── Section 4: Registry Manifest ──
+echo ""
+echo "── Registry Manifest ──"
+
+# Check registry.jsonc exists
+if [ -f "$PROJECT_ROOT/registry.jsonc" ]; then
+	pass "registry.jsonc exists"
+	
+	# Check valid JSON
+	if bun -e "JSON.parse(require('fs').readFileSync('$PROJECT_ROOT/registry.jsonc','utf-8'))" 2>/dev/null; then
+		pass "registry.jsonc is valid JSON"
+	else
+		fail "registry.jsonc is not valid JSON"
+	fi
+	
+	# Check required fields
+	if grep -q '"name"' "$PROJECT_ROOT/registry.jsonc"; then
+		pass "registry.jsonc has name field"
+	else
+		fail "registry.jsonc missing name field"
+	fi
+	
+	if grep -q '"version"' "$PROJECT_ROOT/registry.jsonc"; then
+		pass "registry.jsonc has version field"
+	else
+		fail "registry.jsonc missing version field"
+	fi
+	
+	if grep -q '"author"' "$PROJECT_ROOT/registry.jsonc"; then
+		pass "registry.jsonc has author field"
+	else
+		fail "registry.jsonc missing author field"
+	fi
+	
+	if grep -q '"components"' "$PROJECT_ROOT/registry.jsonc"; then
+		pass "registry.jsonc has components field"
+	else
+		fail "registry.jsonc missing components field"
+	fi
+	
+	# Check component count
+	COMPONENT_COUNT=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('$PROJECT_ROOT/registry.jsonc','utf-8')).components.length)" 2>/dev/null || echo "0")
+	if [ "$COMPONENT_COUNT" -eq 5 ]; then
+		pass "registry.jsonc has 5 components"
+	else
+		fail "registry.jsonc has $COMPONENT_COUNT components (expected 5)"
+	fi
+	
+	# Check each component has required fields
+	for i in {0..4}; do
+		COMP_NAME=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('$PROJECT_ROOT/registry.jsonc','utf-8')).components[$i].name)" 2>/dev/null || echo "")
+		if [ -n "$COMP_NAME" ]; then
+			if grep -q "\"name\": \"$COMP_NAME\"" "$PROJECT_ROOT/registry.jsonc"; then
+				pass "Component $i has name field"
+			else
+				fail "Component $i missing name field"
+			fi
+			
+			if bun -e "const c = JSON.parse(require('fs').readFileSync('$PROJECT_ROOT/registry.jsonc','utf-8')).components[$i]; console.log(c.type && c.description && c.files ? 'ok' : 'fail')" 2>/dev/null | grep -q 'ok'; then
+				pass "Component $i has type, description, and files"
+			else
+				fail "Component $i missing type, description, or files"
+			fi
+		fi
+	done
+else
+	fail "registry.jsonc does not exist"
+fi
+
 # ── Summary ──
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
