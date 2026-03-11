@@ -61,13 +61,13 @@ Enable dual-distribution: users install phil-ai plugins via Claude Code marketpl
 - Updated README with both installation methods
 
 ### Definition of Done
-- [ ] `bun run generate` produces registry.jsonc at repo root
-- [ ] registry.jsonc lists 5 skills with valid file paths
-- [ ] `phil-ai validate registry.jsonc` passes
-- [ ] `bunx phil-ai --help` does NOT list update or sync
-- [ ] README documents both Claude Code and OpenCode installation
-- [ ] `bun test` passes with all existing + new tests
-- [ ] All 5 bd issues closeable (pai-yqy, pai-745, pai-t7p, pai-d5o, pai-tez)
+- [x] `bun run generate` produces registry.jsonc at repo root
+- [x] registry.jsonc lists 5 skills with valid file paths
+- [x] `phil-ai validate registry.jsonc` passes
+- [x] `bunx phil-ai --help` does NOT list update or sync
+- [x] README documents both Claude Code and OpenCode installation
+- [x] `bun test` passes with all existing + new tests
+- [x] All 5 bd issues closeable (pai-yqy, pai-745, pai-t7p, pai-d5o, pai-tez)
 
 ### Must Have
 - registry.jsonc with `$schema` field pointing to OCX v2 schema
@@ -158,7 +158,7 @@ Max Concurrent: 2 (Waves 1 & 2)
 > Implementation + Test = ONE Task. Never separate.
 > EVERY task MUST have: Recommended Agent Profile + Parallelization info + QA Scenarios.
 
-- [ ] 1. Add registry.jsonc generation to OpenCode generator (pai-yqy)
+- [x] 1. Add registry.jsonc generation to OpenCode generator (pai-yqy)
 
   **What to do**:
   - Create new file `platforms/opencode/generator/registry.ts` with `generateRegistry()` function
@@ -275,7 +275,7 @@ Max Concurrent: 2 (Waves 1 & 2)
   - Files: `platforms/opencode/generator/registry.ts`, `platforms/opencode/generator/index.ts`, `tests/unit/generator/registry.test.ts`, `registry.jsonc`
   - Pre-commit: `bun test`
 
-- [ ] 2. Remove obsolete CLI distribution commands (pai-745)
+- [x] 2. Remove obsolete CLI distribution commands (pai-745)
 
   **What to do**:
   - Delete entire directory `cli/src/commands/update/` (3 files: index.ts, backup.ts, migrate.ts)
@@ -409,7 +409,7 @@ Max Concurrent: 2 (Waves 1 & 2)
   - Pre-commit: `bun test`
 
 
-- [ ] 3. Add registry.jsonc validation to validate command (pai-t7p)
+- [x] 3. Add registry.jsonc validation to validate command (pai-t7p)
 
   **What to do**:
   - Add new Zod schemas to `cli/src/commands/validate/index.ts`:
@@ -533,7 +533,7 @@ Max Concurrent: 2 (Waves 1 & 2)
   - Files: `cli/src/commands/validate/index.ts`, `tests/validate-plugin.sh`
   - Pre-commit: `bun test`
 
-- [ ] 4. Update documentation for dual-distribution (pai-d5o)
+- [x] 4. Update documentation for dual-distribution (pai-d5o)
 
   **What to do**:
   - Update `README.md`:
@@ -654,19 +654,19 @@ Max Concurrent: 2 (Waves 1 & 2)
 
 > 4 review agents run in PARALLEL. ALL must APPROVE. Rejection → fix → re-run.
 
-- [ ] F1. **Plan Compliance Audit** — `oracle`
+- [x] F1. **Plan Compliance Audit** — `oracle`
   Read the plan end-to-end. For each "Must Have": verify implementation exists (read file, run command). For each "Must NOT Have": search codebase for forbidden patterns — reject with file:line if found. Check evidence files exist in .sisyphus/evidence/. Compare deliverables against plan.
   Output: `Must Have [N/N] | Must NOT Have [N/N] | Tasks [N/N] | VERDICT: APPROVE/REJECT`
 
-- [ ] F2. **Code Quality Review** — `unspecified-high`
+- [x] F2. **Code Quality Review** — `unspecified-high`
   Run `bun test` + `bun run lint`. Review all changed files for: `as any`/`@ts-ignore`, empty catches, console.log in prod, commented-out code, unused imports. Check AI slop: excessive comments, over-abstraction, generic names.
   Output: `Build [PASS/FAIL] | Lint [PASS/FAIL] | Tests [N pass/N fail] | Files [N clean/N issues] | VERDICT`
 
-- [ ] F3. **Real Manual QA** — `unspecified-high`
+- [x] F3. **Real Manual QA** — `unspecified-high`
   Start from clean state. Run `bun run generate` — verify registry.jsonc exists with correct content. Run `bunx phil-ai validate registry.jsonc` — verify passes. Run `bunx phil-ai --help` — verify update/sync absent. Run `bunx phil-ai validate .claude-plugin/marketplace.json` — verify still works. Check README for correct installation instructions.
   Output: `Scenarios [N/N pass] | Integration [N/N] | Edge Cases [N tested] | VERDICT`
 
-- [ ] F4. **Scope Fidelity Check** — `deep`
+- [x] F4. **Scope Fidelity Check** — `deep`
   For each task: read "What to do", read actual diff. Verify 1:1 — everything in spec was built, nothing beyond spec was built. Check "Must NOT do" compliance. Detect cross-task contamination. Flag unaccounted changes.
   Output: `Tasks [N/N compliant] | Contamination [CLEAN/N issues] | Unaccounted [CLEAN/N files] | VERDICT`
 
@@ -697,7 +697,7 @@ bun run lint                                        # Expected: no errors
 ```
 
 ### Final Checklist
-- [ ] All "Must Have" present
-- [ ] All "Must NOT Have" absent
-- [ ] All tests pass
-- [ ] All 5 bd issues closeable
+- [x] All "Must Have" present
+- [x] All "Must NOT Have" absent
+- [x] All tests pass
+- [x] All 5 bd issues closeable
