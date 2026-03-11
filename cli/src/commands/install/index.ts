@@ -3,8 +3,6 @@ import { getBoolFlag, getStringFlag } from "../../lib/args.js";
 import { bold, green, info, success } from "../../lib/output.js";
 import { setupConfig } from "./config.js";
 import { setupDirectories } from "./directories.js";
-import { registerClaudeCode } from "./platforms/claude-code.js";
-import { registerOpenCode } from "./platforms/opencode.js";
 import { assertPrerequisites, checkPrerequisites } from "./prerequisites.js";
 import { setupVersion } from "./version.js";
 
@@ -57,15 +55,6 @@ export async function runInstall(args: ParsedArgs): Promise<void> {
 	await setupVersion(options.dryRun, options.force);
 	console.log();
 
-	if (options.platforms.includes("claude-code")) {
-		info("Registering Claude Code...");
-		await registerClaudeCode(options.dryRun);
-	}
-
-	if (options.platforms.includes("opencode")) {
-		info("Registering OpenCode...");
-		await registerOpenCode(options.dryRun);
-	}
 
 	console.log();
 	if (!options.dryRun) {

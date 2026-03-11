@@ -1,0 +1,40 @@
+bun test v1.3.10 (30e609e0)
+-----------------------------------------------------|---------|---------|-------------------
+File                                                 | % Funcs | % Lines | Uncovered Line #s
+-----------------------------------------------------|---------|---------|-------------------
+All files                                            |   58.08 |   68.65 |
+ platforms/opencode/generator/output-dev.ts          |  100.00 |  100.00 | 
+ platforms/opencode/generator/output.ts              |  100.00 |  100.00 | 
+ platforms/opencode/generator/registry.ts            |  100.00 |  100.00 | 
+ platforms/opencode/generator/render.ts              |   66.67 |   84.38 | 3-7
+ platforms/opencode/generator/transform.ts           |  100.00 |  100.00 | 
+ platforms/opencode/generator/validate.ts            |   88.24 |   78.74 | 56,58-63,77,84-85,100,103,112-113,124-125,130,136-137,148-149,163-164,172-173,185-186
+ shared/src/schemas/base.ts                          |  100.00 |  100.00 | 
+ shared/src/schemas/config.ts                        |  100.00 |  100.00 | 
+ shared/src/schemas/guide.ts                         |    0.00 |   59.21 | 166-176,183-191,198-207
+ shared/src/schemas/index.ts                         |  100.00 |  100.00 | 
+ shared/src/schemas/plugin.ts                        |  100.00 |  100.00 | 
+ shared/src/schemas/skill.ts                         |  100.00 |  100.00 | 
+ shared/src/schemas/state.ts                         |    0.00 |   85.71 | 64-71
+ shared/src/schemas/version.ts                       |    0.00 |   52.38 | 32-51
+ shared/src/storage/directories.ts                   |    0.00 |   26.56 | 9,13,17,30-38,49-55,59,63-71,75-78,82-83,87-91,96-100,105-106
+ shared/src/storage/index.ts                         |  100.00 |  100.00 | 
+ shared/src/storage/json.ts                          |    0.00 |   10.00 | 15-34,38-57,62-66
+ shared/src/storage/lock.ts                          |  100.00 |   94.12 | 47-48
+ shared/src/storage/yaml.ts                          |    0.00 |   12.24 | 15-34,38-55,60-64
+ shared/src/version/compatibility.ts                 |  100.00 |   73.08 | 29-32,38-39,41-53,81
+ shared/src/version/index.ts                         |  100.00 |  100.00 | 
+ shared/src/version/manifest.ts                      |    0.00 |   12.96 | 10-11,15-18,22-26,30-34,38-68
+ shared/src/version/semver.ts                        |   71.43 |   92.19 | 28,45,63,67
+ tests/integration/opencode/assertions.ts            |    0.00 |   19.05 | 4-5,9-17,21-22,26-32,36-37,41-42,46,50-58
+ tests/integration/opencode/config.ts                |  100.00 |  100.00 | 
+ tests/integration/opencode/runner.ts                |    0.00 |    3.82 | 56-162,166-209
+ tests/integration/opencode/transcript-assertions.ts |    0.00 |   15.38 | 5-9,13-23,27-32,36-40,44-49
+ tests/integration/opencode/transcript.ts            |    0.00 |    2.26 | 53-75,79-124,128-132,136-139,143-147,151-152,156-157,161-174,178-184,188,192-211
+-----------------------------------------------------|---------|---------|-------------------
+
+ 69 pass
+ 14 skip
+ 0 fail
+ 141 expect() calls
+Ran 83 tests across 20 files. [99.00ms]

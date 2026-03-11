@@ -1,0 +1,8 @@
+Processed: guide
+Processed: context
+Processed: learning
+Processed: docs
+Processed: workflow
+OpenCode plugin generated at /Users/pjbeyer/Projects/pjbeyer/phil-ai/platforms/opencode/output
+
+Generated OpenCode plugin with 5 skills

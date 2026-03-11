@@ -10,8 +10,6 @@ Phil-AI provides a command-line interface for managing the cross-platform AI plu
 |---------|---------|
 | `install` | Install or update phil-ai system components |
 | `status` | Check system health and component versions |
-| `update` | Update system to the latest versions |
-| `sync` | Synchronize state across platforms |
 | `generate` | Generate platform-specific plugin indices |
 | `validate` | Validate marketplace or plugin structures |
 
@@ -87,53 +85,7 @@ bunx phil-ai status --verbose
 
 ---
 
-## update
 
-Update phil-ai components to the latest versions with automatic backup and migration.
-
-### Syntax
-```bash
-bunx phil-ai update [options]
-```
-
-### Options
-| Flag | Type | Default | Description |
-|------|------|---------|-------------|
-| `--check` | boolean | false | Check for updates without installing |
-| `--force` | boolean | false | Update even if current version is latest |
-
-### Exit Codes
-| Code | Meaning |
-|------|---------|
-| 0 | Success (or no updates available) |
-| 1 | Update failed |
-| 2 | Migration failed (rolled back) |
-
----
-
-## sync
-
-Synchronize learning and state across platforms (Claude Code and OpenCode).
-
-### Syntax
-```bash
-bunx phil-ai sync [options]
-```
-
-### Options
-| Flag | Type | Default | Description |
-|------|------|---------|-------------|
-| `--direction` | string | both | Sync direction: `push`, `pull`, `both` |
-| `--dry-run` | boolean | false | Show what would be synchronized |
-
-### Exit Codes
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | Sync failed |
-| 2 | Lock timeout (state file in use) |
-
----
 
 ## generate
 

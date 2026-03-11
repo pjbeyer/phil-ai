@@ -4,8 +4,6 @@ import { runGuide } from "./commands/guide/index.js";
 import { runInstall } from "./commands/install/index.js";
 import { runScaffold } from "./commands/scaffold/index.js";
 import { runStatus } from "./commands/status/index.js";
-import { runSync } from "./commands/sync/index.js";
-import { runUpdate } from "./commands/update/index.js";
 import { runValidate } from "./commands/validate/index.js";
 import { parseArgs } from "./lib/args.js";
 import { handleError } from "./lib/errors.js";
@@ -23,8 +21,6 @@ ${bold("Usage:")}
 ${bold("Commands:")}
   install     Install phil-ai system
   status      Check system health
-  update      Update phil-ai components
-  sync        Sync state across platforms
   generate    Generate platform plugins
   validate    Validate marketplace or plugin structure
   scaffold    Add OpenCode scaffolding to a Claude Code plugin
@@ -75,13 +71,6 @@ async function main(): Promise<void> {
 			await runStatus(args);
 			break;
 
-		case "update":
-			await runUpdate(args);
-			break;
-
-		case "sync":
-			await runSync(args);
-			break;
 
 		case "generate":
 			await runGenerate(args);

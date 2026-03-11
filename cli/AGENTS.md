@@ -25,8 +25,6 @@ cli/src/
 │   │   ├── render.ts     # Template substitution
 │   │   ├── utils.ts      # toPascalCase utility
 │   │   └── validate.ts   # Plugin directory validation
-│   ├── sync/         # Sync local changes upstream
-│   ├── update/       # Update with backup/migration
 │   └── validate/     # Validate marketplace or plugin
 ├── lib/
 │   ├── args.ts       # Argument parsing utilities
@@ -42,8 +40,6 @@ cli/src/
 |---------|-------------|-----------|
 | `install` | First-time setup with platform detection | `install/index.ts`, `install/platforms/*.ts` |
 | `status` | Health checks with fix suggestions | `status/index.ts`, `status/checks/*.ts` |
-| `update` | Update with automatic backup | `update/index.ts`, `update/backup.ts` |
-| `sync` | Sync customizations upstream | `sync/index.ts` |
 | `generate` | Generate platform-specific plugins | `generate/index.ts` |
 | `validate` | Validate marketplace or plugin structure | `validate/index.ts` |
 | `scaffold` | Add OpenCode scaffolding to Claude Code plugin | `scaffold/index.ts`, `scaffold/*.ts` |
