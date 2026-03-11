@@ -1,0 +1,7 @@
+
+[1mPhil-AI Validate[0m
+
+[34mi[0m Validating registry: registry.jsonc
+
+[32m✓[0m Validation passed
+

@@ -1,0 +1,12 @@
+
+[1mPhil-AI Validate[0m
+
+[34mi[0m Validating registry: /tmp/bad-registry.jsonc
+
+[31m✗[0m Validation failed
+
+[1mErrors:[0m
+  [2m-[0m version: Required
+  [2m-[0m author: Required
+  [2m-[0m components: Required
+

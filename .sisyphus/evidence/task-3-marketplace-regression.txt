@@ -1,0 +1,7 @@
+
+[1mPhil-AI Validate[0m
+
+[34mi[0m Validating marketplace: .claude-plugin/marketplace.json
+
+[32m✓[0m Validation passed
+

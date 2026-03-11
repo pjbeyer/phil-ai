@@ -28,3 +28,12 @@
 - Wave 1: Task 1 (registry generation) + Task 2 (CLI cleanup) — PARALLEL
 - Wave 2: Task 3 (validate command) + Task 4 (docs) — PARALLEL, after Wave 1
 - Final: F1-F4 review agents — PARALLEL, after Wave 2
+
+## [2026-03-10] Documentation Update
+- Updated README.md to reflect dual-distribution (Claude Code and OpenCode).
+- Added `phil-ai-guide` plugin to the Plugins section.
+- Replaced Installation section with `ocx` instructions for OpenCode.
+- Removed stale `update` and `sync` CLI commands from README.md and AGENTS.md.
+- Added `registry.jsonc` to the Architecture file tree in README.md.
+- Updated Platform Strategy table to show `ocx add` from registry for OpenCode.
+- Verified changes with `grep` and saved evidence to `.sisyphus/evidence/`.
