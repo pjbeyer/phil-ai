@@ -6,6 +6,7 @@ import { writeDevPlugin } from "./output-dev.js";
 import { writePlugin } from "./output.js";
 import { type SkillArtifact, transformSkillToArtifact } from "./transform.js";
 import { validateGeneratedOutput } from "./validate.js";
+import { generateRegistry } from "./registry.js";
 
 const ROOT_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 const SKILLS_DIR = join(ROOT_DIR, "core", "skills");
@@ -33,6 +34,7 @@ export async function generateAll(): Promise<SkillArtifact[]> {
 	}
 
 	const outputDir = await writePlugin(skillArtifacts, "0.1.0", PROD_OUTPUT_DIR);
+	await generateRegistry(loadedSkills, join(ROOT_DIR, "registry.jsonc"));
 	const validation = await validateGeneratedOutput(outputDir, {
 		expectedSkillDirs: skillArtifacts.map((artifact) => artifact.skillDir),
 		pluginEntryPath: join(outputDir, "src", "index.ts"),

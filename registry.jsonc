@@ -1,0 +1,53 @@
+{
+	"$schema": "https://ocx.kdco.dev/schemas/v2/registry.json",
+	"name": "phil-ai",
+	"version": "1.0.0",
+	"author": "pjbeyer",
+	"components": [
+		{
+			"name": "guide",
+			"type": "skill",
+			"description": "System Guide for user preferences and workflow patterns",
+			"files": [
+				"platforms/opencode/output/skills/guide/SKILL.md",
+				"platforms/opencode/output/skills/guide/mcp.json"
+			]
+		},
+		{
+			"name": "context",
+			"type": "skill",
+			"description": "Optimize AGENTS.md files, manage MCP configuration, and load context efficiently",
+			"files": [
+				"platforms/opencode/output/skills/context/SKILL.md",
+				"platforms/opencode/output/skills/context/mcp.json"
+			]
+		},
+		{
+			"name": "learning",
+			"type": "skill",
+			"description": "Capture and implement learnings with hierarchical storage and closed-loop tracking",
+			"files": [
+				"platforms/opencode/output/skills/learning/SKILL.md",
+				"platforms/opencode/output/skills/learning/mcp.json"
+			]
+		},
+		{
+			"name": "docs",
+			"type": "skill",
+			"description": "Hierarchical documentation with audience optimization and multi-platform publishing",
+			"files": [
+				"platforms/opencode/output/skills/docs/SKILL.md",
+				"platforms/opencode/output/skills/docs/mcp.json"
+			]
+		},
+		{
+			"name": "workflow",
+			"type": "skill",
+			"description": "Work tracking, git integration, and workflow management",
+			"files": [
+				"platforms/opencode/output/skills/workflow/SKILL.md",
+				"platforms/opencode/output/skills/workflow/mcp.json"
+			]
+		}
+	]
+}
