@@ -105,6 +105,11 @@ Tests use:
   - **Post-implementation fixes (PR #239)**: Fixed marketplace.json schema (added 7 required fields), build script (added --format esm), and success message (bun run build)
   - **Lesson**: Template-generated files that are validated by other commands must include ALL required fields explicitly. End-to-end testing with real plugins catches integration issues.
 - 003-system-guide: Hierarchical user preference system with GUIDE.md files, CLI commands (guide init/show/validate), and MCP tools (get_guide, list_preferences, check_preference)
+- 004-unified-distribution-hub: Dual-distribution via Claude Code marketplace AND OpenCode OCX registry
+  - `registry.jsonc` generated at repo root by `bun run generate` (platforms/opencode/generator/registry.ts)
+  - `phil-ai validate registry.jsonc` validates OCX registry format (RegistrySchema in validate/index.ts)
+  - Obsolete CLI commands (update, sync) and platform registration stubs removed
+  - README updated with both installation methods: `/plugin install` (Claude Code) and `ocx add` (OpenCode)
 
 
 <!-- MANUAL ADDITIONS START -->
