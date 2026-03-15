@@ -1,0 +1,21 @@
+Task: T10 (pai-ajq) - Drift Detection & Cleanup Sweep
+Date: 2026-03-14
+
+Implemented files:
+- shared/src/drift/types.ts
+- shared/src/drift/sweep.ts
+- shared/src/drift/index.ts
+- shared/src/drift/detectors/stale-work-items.ts
+- shared/src/drift/detectors/orphaned-storage.ts
+- shared/src/drift/detectors/schema-staleness.ts
+- shared/src/drift/detectors/unclosed-learnings.ts
+- shared/src/drift/detectors/unused-skills.ts
+- shared/src/drift/detectors/stale-documentation.ts
+- shared/src/drift/detectors/context-divergence.ts
+- shared/src/drift/detectors/guide-violations.ts
+- shared/src/index.ts (barrel export)
+
+Verification:
+- LSP diagnostics: clean on changed files
+- Command: bun run build
+- Result: success (all workspace packages built)

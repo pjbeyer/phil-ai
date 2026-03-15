@@ -1,0 +1,16 @@
+{
+  "valid": [
+    {
+      "name": "valid-system",
+      "type": "custom",
+      "role": "maintainer",
+      "context": "work",
+      "adapter": "custom",
+      "isolation": "open",
+      "enabled": true
+    }
+  ],
+  "errors": [
+    "Entry 0: type: Required; role: Required; context: Required; adapter: Required"
+  ]
+}

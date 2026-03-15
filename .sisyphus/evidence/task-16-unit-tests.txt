@@ -1,0 +1,62 @@
+QA Evidence: T16 - Unit Tests for Ingestion, Gates & Adapters
+=============================================================
+Date: 2026-03-14
+Task: pai-jxw (T16)
+
+## Files Created
+
+1. tests/unit/ingestion/workflow-events.test.ts (149 lines, 10 tests)
+   - parseWorkflowJsonl with real JSONL date format (YYYY-MM-DD HH:MM:SS)
+   - Date conversion to ISO 8601
+   - work_finished without type field
+   - Malformed JSON handling (throws)
+   - Missing required fields (throws)
+   - Invalid work type (throws)
+   - All valid work types (feature, bug, chore, refactor)
+   - UUID generation
+   - ISO 8601 output validation
+
+2. tests/unit/ingestion/learning-events.test.ts (61 lines, 5 tests)
+   - Empty/non-existent learnings directory returns []
+   - SystemEvent array type validation
+   - Date range filter options
+   - Empty options object
+   - Undefined options
+
+3. tests/unit/gates/gate-system.test.ts (459 lines, 25 tests)
+   - GateRunner: register, evaluate, evaluateGate, getRegisteredGates
+   - Duplicate registration throws
+   - Non-existent gate throws
+   - work-start-validation: valid title passes, empty/undefined/whitespace fails
+   - work-start-validation: invalid type fails, all valid types pass, undefined type passes
+   - work-finish-completeness: in-progress passes, open/undefined/completed fails
+   - state-transition-validity: 4 valid transitions pass (open→in-progress, in-progress→completed, in-progress→blocked, blocked→in-progress)
+   - state-transition-validity: 3 invalid transitions fail (open→completed, open→blocked, completed→open)
+   - state-transition-validity: missing currentState/targetState/both fails
+
+4. tests/unit/adapters/git.test.ts (190 lines, 15 tests)
+   - getActiveBranches: returns array, sorted, includes main, empty for non-existent dir
+   - getActiveBranches: multiple dirs, empty input, deduplication
+   - getBranchAge: non-negative for main, 0 for non-existent branch/dir, integer value
+   - isMerged: boolean return, main merged into itself, false for non-existent
+   - getRecentCommits: returns commits, validates fields, handles non-existent
+
+## Test Results
+
+62 pass, 0 fail, 124 expect() calls
+Ran across 4 files in 858ms
+
+## LSP Diagnostics
+
+All 4 test files: 0 errors
+
+## Conventions Followed
+
+- Import from @phil-ai/shared (main entry)
+- Import { describe, expect, test } from "bun:test"
+- Real JSONL format fixtures with YYYY-MM-DD HH:MM:SS dates
+- No as any, @ts-ignore, or empty catch blocks
+- No source files modified
+- Used current repo for git adapter tests (no mocks needed)
+- TestGateContext local interface (GateContext type not exported from @phil-ai/shared)
+- All 3 built-in gates covered

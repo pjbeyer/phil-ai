@@ -1,0 +1,34 @@
+Task: T20 (pai-k8q) - Notion Sync data flow module
+Timestamp (UTC): 2026-03-15T01:31:08Z
+
+Implemented files:
+- shared/src/sync/notion.ts
+- shared/src/sync/index.ts
+- shared/src/index.ts (added export * from "./sync/index.js")
+
+Notion hub ID verification (notion-personal MCP / notion-fetch):
+- Parent page 0754676937f542e8a61d8b5033af6d78 => title "Phil AI" (exists)
+- Gate Log DB 052e8a567b2e426c904e910a6739ea92 => title "Gate Log" (exists), data source collection://9f80e411-aed2-4292-a0a7-0cb7594afb90
+- Scorecard DB 233d1f4738244fe2ba9432cc85ca0b9f => title "Scorecard" (exists), data source collection://bc361d51-51b1-4faa-8036-2d2ad39f1b0f
+- Dashboard page 3241ffd3-e143-8184-b690-eac2c1fa6614 => title "Dashboard" (exists)
+
+syncGateLog idempotency test (2 entries, mock NotionClient):
+Input entries:
+1) verify-gates (pass)
+2) verify-docs (fail)
+
+First run:
+- total: 2
+- created: 2
+- skipped: 0
+- failed: 0
+
+Second run (same entries):
+- total: 2
+- created: 0
+- skipped: 2
+- failed: 0
+
+Build and test:
+- bun run build => PASS
+- bun test => PASS (260 pass, 14 skip, 0 fail)

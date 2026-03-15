@@ -1,0 +1,19 @@
+rejected
+[
+  {
+    "validation": "uuid",
+    "code": "invalid_string",
+    "message": "Invalid uuid",
+    "path": [
+      "id"
+    ]
+  },
+  {
+    "code": "invalid_string",
+    "validation": "datetime",
+    "message": "Invalid datetime",
+    "path": [
+      "timestamp"
+    ]
+  }
+]

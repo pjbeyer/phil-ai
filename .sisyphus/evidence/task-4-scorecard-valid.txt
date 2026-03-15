@@ -1,0 +1,27 @@
+# Task 4: Valid ScorecardEntry with Arbitrary Dimensions
+
+## Test Case
+Parse a ScorecardEntry with flexible dimension names (code-quality, documentation, performance).
+
+## Input
+{
+  date: "2026-03-14T10:30:00Z",
+  context: "work",
+  dimensions: {
+    "code-quality": { score: 4, evidence: "Passed all linters and tests", trend: "up" },
+    "documentation": { score: 3, evidence: "Added basic README", trend: "stable" },
+    "performance": { score: 5, evidence: "Optimized database queries", trend: "up" }
+  },
+  average: 4,
+  notes: "Good progress on metrics system"
+}
+
+## Result
+✓ PASS - ScorecardEntrySchema.safeParse() succeeded
+✓ Parsed dimensions: ["code-quality", "documentation", "performance"]
+✓ Average score: 4
+✓ Flexible dimension names work correctly with z.record()
+
+## Verification
+The schema correctly accepts arbitrary dimension names via z.record(z.string(), ScorecardDimensionSchema),
+allowing users to define custom dimensions without hardcoding dimension names.

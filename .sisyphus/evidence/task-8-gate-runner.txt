@@ -1,0 +1,16 @@
+Gate Runner QA Evidence (T8: pai-lbf)
+Date: 2026-03-14
+
+Scenario:
+- Registered built-in gates from createBuiltinGates() into GateRunner.
+- Evaluated work-start gate with context:
+  { itemId: "bd-123", itemTitle: "Implement gate system", itemType: "feature" }
+
+Expected:
+- gateName: work-start-validation
+- result: pass
+- reason: Work item metadata is valid
+
+Invalid metadata check:
+- Context with empty title returns result=fail and reason=Item title is required.
+- Context with unsupported itemType returns result=fail and reason listing allowed types.

@@ -1,0 +1,48 @@
+Task 13: Add Verification & Metrics MCP Tools (pai-kgq)
+========================================================
+
+## Files Created
+- mcp/src/tools/verification.ts (3 MCP tools)
+
+## Files Modified
+- mcp/src/server.ts (added import + registration)
+
+## Tools Implemented
+
+### 1. verify_workflow
+- Creates GateRunner, registers builtin gates via createBuiltinGates()
+- Evaluates all gates against provided context (itemId, itemTitle, itemType, currentState, targetState)
+- Returns aggregate results: total/pass/fail/blocked counts + per-gate details
+- Error handling: catches exceptions, returns error text in content
+
+### 2. workflow_metrics
+- Uses MetricsStore to query snapshots by period and/or context
+- Single period: getSnapshot(period) → formatted snapshot details
+- No period: queryMetrics() → overview of all snapshots
+- Supports context filtering (work|personal|oss|aggregate)
+- Error handling: catches exceptions, returns error text in content
+
+### 3. gate_log
+- Uses GateLog.getEntries() to fetch gate execution history
+- Supports filtering by result (pass|fail|blocked) and gateName
+- Supports limit parameter (default 20, takes last N entries)
+- Error handling: catches exceptions, returns error text in content
+
+## Export
+- verificationTools = [verifyWorkflow, workflowMetrics, gateLog]
+
+## Registration
+- Imported in mcp/src/server.ts: import { verificationTools } from "./tools/verification.js"
+- Spread into allTools: ...verificationTools
+
+## TypeScript Compliance
+- exactOptionalPropertyTypes handled via conditional property assignment
+- Used Parameters<GateRunner["evaluate"]>[0] to infer GateContext type without naming conflict
+- All imports from @phil-ai/shared (not @phil-ai/shared/schemas)
+- All handlers return { content: [{ type: 'text' as const, text: '...' }] }
+- No thrown errors from handlers — all caught and returned as text
+
+## Verification
+- LSP diagnostics: clean (0 errors on both files)
+- bun run build: passes (all 5 packages built successfully)
+  - @phil-ai/mcp build: Bundled 405 modules in 95ms → server.js 1.0 MB

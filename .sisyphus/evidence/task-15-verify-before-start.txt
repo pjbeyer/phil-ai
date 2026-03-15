@@ -1,0 +1,33 @@
+Task: T15 (pai-qn6) - Verification MCP Tool Hooks
+Date: 2026-03-14
+
+Changes:
+- Added mcp/src/tools/hooks.ts with 4 tools:
+  - verify_before_start
+  - verify_before_finish
+  - work_status_enhanced
+  - system_health
+- Registered hook tools in mcp/src/server.ts via import and ...hookTools in allTools.
+
+Behavior implemented:
+- verify_before_start:
+  - runs work-start-validation gate through GateRunner/createBuiltinGates
+  - checks duplicate active items from ingestWorkflowEvents
+  - checks stale branch threshold with getBranchAge
+- verify_before_finish:
+  - runs work-finish-completeness gate
+  - checks test/lint status signals from GateLog entries
+- work_status_enhanced:
+  - combines ingestWorkflowEvents + MetricsStore + GateLog pass-rate/history
+  - returns velocity, active/completed counts, and scorecard overlay
+- system_health:
+  - checks workflow ingestion, learning ingestion, gate log, metrics store
+  - includes cross-plugin ingestAll accessibility check
+
+Verification:
+- LSP diagnostics clean for changed files:
+  - mcp/src/tools/hooks.ts
+  - mcp/src/server.ts
+- Build command:
+  - bun run build
+  - Result: PASS

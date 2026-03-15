@@ -1,0 +1,17 @@
+calculateDurations sample output:
+[
+  {
+    "issueId": "pai-940",
+    "branch": "feature/metrics",
+    "startedAt": "2026-03-01T10:00:00.000Z",
+    "completedAt": "2026-03-01T16:30:00.000Z",
+    "durationHours": 6.5
+  },
+  {
+    "issueId": "pai-941",
+    "branch": "feature/orphan",
+    "startedAt": "2026-03-02T09:00:00.000Z",
+    "completedAt": null,
+    "durationHours": null
+  }
+]

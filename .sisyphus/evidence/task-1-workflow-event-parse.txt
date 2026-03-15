@@ -1,0 +1,12 @@
+{
+  "id": "343ec90c-de57-4693-9769-6385b74c2062",
+  "source": "phil-ai-workflow",
+  "context": "work",
+  "role": "maintainer",
+  "eventType": "work_started",
+  "timestamp": "2025-12-01T09:31:36.000Z",
+  "issueId": "SEC-2040",
+  "branch": "feature/SEC-2040",
+  "profile": "work",
+  "workType": "feature"
+}

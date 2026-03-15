@@ -1,0 +1,6 @@
+[2026-03-15T01:04:23.243616+00:00] PDCA Loop Tooling (T12 pai-hr6)
+- Added module: shared/src/pdca/{index.ts,types.ts,review.ts,improvement.ts,prune.ts}
+- Updated exports: shared/src/index.ts includes ./pdca/index.js
+- Updated data paths: verificationPdca added in shared/src/storage/directories.ts
+- LSP diagnostics: clean for all changed files
+- Build: bun run build passed across all workspace packages

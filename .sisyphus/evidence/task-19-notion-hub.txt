@@ -1,0 +1,83 @@
+T19: Phil AI Notion Hub — Evidence
+===================================
+Date: 2026-03-14
+
+## Parent Page
+- Phil AI: 0754676937f542e8a61d8b5033af6d78
+  URL: https://www.notion.so/0754676937f542e8a61d8b5033af6d78
+
+## Created Pages
+
+### System Overview
+- ID: 3241ffd3-e143-8171-a685-f3aa1e426637
+- URL: https://www.notion.so/3241ffd3e1438171a685f3aa1e426637
+- Icon: 📋
+
+### Dashboard
+- ID: 3241ffd3-e143-8184-b690-eac2c1fa6614
+- URL: https://www.notion.so/3241ffd3e1438184b690eac2c1fa6614
+- Icon: 📊
+
+## Created Databases
+
+### Gate Log
+- Database ID: 052e8a567b2e426c904e910a6739ea92
+- Data Source ID: 9f80e411-aed2-4292-a0a7-0cb7594afb90
+- URL: https://www.notion.so/052e8a567b2e426c904e910a6739ea92
+- Columns: gate_name (title), date (date), source_system (select), executed_by (select), result (select), reason (rich_text), source_item_id (rich_text), context (select), role (select), credits_used (number)
+
+### Scorecard
+- Database ID: 233d1f4738244fe2ba9432cc85ca0b9f
+- Data Source ID: bc361d51-51b1-4faa-8036-2d2ad39f1b0f
+- URL: https://www.notion.so/233d1f4738244fe2ba9432cc85ca0b9f
+- Columns: period (title), date (date), context (select), velocity_score (number), quality_score (number), consistency_score (number), throughput_score (number), average (number), notes (rich_text)
+
+## System Status Sub-Pages
+
+### phil-ai-workflow
+- ID: 3241ffd3-e143-81e4-9c6f-e569fbc41a98
+- URL: https://www.notion.so/3241ffd3e14381e49c6fe569fbc41a98
+- Icon: 🔧
+
+### phil-ai-learning
+- ID: 3241ffd3-e143-8121-a57e-c52a72449549
+- URL: https://www.notion.so/3241ffd3e1438121a57ec52a72449549
+- Icon: 💡
+
+### phil-ai-docs
+- ID: 3241ffd3-e143-8127-9e76-cc4db3e35485
+- URL: https://www.notion.so/3241ffd3e14381279e76cc4db3e35485
+- Icon: 📝
+
+### phil-ai-context
+- ID: 3241ffd3-e143-8130-8de7-f701594dc67c
+- URL: https://www.notion.so/3241ffd3e14381308de7f701594dc67c
+- Icon: 🔗
+
+### phil-ai-guide
+- ID: 3241ffd3-e143-8147-973d-c3176cc93c01
+- URL: https://www.notion.so/3241ffd3e1438147973dc3176cc93c01
+- Icon: 📖
+
+## Code Artifacts
+
+### shared/src/notion/hub.ts
+- NotionHubConfigSchema — Zod schema for hub config
+- PHIL_AI_PARENT_PAGE_ID constant
+- MONITORED_SYSTEMS constant
+- GATE_LOG_SCHEMA, SCORECARD_SCHEMA — DDL strings
+- readHubConfig(), writeHubConfig() — config file at ~/.config/phil-ai/notion-hub.json
+- NotionClient interface — abstraction for Notion API
+- getOrCreatePhilAiHub() — idempotent full hub setup
+- getOrCreateGateLogDb() — idempotent Gate Log database
+- getOrCreateScorecardDb() — idempotent Scorecard database
+
+### shared/src/notion/index.ts
+- Barrel export of all hub.ts exports
+
+### shared/src/index.ts
+- Added: export * from "./notion/index.js"
+
+## Verification
+- LSP diagnostics: 0 errors on all 3 files
+- bun run build: PASS (all 5 packages built successfully)

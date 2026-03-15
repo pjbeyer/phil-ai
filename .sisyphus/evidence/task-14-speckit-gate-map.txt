@@ -1,0 +1,54 @@
+QA Evidence: T14 - Speckit Integration for Verification System (pai-87v)
+========================================================================
+Date: 2026-03-14
+
+## Files Created
+- shared/src/integrations/speckit.ts (136 lines)
+- shared/src/integrations/index.ts (barrel export)
+
+## Files Modified
+- shared/src/index.ts (added integrations barrel export)
+
+## Verification Results
+
+### LSP Diagnostics
+- shared/src/integrations/speckit.ts: 0 errors
+- shared/src/integrations/index.ts: 0 errors
+- shared/src/index.ts: 0 errors
+
+### Build
+- `bun run build`: All 5 packages built successfully (shared, cli, mcp, platform-opencode, platform-claude-code)
+
+## Implementation Details
+
+### Types Defined
+1. SpeckitAnalysisResult - severity (CRITICAL|HIGH|MEDIUM|LOW), finding, location
+2. SpeckitPhaseCompletion - phase (specify|clarify|plan|tasks|implement), featureName, completedAt, qualityScore
+3. SpeckitQualityScores - codeQuality, productQuality (both 0-100)
+
+### Functions Implemented
+1. mapAnalysisToGateEntry(result, sourceItemId) → GateEntry
+   - CRITICAL/HIGH → 'fail', MEDIUM → 'blocked', LOW → 'pass'
+   - executedBy: 'agent', sourceSystem: 'speckit', context: 'work', role: 'maintainer'
+
+2. trackPhaseCompletion(phase) → SystemEvent
+   - eventType: `speckit.${phase.phase}.completed`
+   - source: 'speckit', context: 'work', role: 'maintainer'
+   - metadata includes featureName and optional qualityScore
+
+3. mapQualityToScorecard(scores, period) → Partial<ScorecardEntry>
+   - 0-20→1, 21-40→2, 41-60→3, 61-80→4, 81-100→5
+   - Maps codeQuality and productQuality as separate dimensions
+
+4. detectSpecDrift(specPath, implementationPath) → Promise<boolean>
+   - Stub using fs.stat mtime comparison
+   - Returns true if spec is older than implementation
+
+### Schema Compliance
+- GateEntry: all required fields populated (name, date, executedBy, result, reason, sourceItemId, sourceSystem, context, role)
+- SystemEvent: all required fields populated (id, source, context, role, eventType, timestamp)
+- ScorecardDimension: score (1-5), evidence, trend
+- No `as any`, `@ts-ignore`, or empty catch blocks used
+
+### No Speckit Files Modified
+- Confirmed: no speckit commands or templates were touched

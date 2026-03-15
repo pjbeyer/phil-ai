@@ -1,0 +1,15 @@
+=== Test 1: Valid ScorecardEntry with arbitrary dimensions ===
+Success: true
+Parsed entry dimensions: [ "code-quality", "documentation", "performance" ]
+Average score: 4
+
+=== Test 2: Invalid Dimension (score > 5) ===
+Success: false
+Error message: Number must be less than or equal to 5
+Validation correctly rejected score above max value of 5
+
+=== Test 3: Valid MetricsSnapshot ===
+Success: true
+Period: 2026-03
+Context: aggregate
+Gate pass rate: 0.95

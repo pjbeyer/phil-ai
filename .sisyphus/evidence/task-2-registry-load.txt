@@ -1,0 +1,9 @@
+{
+  "loadedCount": 3,
+  "workSystems": [
+    "core-repo"
+  ],
+  "maintainerSystems": [
+    "core-repo"
+  ]
+}

@@ -1,0 +1,159 @@
+Notion ingestion unavailable: returning empty event set
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 5 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 6 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 16 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 1 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 3 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "test",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'test'"
+  }
+]
+Skipping malformed workflow metric line 8 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+{
+  "generatedAt": "2026-03-15T01:17:54.194Z",
+  "sourcePeriod": null,
+  "velocity": {
+    "value": 0,
+    "label": "0.00 items/week",
+    "evidence": "Calculated from ingested workflow events over 4 weeks"
+  },
+  "gatePassRate": {
+    "value": 1,
+    "label": "100.0%",
+    "evidence": "Computed from persisted gate logs"
+  },
+  "activeItems": {
+    "value": 10,
+    "label": "10 active",
+    "evidence": "Derived from work_started/work_finished events"
+  },
+  "patterns": {
+    "value": 1,
+    "label": "1 detected",
+    "evidence": "1 total patterns across 5 detectors"
+  },
+  "driftAlerts": {
+    "value": 0,
+    "label": "0 alerts",
+    "evidence": "0 drift findings (0 warning/critical)"
+  },
+  "markdown": "# Workflow Dashboard\n\nSource period: live aggregate\n\n- Velocity: 0.00 items/week (Calculated from ingested workflow events over 4 weeks)\n- Gate Pass Rate: 100.0% (Computed from persisted gate logs)\n- Active Items: 10 active (Derived from work_started/work_finished events)\n- Patterns: 1 detected (1 total patterns across 5 detectors)\n- Drift Alerts: 0 alerts (0 drift findings (0 warning/critical))"
+}

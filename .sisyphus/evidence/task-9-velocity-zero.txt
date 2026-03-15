@@ -1,0 +1,2 @@
+calculateVelocity([], { weeks: 4 }) output:
+0

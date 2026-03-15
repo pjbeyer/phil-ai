@@ -1,0 +1,356 @@
+bun test v1.3.10 (30e609e0)
+
+tests/integration/workflow/workflow.test.ts:
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 5 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 6 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 16 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 1 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 3 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "test",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'test'"
+  }
+]
+Skipping malformed workflow metric line 8 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 5 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 6 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 16 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 1 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+Skipping malformed workflow metric line 3 in /Users/pjbeyer/Projects/.workflow/metrics/pjbeyer-2025-12.json: [
+  {
+    "received": "fix",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'fix'"
+  }
+]
+Skipping malformed workflow metric line 4 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "test",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'test'"
+  }
+]
+Skipping malformed workflow metric line 8 in /Users/pjbeyer/Projects/.workflow/metrics/work-2025-11.json: [
+  {
+    "received": "docs",
+    "code": "invalid_enum_value",
+    "options": [
+      "feature",
+      "bug",
+      "chore",
+      "refactor"
+    ],
+    "path": [
+      "type"
+    ],
+    "message": "Invalid enum value. Expected 'feature' | 'bug' | 'chore' | 'refactor', received 'docs'"
+  }
+]
+---------------------------------------------------------|---------|---------|-------------------
+File                                                     | % Funcs | % Lines | Uncovered Line #s
+---------------------------------------------------------|---------|---------|-------------------
+All files                                                |   62.63 |   64.65 |
+ mcp/src/tools/hooks.ts                                  |   83.33 |   71.06 | 34,39,43,49,160,162-169,171-173,195,207,217-219,226,228-233,235-243,268,280-285,289-294,303-304,325-327,348,371-372,385-427
+ mcp/src/tools/verification.ts                           |   69.23 |   45.68 | 81-90,113-220,258,260,264,266,272-277,279-288,308-317,341-387
+ shared/src/adapters/git.ts                              |   50.00 |   23.81 | 45,60-86,98-120,132-176
+ shared/src/adapters/index.ts                            |  100.00 |  100.00 | 
+ shared/src/drift/detectors/context-divergence.ts        |  100.00 |  100.00 | 
+ shared/src/drift/detectors/guide-violations.ts          |  100.00 |  100.00 | 
+ shared/src/drift/detectors/orphaned-storage.ts          |  100.00 |  100.00 | 
+ shared/src/drift/detectors/schema-staleness.ts          |  100.00 |   62.12 | 31,37,39-42,56-60,66-67,69-71,73-81
+ shared/src/drift/detectors/stale-documentation.ts       |  100.00 |  100.00 | 
+ shared/src/drift/detectors/stale-work-items.ts          |  100.00 |   46.15 | 17-18,20-23,25-32
+ shared/src/drift/detectors/unclosed-learnings.ts        |  100.00 |   39.34 | 18,20-22,36-42,44-47,49-52,54-71
+ shared/src/drift/detectors/unused-skills.ts             |  100.00 |   61.54 | 10-14
+ shared/src/drift/index.ts                               |  100.00 |  100.00 | 
+ shared/src/drift/sweep.ts                               |   92.31 |   64.00 | 15-23,41-50,52-59
+ shared/src/drift/types.ts                               |  100.00 |  100.00 | 
+ shared/src/gates/builtin.ts                             |  100.00 |   80.19 | 22-26,32-37,89-93,98-102
+ shared/src/gates/index.ts                               |  100.00 |  100.00 | 
+ shared/src/gates/log.ts                                 |    0.00 |   10.64 | 12,16-18,22-28,32-44,48-107
+ shared/src/gates/runner.ts                              |   75.00 |   97.50 | 
+ shared/src/guide/index.ts                               |  100.00 |  100.00 | 
+ shared/src/guide/loader.ts                              |    0.00 |    5.73 | 21-25,30-44,48-74,78-96,101-106,110-140,144-194,198-224
+ shared/src/guide/parser.ts                              |    0.00 |    4.08 | 14-57,62-99,103-161
+ shared/src/guide/types.ts                               |  100.00 |  100.00 | 
+ shared/src/index.ts                                     |  100.00 |  100.00 | 
+ shared/src/ingestion/all.ts                             |    0.00 |   12.50 | 7-27
+ shared/src/ingestion/index.ts                           |  100.00 |  100.00 | 
+ shared/src/ingestion/learning.ts                        |    0.00 |    3.97 | 8-26,30-45,49-87,91-137
+ shared/src/ingestion/notion.ts                          |    0.00 |    0.00 | 4-7
+ shared/src/ingestion/store.ts                           |    0.00 |   33.33 | 21-40,44-49,53-62
+ shared/src/ingestion/types.ts                           |  100.00 |  100.00 | 
+ shared/src/ingestion/workflow.ts                        |  100.00 |   85.71 | 21,26,28-30,42-45
+ shared/src/integrations/index.ts                        |  100.00 |  100.00 | 
+ shared/src/integrations/speckit.ts                      |    0.00 |    5.00 | 32-54,61-72,80-84,91-117,125-133
+ shared/src/metrics/duration.ts                          |   42.86 |   40.63 | 26,34,36-41,43-44,46-48,50-52,54-56,58-64,68-76,89,91-92
+ shared/src/metrics/index.ts                             |  100.00 |  100.00 | 
+ shared/src/metrics/scorecard.ts                         |  100.00 |   86.67 | 18-20,38-41,59-62
+ shared/src/metrics/store.ts                             |   61.54 |   63.08 | 13-26,30-36,43,56
+ shared/src/metrics/types.ts                             |  100.00 |  100.00 | 
+ shared/src/metrics/velocity.ts                          |  100.00 |   88.24 | 15
+ shared/src/notion/hub.ts                                |    0.00 |   13.39 | 73,77-83,87-96,136-214,221-243,250-272,278-286,290-305,309-316,320-327,331-351,362-372,380-383
+ shared/src/notion/index.ts                              |  100.00 |  100.00 | 
+ shared/src/patterns/detectors/blocked-accumulation.ts   |   25.00 |    5.48 | 4-23,27-39,46,48,50-53,55-58,60-61,63-66,68-69,71-73,75-78,80-90
+ shared/src/patterns/detectors/duration-outlier.ts       |   11.11 |   17.02 | 4-16,28,30-31,33-35,37-40,42-45,47,49-59
+ shared/src/patterns/detectors/recurring-gate-failure.ts |   33.33 |    4.44 | 4-77,84,86-87,89-97
+ shared/src/patterns/detectors/type-concentration.ts     |   25.00 |    8.89 | 6-9,16,18-20,22-24,26-29,31-38,40-42,44-47,49-59
+ shared/src/patterns/detectors/velocity-anomaly.ts       |  100.00 |   96.97 | 
+ shared/src/patterns/engine.ts                           |   87.50 |   95.24 | 34-35
+ shared/src/patterns/index.ts                            |  100.00 |  100.00 | 
+ shared/src/patterns/types.ts                            |  100.00 |  100.00 | 
+ shared/src/pdca/improvement.ts                          |    0.00 |   30.00 | 18,22-40,44-58
+ shared/src/pdca/index.ts                                |  100.00 |  100.00 | 
+ shared/src/pdca/prune.ts                                |   66.67 |   92.86 | 17-18
+ shared/src/pdca/review.ts                               |   86.67 |   69.27 | 29,35,37-48,50-53,55,150,152-158,160-166,168-171,183-186,188-190,206-210,215-219
+ shared/src/pdca/types.ts                                |  100.00 |  100.00 | 
+ shared/src/registry/index.ts                            |  100.00 |  100.00 | 
+ shared/src/registry/loader.ts                           |    0.00 |   11.32 | 17-34,38-41,45-48,52-72
+ shared/src/reporting/dashboard.ts                       |    0.00 |    6.20 | 27,31-43,52-56,60-74,78-92,96-167
+ shared/src/reporting/index.ts                           |  100.00 |  100.00 | 
+ shared/src/reporting/scorecard.ts                       |    0.00 |    4.76 | 12-31,35,39-48,52-56,60-64,68-72,76-80,84-88,92-141,145,149-221
+ shared/src/reporting/trends.ts                          |    0.00 |    1.75 | 37,41-50,54-71,75-95,99-100,104-163
+ shared/src/schemas/base.ts                              |    0.00 |   44.44 | 13-18,22-25
+ shared/src/schemas/config.ts                            |    0.00 |   73.02 | 61-77
+ shared/src/schemas/events.ts                            |  100.00 |   97.78 | 38
+ shared/src/schemas/gate.ts                              |  100.00 |  100.00 | 
+ shared/src/schemas/guide.ts                             |    0.00 |   59.21 | 166-176,183-191,198-207
+ shared/src/schemas/index.ts                             |  100.00 |  100.00 | 
+ shared/src/schemas/metrics.ts                           |  100.00 |  100.00 | 
+ shared/src/schemas/plugin.ts                            |  100.00 |  100.00 | 
+ shared/src/schemas/registry.ts                          |  100.00 |  100.00 | 
+ shared/src/schemas/skill.ts                             |  100.00 |  100.00 | 
+ shared/src/schemas/state.ts                             |    0.00 |   85.71 | 64-71
+ shared/src/schemas/version.ts                           |    0.00 |   52.38 | 32-51
+ shared/src/storage/directories.ts                       |   75.00 |   82.19 | 17,103-107,112-116,121-122
+ shared/src/storage/index.ts                             |  100.00 |  100.00 | 
+ shared/src/storage/json.ts                              |    0.00 |   10.00 | 15-34,38-57,62-66
+ shared/src/storage/lock.ts                              |   66.67 |   87.88 | 44-47
+ shared/src/storage/yaml.ts                              |    0.00 |   12.24 | 15-34,38-55,60-64
+ shared/src/sync/index.ts                                |  100.00 |  100.00 | 
+ shared/src/sync/notion.ts                               |    0.00 |    1.50 | 22-74,78-117,122-161,166-208,213,217-218,222,226-227,231-236,240-254,258-274,278-285,289-297,301-314,318-324,328-332
+ shared/src/version/compatibility.ts                     |    0.00 |    4.44 | 12-69,73-83,87-103
+ shared/src/version/index.ts                             |  100.00 |  100.00 | 
+ shared/src/version/manifest.ts                          |    0.00 |   12.96 | 10-11,15-18,22-26,30-34,38-68
+ shared/src/version/semver.ts                            |    0.00 |    8.57 | 7-15,19,23-32,36-58,63,67,71-89
+ tests/integration/workflow/assertions.ts                |  100.00 |   92.00 | 23
+ tests/integration/workflow/fixtures.ts                  |   54.55 |   55.68 | 26-33,37-40,64-82,85-88,91-94
+ tests/setup.ts                                          |   80.00 |   91.67 | 
+---------------------------------------------------------|---------|---------|-------------------
+
+ 6 pass
+ 1 skip
+ 0 fail
+ 22 expect() calls
+Ran 7 tests across 1 file. [118.00ms]

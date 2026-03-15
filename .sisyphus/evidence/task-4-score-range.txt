@@ -1,0 +1,28 @@
+# Task 4: Score Range Validation (SafeParse with Invalid Score)
+
+## Test Case
+SafeParse a ScorecardDimension with score: 6 (exceeds max value of 5).
+
+## Input
+{
+  score: 6,
+  evidence: "This score is too high",
+  trend: "up"
+}
+
+## Result
+✓ PASS - ScorecardDimensionSchema.safeParse() correctly rejected invalid data
+✓ Success: false
+✓ Error message: "Number must be less than or equal to 5"
+
+## Verification
+The schema correctly enforces the score range constraint (min: 1, max: 5).
+SafeParse returns a failure result instead of throwing, allowing graceful error handling.
+The validation error clearly indicates the constraint violation.
+
+## Schema Definition
+export const ScorecardDimensionSchema = z.object({
+  score: z.number().min(1).max(5),  // ← Enforces 1-5 range
+  evidence: z.string(),
+  trend: z.enum(DimensionTrend),
+});

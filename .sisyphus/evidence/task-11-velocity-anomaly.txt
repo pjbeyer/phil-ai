@@ -1,0 +1,30 @@
+Task: T11 (pai-c4f) Pattern Detection Engine
+Date: 2026-03-14
+
+Implemented files:
+- shared/src/patterns/types.ts
+- shared/src/patterns/engine.ts
+- shared/src/patterns/index.ts
+- shared/src/patterns/detectors/recurring-gate-failure.ts
+- shared/src/patterns/detectors/velocity-anomaly.ts
+- shared/src/patterns/detectors/type-concentration.ts
+- shared/src/patterns/detectors/duration-outlier.ts
+- shared/src/patterns/detectors/blocked-accumulation.ts
+- shared/src/index.ts (barrel export)
+
+Detector coverage:
+- recurring-gate-failure: detects same gate failing 3+ times in rolling 30-day windows
+- velocity-anomaly: detects velocity drops >30% versus prior snapshot
+- type-concentration: detects >80% concentration in a single workType
+- duration-outlier: detects durations >2 standard deviations above mean
+- blocked-accumulation: detects strictly increasing blocked-event counts across recent weeks
+
+Edge-case handling:
+- Empty/small datasets return [] where thresholds are not met
+- Statistical calculations guard against division-by-zero and invalid numbers
+- No NaN/Infinity emitted in duration and ratio calculations
+
+Verification:
+- LSP diagnostics checked clean for all changed files
+- Command: bun run build
+- Result: pass

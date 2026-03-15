@@ -1,0 +1,17 @@
+State Transition Gate QA Evidence (T8: pai-lbf)
+Date: 2026-03-14
+
+Validated transitions:
+- open -> in-progress => pass
+- in-progress -> completed => pass
+- in-progress -> blocked => pass
+- blocked -> in-progress => pass
+
+Rejected transitions:
+- open -> completed => fail (invalid transition)
+- blocked -> completed => fail (invalid transition)
+- missing currentState or targetState => fail (both required)
+
+Gate:
+- gateName: state-transition-validity
+- failure reason format: Invalid state transition: <current> -> <target>

@@ -1,0 +1,45 @@
+QA Evidence: Invalid GateEntry Schema Validation
+==================================================
+
+Test: SafeParse with invalid result enum value
+Status: PASS (correctly rejects invalid data)
+
+Input:
+{
+  "name": "build-test",
+  "date": "2026-03-15T00:40:22.742Z",
+  "executedBy": "agent",
+  "result": "invalid-result",
+  "reason": "All tests passed",
+  "sourceItemId": "task-123",
+  "sourceSystem": "github",
+  "context": "work",
+  "role": "maintainer"
+}
+
+Output:
+{
+  "success": false,
+  "error": {
+    "issues": [
+      {
+        "received": "invalid-result",
+        "code": "invalid_enum_value",
+        "options": [
+          "pass",
+          "fail",
+          "blocked"
+        ],
+        "path": [
+          "result"
+        ],
+        "message": "Invalid enum value. Expected 'pass' | 'fail' | 'blocked', received 'invalid-result'"
+      }
+    ],
+    "name": "ZodError"
+  }
+}
+
+Validation: ✓ Schema correctly rejects invalid enum value
+Validation: ✓ Error message clearly indicates valid options
+Validation: ✓ Error path correctly identifies the problematic field

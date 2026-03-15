@@ -1,0 +1,40 @@
+QA Evidence: Valid GateEntry Schema Validation
+================================================
+
+Test: Parse valid GateEntry with all required fields
+Status: PASS
+
+Input:
+{
+  "name": "build-test",
+  "date": "2026-03-15T00:40:22.742Z",
+  "executedBy": "agent",
+  "result": "pass",
+  "reason": "All tests passed",
+  "sourceItemId": "task-123",
+  "sourceSystem": "github",
+  "context": "work",
+  "role": "maintainer",
+  "creditsUsed": 5
+}
+
+Output:
+{
+  "success": true,
+  "data": {
+    "name": "build-test",
+    "date": "2026-03-15T00:40:22.742Z",
+    "executedBy": "agent",
+    "result": "pass",
+    "reason": "All tests passed",
+    "sourceItemId": "task-123",
+    "sourceSystem": "github",
+    "context": "work",
+    "role": "maintainer",
+    "creditsUsed": 5
+  }
+}
+
+Validation: ✓ Schema correctly accepts valid GateEntry with all fields
+Validation: ✓ Optional field (creditsUsed) properly handled
+Validation: ✓ All enum values validated correctly
