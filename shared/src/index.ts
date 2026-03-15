@@ -5,3 +5,5 @@ export * from "./guide/index.js";
 export * from "./registry/index.js";
 export * from "./ingestion/index.js";
 export * from "./adapters/index.js";
+export * from "./metrics/index.js";
+export * from "./gates/index.js";

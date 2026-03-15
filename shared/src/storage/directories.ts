@@ -24,6 +24,8 @@ export interface DataPaths {
 	learnings: string;
 	patterns: string;
 	verification: string;
+	verificationGates: string;
+	verificationMetrics: string;
 	verificationEvents: string;
 	version: string;
 	lock: string;
@@ -37,6 +39,8 @@ export function getDataPaths(): DataPaths {
 		learnings: join(root, "learnings"),
 		patterns: join(root, "patterns"),
 		verification: join(root, "verification"),
+		verificationGates: join(root, "verification", "gates"),
+		verificationMetrics: join(root, "verification", "metrics"),
 		verificationEvents: join(root, "verification", "events-index.json"),
 		version: join(root, "version.json"),
 		lock: join(root, ".lock"),
@@ -72,6 +76,8 @@ export async function ensureDataDirs(): Promise<void> {
 	await ensureDir(paths.learnings);
 	await ensureDir(paths.patterns);
 	await ensureDir(paths.verification);
+	await ensureDir(paths.verificationGates);
+	await ensureDir(paths.verificationMetrics);
 	await ensureDir(paths.lock);
 
 	for (const level of ["global", "profile", "project", "agent"]) {
