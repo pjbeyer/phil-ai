@@ -83,3 +83,5 @@ export {
 	type PreferenceTypeType,
 	type VerbosityLevelType,
 } from "./guide.js";
+
+export * from "./events.js";
