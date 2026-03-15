@@ -3,6 +3,9 @@ import {
 	GateLog,
 	MetricsStore,
 	createBuiltinGates,
+	generateDashboard,
+	generateScorecard,
+	trendReport,
 	type GateRunResult,
 	type GateEntry,
 } from "@phil-ai/shared";
@@ -317,4 +320,79 @@ export const gateLog = {
 	},
 };
 
-export const verificationTools = [verifyWorkflow, workflowMetrics, gateLog];
+export const workflowDashboard = {
+	name: "workflow_dashboard",
+	description:
+		"Generate a dashboard report with velocity, gate quality, active work, patterns, drift alerts, and optional scorecard/trends",
+	inputSchema: {
+		type: "object" as const,
+		properties: {
+			period: {
+				type: "string",
+				description: "Optional period for scorecard (e.g., 2026-03)",
+			},
+			periods: {
+				type: "array",
+				items: { type: "string" },
+				description: "Optional list of periods for trend analysis",
+			},
+		},
+	},
+	handler: async (params: Record<string, unknown>) => {
+		try {
+			const period =
+				typeof params.period === "string" && params.period.length > 0
+					? params.period
+					: undefined;
+			const periods = Array.isArray(params.periods)
+				? params.periods.filter(
+					(entry): entry is string =>
+						typeof entry === "string" && entry.trim().length > 0,
+				)
+				: [];
+
+			const dashboard = await generateDashboard();
+			const scorecard =
+				period === undefined ? null : await generateScorecard(period);
+			const trends = periods.length >= 2 ? await trendReport(periods) : null;
+
+			const payload = {
+				dashboard,
+				...(scorecard === null ? {} : { scorecard }),
+				...(trends === null ? {} : { trends }),
+			};
+
+			const markdownSections = [dashboard.markdown];
+			if (trends !== null) {
+				markdownSections.push(trends.markdown);
+			}
+
+			return {
+				content: [
+					{
+						type: "text" as const,
+						text: `${JSON.stringify(payload, null, 2)}\n\n${markdownSections.join("\n\n")}`,
+					},
+				],
+			};
+		} catch (error) {
+			const message =
+				error instanceof Error ? error.message : String(error);
+			return {
+				content: [
+					{
+						type: "text" as const,
+						text: `Error generating workflow dashboard: ${message}`,
+					},
+				],
+			};
+		}
+	},
+};
+
+export const verificationTools = [
+	verifyWorkflow,
+	workflowMetrics,
+	gateLog,
+	workflowDashboard,
+];

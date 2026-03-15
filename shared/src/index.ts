@@ -11,3 +11,4 @@ export * from "./patterns/index.js";
 export * from "./drift/index.js";
 export * from "./pdca/index.js";
 export * from "./integrations/index.js";
+export * from "./reporting/index.js";
