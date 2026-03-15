@@ -12,3 +12,4 @@ export * from "./drift/index.js";
 export * from "./pdca/index.js";
 export * from "./integrations/index.js";
 export * from "./reporting/index.js";
+export * from "./notion/index.js";
