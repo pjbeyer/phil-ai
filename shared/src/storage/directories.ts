@@ -26,6 +26,7 @@ export interface DataPaths {
 	verification: string;
 	verificationGates: string;
 	verificationMetrics: string;
+	verificationPdca: string;
 	verificationEvents: string;
 	version: string;
 	lock: string;
@@ -41,6 +42,7 @@ export function getDataPaths(): DataPaths {
 		verification: join(root, "verification"),
 		verificationGates: join(root, "verification", "gates"),
 		verificationMetrics: join(root, "verification", "metrics"),
+		verificationPdca: join(root, "verification", "pdca"),
 		verificationEvents: join(root, "verification", "events-index.json"),
 		version: join(root, "version.json"),
 		lock: join(root, ".lock"),
@@ -78,6 +80,7 @@ export async function ensureDataDirs(): Promise<void> {
 	await ensureDir(paths.verification);
 	await ensureDir(paths.verificationGates);
 	await ensureDir(paths.verificationMetrics);
+	await ensureDir(paths.verificationPdca);
 	await ensureDir(paths.lock);
 
 	for (const level of ["global", "profile", "project", "agent"]) {

@@ -7,3 +7,7 @@ export * from "./ingestion/index.js";
 export * from "./adapters/index.js";
 export * from "./metrics/index.js";
 export * from "./gates/index.js";
+export * from "./patterns/index.js";
+export * from "./drift/index.js";
+export * from "./pdca/index.js";
+export * from "./integrations/index.js";

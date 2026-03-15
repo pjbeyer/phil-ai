@@ -8,8 +8,10 @@ import {
 import { contextTools } from "./tools/context.js";
 import { docsTools } from "./tools/docs.js";
 import { guideTools } from "./tools/guide.js";
+import { hookTools } from "./tools/hooks.js";
 import { learningTools } from "./tools/learning.js";
 import { workflowTools } from "./tools/workflow.js";
+import { verificationTools } from "./tools/verification.js";
 
 const allTools = [
 	...learningTools,
@@ -17,6 +19,8 @@ const allTools = [
 	...contextTools,
 	...workflowTools,
 	...guideTools,
+	...hookTools,
+	...verificationTools,
 ];
 
 const server = new Server(
