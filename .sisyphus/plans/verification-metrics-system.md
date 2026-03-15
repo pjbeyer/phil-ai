@@ -232,7 +232,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 1 — Foundation Schema
 
-- [ ] 1. Define SystemEvent & WorkItem Schemas (`pai-3v5`)
+- [x] 1. Define SystemEvent & WorkItem Schemas (`pai-3v5`)
 
   **What to do**:
   - Create `shared/src/schemas/events.ts` with Zod schemas:
@@ -324,7 +324,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 2 — Dependent Schemas & Registry (3 PARALLEL)
 
-- [ ] 2. System Registry & Context Model (`pai-buh`)
+- [x] 2. System Registry & Context Model (`pai-buh`)
 
   **What to do**:
   - Create `shared/src/schemas/registry.ts` with Zod schemas:
@@ -401,7 +401,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/schemas/registry.ts`, `shared/src/registry/**`, `shared/src/schemas/index.ts`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 3. Define Gate Schema (`pai-dk0`)
+- [x] 3. Define Gate Schema (`pai-dk0`)
 
   **What to do**:
   - Create `shared/src/schemas/gate.ts` with Zod schemas:
@@ -464,7 +464,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/schemas/gate.ts`, `shared/src/schemas/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 4. Define Metrics & Scorecard Schema (`pai-hbr`)
+- [x] 4. Define Metrics & Scorecard Schema (`pai-hbr`)
 
   **What to do**:
   - Create `shared/src/schemas/metrics.ts` with Zod schemas:
@@ -531,7 +531,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 3 — Core Ingestion + Schema Tests (2 PARALLEL)
 
-- [ ] 5. Implement Event Ingestion Layer (`pai-kk8`)
+- [x] 5. Implement Event Ingestion Layer (`pai-kk8`)
 
   **What to do**:
   - Create `shared/src/ingestion/` module:
@@ -616,7 +616,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/ingestion/**`, `shared/src/storage/directories.ts`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 6. Unit Tests — Schemas (`pai-sis`)
+- [x] 6. Unit Tests — Schemas (`pai-sis`)
 
   **What to do**:
   - Create test files following existing schema test pattern:
@@ -678,7 +678,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 4 — Core Systems (3 PARALLEL)
 
-- [ ] 7. Git State Adapter — read-only (`pai-68k`)
+- [x] 7. Git State Adapter — read-only (`pai-68k`)
 
   **What to do**:
   - Create `shared/src/adapters/git.ts` — READ-ONLY adapter that queries git state:
@@ -749,7 +749,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/adapters/**`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 8. Implement Gate System (`pai-lbf`)
+- [x] 8. Implement Gate System (`pai-lbf`)
 
   **What to do**:
   - Create `shared/src/gates/` module:
@@ -830,7 +830,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/gates/**`, `shared/src/storage/directories.ts`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 9. Implement Metrics Collection (`pai-940`)
+- [x] 9. Implement Metrics Collection (`pai-940`)
 
   **What to do**:
   - Create `shared/src/metrics/` module:
@@ -911,7 +911,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 5 — Higher-Level Modules + MCP Tools (7 PARALLEL)
 
-- [ ] 10. Drift Detection & Cleanup Sweep (`pai-ajq`)
+- [x] 10. Drift Detection & Cleanup Sweep (`pai-ajq`)
 
   **What to do**:
   - Create `shared/src/drift/` module:
@@ -972,7 +972,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/drift/**`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 11. Pattern Detection Engine (`pai-c4f`)
+- [x] 11. Pattern Detection Engine (`pai-c4f`)
 
   **What to do**:
   - Create `shared/src/patterns/` module:
@@ -1029,7 +1029,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/patterns/**`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 12. PDCA Loop Tooling (`pai-hr6`)
+- [x] 12. PDCA Loop Tooling (`pai-hr6`)
 
   **What to do**:
   - Create `shared/src/pdca/` module:
@@ -1083,7 +1083,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/pdca/**`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 13. Add Verification & Metrics MCP Tools (`pai-kgq`)
+- [x] 13. Add Verification & Metrics MCP Tools (`pai-kgq`)
 
   **What to do**:
   - Create `mcp/src/tools/verification.ts` with 3 MCP tools:
@@ -1146,7 +1146,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `mcp/src/tools/verification.ts`, `mcp/src/server.ts`, `mcp/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 14. Speckit Integration for Verification System (`pai-87v`)
+- [x] 14. Speckit Integration for Verification System (`pai-87v`)
 
   **What to do**:
   - Create integration points between speckit workflow and verification system:
@@ -1208,7 +1208,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/integrations/**`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 15. Implement Verification MCP Tool Hooks (`pai-qn6`)
+- [x] 15. Implement Verification MCP Tool Hooks (`pai-qn6`)
 
   **What to do**:
   - Create `mcp/src/tools/hooks.ts` with 4 MCP tool hooks:
@@ -1271,7 +1271,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `mcp/src/tools/hooks.ts`, `mcp/src/server.ts`, `mcp/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 16. Unit Tests — Ingestion, Gates & Adapters (`pai-jxw`)
+- [x] 16. Unit Tests — Ingestion, Gates & Adapters (`pai-jxw`)
 
   **What to do**:
   - Create test files:
@@ -1336,7 +1336,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 6 — Reporting + Notion + Tests (3 PARALLEL)
 
-- [ ] 17. Unit Tests — Metrics, Patterns, PDCA & Drift (`pai-g1n`)
+- [x] 17. Unit Tests — Metrics, Patterns, PDCA & Drift (`pai-g1n`)
 
   **What to do**:
   - Create test files:
@@ -1383,7 +1383,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `tests/unit/metrics/**`, `tests/unit/patterns/**`, `tests/unit/pdca/**`, `tests/unit/drift/**`
   - Pre-commit: `bun test`
 
-- [ ] 18. Dashboard & Reporting (`pai-q0u`)
+- [x] 18. Dashboard & Reporting (`pai-q0u`)
 
   **What to do**:
   - Create `shared/src/reporting/` module:
@@ -1441,7 +1441,7 @@ Max Concurrent: 7 (Wave 5)
   - Files: `shared/src/reporting/**`, `mcp/src/tools/verification.ts`, `shared/src/index.ts`
   - Pre-commit: `bun run lint && bun run build`
 
-- [ ] 19. Create Phil AI Notion Hub (`pai-d30`)
+- [x] 19. Create Phil AI Notion Hub (`pai-d30`)
 
   **What to do**:
   - Set up Phil AI Notion page hierarchy under parent page (https://www.notion.so/gettingsecuritydone/Phil-AI-0754676937f542e8a61d8b5033af6d78):
@@ -1508,7 +1508,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 7 — Notion Sync
 
-- [ ] 20. Notion Sync — Phil AI Hub Data Flow (`pai-k8q`)
+- [x] 20. Notion Sync — Phil AI Hub Data Flow (`pai-k8q`)
 
   **What to do**:
   - Create `shared/src/sync/notion.ts` for maintaining Phil AI Notion Hub:
@@ -1574,7 +1574,7 @@ Max Concurrent: 7 (Wave 5)
 
 ### Wave 8 — Integration Tests
 
-- [ ] 21. Integration Tests — Workflow E2E (`pai-870`)
+- [x] 21. Integration Tests — Workflow E2E (`pai-870`)
 
   **What to do**:
   - Create `tests/integration/workflow/` directory with E2E tests:
@@ -1644,19 +1644,19 @@ Max Concurrent: 7 (Wave 5)
 
 > 4 review agents run in PARALLEL. ALL must APPROVE. Rejection → fix → re-run.
 
-- [ ] F1. **Plan Compliance Audit** — `oracle`
+- [x] F1. **Plan Compliance Audit** — `oracle`
   Read the plan end-to-end. For each "Must Have": verify implementation exists (read file, run command). For each "Must NOT Have": search codebase for forbidden patterns — reject with file:line if found. Check evidence files exist in .sisyphus/evidence/. Compare deliverables against plan. Verify all 21 bd issues have been closed (`bd list --status=closed`). Check epic pai-cee eligibility.
   Output: `Must Have [N/N] | Must NOT Have [N/N] | Tasks [N/N] | VERDICT: APPROVE/REJECT`
 
-- [ ] F2. **Code Quality Review** — `unspecified-high`
+- [x] F2. **Code Quality Review** — `unspecified-high`
   Run `bun run build` + `bun run lint` + `bun test`. Review all changed files for: `as any`/`@ts-ignore`, empty catches, console.log in prod, commented-out code, unused imports. Check AI slop: excessive comments, over-abstraction, generic names. Verify all `.js` import extensions present. Check all new schemas re-exported from `shared/src/schemas/index.ts`. Check all new modules re-exported from `shared/src/index.ts`.
   Output: `Build [PASS/FAIL] | Lint [PASS/FAIL] | Tests [N pass/N fail] | Files [N clean/N issues] | VERDICT`
 
-- [ ] F3. **Real Manual QA** — `unspecified-high`
+- [x] F3. **Real Manual QA** — `unspecified-high`
   Start from clean state. Execute EVERY QA scenario from EVERY task — follow exact steps, capture evidence. Test cross-task integration (gates + metrics + patterns working together). Test edge cases: empty data, invalid input, malformed JSONL. Save to `.sisyphus/evidence/final-qa/`.
   Output: `Scenarios [N/N pass] | Integration [N/N] | Edge Cases [N tested] | VERDICT`
 
-- [ ] F4. **Scope Fidelity Check** — `deep`
+- [x] F4. **Scope Fidelity Check** — `deep`
   For each task: read "What to do", read actual diff (`git log`/`git diff`). Verify 1:1 — everything in spec was built (no missing), nothing beyond spec was built (no creep). Check "Must NOT do" compliance. Detect cross-task contamination. Verify no "consider" items from pai-87v were implemented. Flag unaccounted changes.
   Output: `Tasks [N/N compliant] | Contamination [CLEAN/N issues] | Unaccounted [CLEAN/N files] | VERDICT`
 
