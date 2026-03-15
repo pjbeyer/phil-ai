@@ -85,3 +85,36 @@ export {
 } from "./guide.js";
 
 export * from "./events.js";
+export * from "./registry.js";
+
+export {
+	GateEntrySchema,
+	GateDefinitionSchema,
+	GateLogIndexSchema,
+	GateResult,
+	GateExecutor,
+	GateSeverity,
+	GateRole,
+	GateContext,
+	type GateEntry,
+	type GateDefinition,
+	type GateLogIndex,
+	type GateResultType,
+	type GateExecutorType,
+	type GateSeverityType,
+	type GateRoleType,
+	type GateContextType,
+} from "./gate.js";
+
+export {
+	ScorecardDimensionSchema,
+	ScorecardEntrySchema,
+	MetricsSnapshotSchema,
+	ScorecardContext,
+	DimensionTrend,
+	type ScorecardDimension,
+	type ScorecardEntry,
+	type MetricsSnapshot,
+	type ScorecardContextType,
+	type DimensionTrendType,
+} from "./metrics.js";

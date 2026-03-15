@@ -42,6 +42,7 @@ export function getDataPaths(): DataPaths {
 export interface ConfigPaths {
 	root: string;
 	config: string;
+	systems: string;
 	profiles: string;
 	credentials: string;
 }
@@ -51,6 +52,7 @@ export function getConfigPaths(): ConfigPaths {
 	return {
 		root,
 		config: join(root, "config.yaml"),
+		systems: join(root, "systems.yaml"),
 		profiles: join(root, "profiles"),
 		credentials: join(root, ".credentials"),
 	};
