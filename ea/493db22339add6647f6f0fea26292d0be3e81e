@@ -1,0 +1,14 @@
+.beads/config.yaml
+  h_c5be3b3dad7ca8 56-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.7.6",
+  "base_commit_sha": "ea493db22339add6647f6f0fea26292d0be3e81e",
+  "prompts": {},
+  "humans": {
+    "h_c5be3b3dad7ca8": {
+      "author": "Phil Beyer <6152278+pjbeyer@users.noreply.github.com>"
+    }
+  }
+}
