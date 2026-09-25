@@ -54,3 +54,9 @@
 # - github.repo
 
 sync.remote: "git+https://github.com/pjbeyer/phil-ai.git"
+backup:
+    enabled: true
+    interval: 15m
+dolt:
+    port: 3307
+    auto-push: false
